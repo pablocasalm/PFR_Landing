@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { WaitlistForm } from "./WaitlistForm";
 import { trackEvent } from "../lib/analytics";
+import type { MouseEvent } from "react";
 
 const heroContainer = {
   hidden: {},
@@ -30,6 +31,14 @@ const valueBullets = [
 
 export function HeroSection() {
   const reduceMotion = useReducedMotion();
+  const handleExampleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    trackEvent("hero_example_click", { location: "hero" });
+    const target = document.querySelector<HTMLElement>("#ejemplo");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
     <section className="relative flex min-h-[calc(100svh-5.5rem)] items-center justify-center overflow-hidden bg-bg px-4 py-14 sm:px-6 sm:py-16">
@@ -83,7 +92,7 @@ export function HeroSection() {
         <motion.p className="mt-5 text-sm text-muted" variants={reduceMotion ? undefined : itemVariant}>
           <a
             href="#ejemplo"
-            onClick={() => trackEvent("hero_example_click", { location: "hero" })}
+            onClick={handleExampleClick}
             className="focus-ring cursor-pointer rounded px-1 text-accent-cyan underline decoration-accent-cyan underline-offset-4 transition-opacity hover:opacity-80"
           >
             Ver un ejemplo
@@ -93,4 +102,3 @@ export function HeroSection() {
     </section>
   );
 }
-

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/HeroSection";
 import { RecommendationsSection } from "./components/RecommendationsSection";
@@ -8,6 +9,13 @@ import { FinalCtaSection } from "./components/FinalCtaSection";
 import { Footer } from "./components/Footer";
 
 function App() {
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
+
   return (
     <div className="min-h-screen bg-bg text-text">
       <a
@@ -31,4 +39,3 @@ function App() {
 }
 
 export default App;
-

@@ -4,7 +4,6 @@ import type { MouseEvent } from "react";
 const links = [
   { href: "#recomendaciones", label: "Recomendaciones" },
   { href: "#ejemplo", label: "Ejemplo" },
-  { href: "#contenido", label: "Contenido" },
   { href: "#faq", label: "FAQ" },
 ];
 

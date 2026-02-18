@@ -3,7 +3,6 @@ import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/HeroSection";
 import { RecommendationsSection } from "./components/RecommendationsSection";
 import { ExampleSection } from "./components/ExampleSection";
-import { ContentSection } from "./components/ContentSection";
 import { FaqSection } from "./components/FaqSection";
 import { FinalCtaSection } from "./components/FinalCtaSection";
 import { Footer } from "./components/Footer";
@@ -29,7 +28,6 @@ function App() {
         <HeroSection />
         <RecommendationsSection />
         <ExampleSection />
-        <ContentSection />
         <FaqSection />
         <FinalCtaSection />
       </main>

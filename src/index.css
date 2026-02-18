@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #05070c;
+  --surface-1: #0b0f12;
+  --surface-2: #0f1418;
+  --text: #f5f5f5;
+  --muted: rgba(255, 255, 255, 0.65);
+  --border: rgba(255, 255, 255, 0.1);
+  --accent-cyan: #28f0e0;
+  --accent-lime: #befc4b;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 12% -8%, rgba(40, 240, 224, 0.2), transparent 34%),
+    radial-gradient(circle at 88% 4%, rgba(190, 252, 75, 0.15), transparent 28%),
+    linear-gradient(180deg, #05070c 0%, #06090f 38%, #05070c 100%);
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.12;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle at center, transparent 44%, rgba(0, 0, 0, 0.65) 100%);
+}
+
+a {
+  color: inherit;
+}
+
+section[id] {
+  scroll-margin-top: 7.5rem;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
+
+.glass-panel {
+  background: linear-gradient(160deg, rgba(15, 20, 24, 0.92) 0%, rgba(11, 15, 18, 0.85) 100%);
+  border: 1px solid var(--border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 24px 46px rgba(0, 0, 0, 0.45);
+}
+
+.hero-gradient-text {
+  background-size: 220% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: heroGradientShift 5s ease-in-out infinite;
+}
+
+.hero-gradient-cyan {
+  background-image: linear-gradient(
+    110deg,
+    #f5f5f5 0%,
+    #f5f5f5 25%,
+    var(--accent-cyan) 55%,
+    #8ff8ef 85%,
+    #f5f5f5 100%
+  );
+}
+
+.hero-gradient-lime {
+  background-image: linear-gradient(
+    110deg,
+    #f5f5f5 0%,
+    #f5f5f5 25%,
+    var(--accent-lime) 55%,
+    #e3ff98 85%,
+    #f5f5f5 100%
+  );
+}
+
+@keyframes heroGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-gradient-text {
+    animation: none;
+  }
+}

@@ -1,0 +1,34 @@
+import { Navbar } from "./components/Navbar";
+import { HeroSection } from "./components/HeroSection";
+import { RecommendationsSection } from "./components/RecommendationsSection";
+import { ExampleSection } from "./components/ExampleSection";
+import { ContentSection } from "./components/ContentSection";
+import { FaqSection } from "./components/FaqSection";
+import { FinalCtaSection } from "./components/FinalCtaSection";
+import { Footer } from "./components/Footer";
+
+function App() {
+  return (
+    <div className="min-h-screen bg-bg text-text">
+      <a
+        href="#main-content"
+        className="focus-ring sr-only rounded bg-accent-cyan px-3 py-2 text-bg focus:not-sr-only"
+      >
+        Saltar al contenido
+      </a>
+      <Navbar />
+      <main id="main-content">
+        <HeroSection />
+        <RecommendationsSection />
+        <ExampleSection />
+        <ContentSection />
+        <FaqSection />
+        <FinalCtaSection />
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+export default App;
+

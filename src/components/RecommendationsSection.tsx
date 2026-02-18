@@ -1,0 +1,100 @@
+import { motion, useReducedMotion } from "framer-motion";
+import { SectionTitle } from "./SectionTitle";
+
+type RecommendationClip = {
+  id: number;
+  title: string;
+  subtitle: string;
+  thumbnail: string;
+};
+
+const clips: RecommendationClip[] = [
+  {
+    id: 1,
+    title: "Salida de pared bajo presión",
+    subtitle: "Bandeja y transición",
+    thumbnail:
+      "https://images.unsplash.com/photo-1542144582-1ba00456b5e3?auto=format&fit=crop&w=700&q=80",
+  },
+  {
+    id: 2,
+    title: "Resto agresivo al medio",
+    subtitle: "Lectura de señal",
+    thumbnail:
+      "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=700&q=80",
+  },
+  {
+    id: 3,
+    title: "Decisión en bola de oro",
+    subtitle: "Contexto 40-40",
+    thumbnail:
+      "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=700&q=80",
+  },
+  {
+    id: 4,
+    title: "Defensa profunda y reset",
+    subtitle: "No forzar winner",
+    thumbnail:
+      "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=700&q=80",
+  },
+  {
+    id: 5,
+    title: "Cierre en volea alta",
+    subtitle: "Consecuencia del patrón",
+    thumbnail:
+      "https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?auto=format&fit=crop&w=700&q=80",
+  },
+];
+
+export function RecommendationsSection() {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <motion.section
+      id="recomendaciones"
+      className="px-4 py-20 sm:px-6 lg:py-24"
+      initial={reduceMotion ? undefined : { opacity: 0, y: 40 }}
+      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+      transition={reduceMotion ? undefined : { duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      <div className="mx-auto max-w-6xl">
+        <SectionTitle
+          eyebrow="Recomendaciones"
+          title="Tendencias ahora"
+          subtitle="Cinco clips verticales para revisar patrones y decisiones de juego."
+        />
+
+        <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
+          {clips.map((clip) => {
+            return (
+              <article
+                key={clip.id}
+                className="relative aspect-[2/3] overflow-hidden rounded-2xl border border-border bg-surface-1 transition"
+              >
+                <div className="group relative block h-full w-full text-left">
+                  <img
+                    src={clip.thumbnail}
+                    alt={`Portada del clip: ${clip.title}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+
+                  <span className="absolute left-2 bottom-14 font-display text-7xl leading-none text-transparent [text-shadow:0_3px_12px_rgba(0,0,0,0.65)] [-webkit-text-stroke:2px_#e9e9e9]">
+                    {clip.id}
+                  </span>
+
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <p className="text-sm font-semibold leading-tight text-text">{clip.title}</p>
+                    <p className="mt-1 text-xs leading-tight text-muted">{clip.subtitle}</p>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </motion.section>
+  );
+}

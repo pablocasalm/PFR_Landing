@@ -70,14 +70,14 @@ export function RecommendationsSection() {
             return (
               <article
                 key={clip.id}
-                className="relative aspect-[2/3] overflow-hidden rounded-2xl border border-border bg-surface-1 transition"
+                className="group relative aspect-[2/3] overflow-hidden rounded-2xl border border-border bg-surface-1 transition duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:border-accent-cyan/60 hover:shadow-[0_0_0_1px_rgba(40,240,224,0.35),0_18px_36px_rgba(40,240,224,0.20)]"
               >
                 <div className="group relative block h-full w-full text-left">
                   <img
                     src={clip.thumbnail}
                     alt={`Portada del clip: ${clip.title}`}
                     loading="lazy"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover transition duration-300 ease-out group-hover:scale-[1.04]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 

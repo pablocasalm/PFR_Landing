@@ -58,8 +58,8 @@ export function FaqSection() {
                     <motion.div
                       key="content"
                       initial={reduceMotion ? false : { height: 0, opacity: 0 }}
-                      animate={reduceMotion ? false : { height: "auto", opacity: 1 }}
-                      exit={reduceMotion ? false : { height: 0, opacity: 0 }}
+                      animate={reduceMotion ? undefined : { height: "auto", opacity: 1 }}
+                      exit={reduceMotion ? undefined : { height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: "easeOut" }}
                       className="overflow-hidden"
                     >
@@ -75,4 +75,3 @@ export function FaqSection() {
     </motion.section>
   );
 }
-

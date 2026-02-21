@@ -23,7 +23,7 @@ const itemVariant = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: "easeOut" } },
 };
 
-const valueBullets = ["Patrones aplicables a amateur/intermedio", "Plaza en la lista de espera"];
+const valueBullets = ["Patrones aplicables a amateur/intermedio", "Plaza en la lista de espera", "sex"];
 
 export function HeroSection() {
   const reduceMotion = useReducedMotion();

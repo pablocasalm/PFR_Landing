@@ -4,36 +4,36 @@ import { fadeUp, staggerContainer } from "./Motion";
 
 const faqs = [
   {
-    q: "¿Que es exactamente Padel Film Room?",
-    a: "Es una forma diferente de aprender padel. Analizamos partidos reales y los convertimos en contenido estructurado para entender el juego a traves de decisiones y patrones.",
+    q: "¿Qué es exactamente Padel Film Room?",
+    a: "Es una forma diferente de aprender pádel. Analizamos partidos reales y los convertimos en contenido estructurado para entender el juego a través de decisiones y patrones.",
   },
   {
-    q: "¿Que voy a encontrar dentro?",
-    a: "Contenido organizado, no videos sueltos: bloques de aprendizaje por concepto y analisis de partidos completos.",
+    q: "¿Qué voy a encontrar dentro?",
+    a: "Contenido organizado, no vídeos sueltos: bloques de aprendizaje por concepto y análisis de partidos completos.",
   },
   {
-    q: "¿Que son los bloques de aprendizaje?",
+    q: "¿Qué son los bloques de aprendizaje?",
     a: "Colecciones de clips sobre un mismo concepto repetido en distintos contextos para que puedas reconocerlo en pista.",
   },
   {
-    q: "¿Que hace diferente este enfoque?",
-    a: "Construimos un lenguaje simple para identificar situaciones de presion, ventaja y decision, y poder aplicarlas luego jugando.",
+    q: "¿Qué hace diferente este enfoque?",
+    a: "Construimos un lenguaje simple para identificar situaciones de presión, ventaja y decisión, y poder aplicarlas luego jugando.",
   },
   {
-    q: "¿Para que sirven los analisis de partidos completos?",
-    a: "Para ver como se conectan las decisiones dentro de un partido real, cuando aparecen y como afectan al resultado.",
+    q: "¿Para qué sirven los análisis de partidos completos?",
+    a: "Para ver cómo se conectan las decisiones dentro de un partido real, cuándo aparecen y cómo afectan al resultado.",
   },
   {
-    q: "¿Trabajais con partidos profesionales?",
-    a: "Si, porque ahi se ven mejor los patrones, pero todo esta traducido a un lenguaje accesible.",
+    q: "¿Trabajáis con partidos profesionales?",
+    a: "Sí, porque ahí se ven mejor los patrones, pero todo está traducido a un lenguaje accesible.",
   },
   {
     q: "¿Tengo que analizar partidos por mi cuenta?",
     a: "No. Nosotros seleccionamos, organizamos y explicamos lo importante.",
   },
   {
-    q: "¿Cuando estara disponible?",
-    a: "Estamos construyendo desde cero. Dejanos tu email y te avisaremos.",
+    q: "¿Cuándo estará disponible?",
+    a: "Estamos construyendo desde cero. Déjanos tu email y te avisaremos.",
   },
 ];
 

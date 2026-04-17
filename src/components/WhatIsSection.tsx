@@ -31,8 +31,8 @@ export function WhatIsSection() {
     >
       <div className="mx-auto max-w-6xl">
         <SectionTitle
-          eyebrow="Que es Padel Film Room"
-          title="No es solo contenido. Es una forma de entender el padel."
+          eyebrow="Qué es Padel Film Room"
+          title="No es solo contenido. Es una forma de entender el pádel."
         />
         <motion.div
           className="mt-12 grid gap-5 lg:grid-cols-[0.95fr_1.05fr]"
@@ -44,7 +44,7 @@ export function WhatIsSection() {
           <motion.article variants={reduceMotion ? undefined : fadeUp()} className="glass-panel rounded-lg p-4 sm:p-5">
             <img
               src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=1200&q=80"
-              alt="Pista de padel durante un intercambio."
+              alt="Pista de pádel durante un intercambio."
               loading="lazy"
               className="aspect-[4/5] w-full rounded-md object-cover"
             />

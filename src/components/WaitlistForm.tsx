@@ -120,7 +120,7 @@ export function WaitlistForm({ compact = false, source = "final_cta" }: Waitlist
         </button>
       </div>
       <p id={`${inputId}-help`} className="text-sm text-muted">
-        Dejanos tu email para unirte a la waitlist. Sin spam. Solo te escribiremos cuando tengamos
+        Déjanos tu email para unirte a la waitlist. Sin spam. Solo te escribiremos cuando tengamos
         algo que realmente merezca la pena.
       </p>
       <p

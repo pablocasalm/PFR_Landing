@@ -7,8 +7,8 @@ const blocks = [
     eyebrow: "Problema",
     title: "Ves mucho. Aplicas poco.",
     paragraphs: [
-      "Hoy puedes ver miles de videos de padel. Golpes, trucos, consejos y puntos espectaculares.",
-      "Pero cuando vuelves a pista, es dificil aplicar todo eso. Porque el padel no se decide solo en el golpe. Se decide en lo que pasa antes.",
+      "Hoy puedes ver miles de vídeos de pádel. Golpes, trucos, consejos y puntos espectaculares.",
+      "Pero cuando vuelves a pista, es difícil aplicar todo eso. Porque el pádel no se decide solo en el golpe. Se decide en lo que pasa antes.",
     ],
   },
   {
@@ -16,7 +16,7 @@ const blocks = [
     title: "Los mejores no solo ejecutan mejor.",
     paragraphs: [
       "Toman mejores decisiones. Y esas decisiones se repiten una y otra vez en los partidos.",
-      "Si aprendes a reconocerlas, empiezas a entender el juego de una forma mucho mas util que viendo highlights sueltos.",
+      "Si aprendes a reconocerlas, empiezas a entender el juego de una forma mucho más útil que viendo highlights sueltos.",
     ],
   },
 ];
@@ -35,8 +35,8 @@ export function ProblemInsightSection() {
     >
       <div className="mx-auto max-w-6xl">
         <SectionTitle
-          eyebrow="Por que existe"
-          title="El juego no cambia cuando ves mas padel. Cambia cuando empiezas a leerlo."
+          eyebrow="Por qué existe"
+          title="El juego no cambia cuando ves más pádel. Cambia cuando empiezas a leerlo."
         />
 
         <motion.div

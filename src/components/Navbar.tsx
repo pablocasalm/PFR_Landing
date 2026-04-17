@@ -2,9 +2,9 @@ import { trackEvent } from "../lib/analytics";
 import type { MouseEvent } from "react";
 
 const links = [
-  { href: "#que-es", label: "Que es" },
-  { href: "#como-aprenderas", label: "Como aprenderas" },
-  { href: "#quienes-somos", label: "Quienes somos" },
+  { href: "#que-es", label: "Qué es" },
+  { href: "#como-aprenderas", label: "Cómo aprenderás" },
+  { href: "#quienes-somos", label: "Quiénes somos" },
   { href: "#ejemplo", label: "Ejemplo" },
   { href: "#faq", label: "FAQ" },
 ];

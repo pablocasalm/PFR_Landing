@@ -73,7 +73,7 @@ export function HeroSection() {
           className="mx-auto mt-4 max-w-2xl text-sm text-muted sm:text-base"
           variants={reduceMotion ? undefined : itemVariant}
         >
-          Dejanos tu email para unirte a la waitlist. Sin spam. Solo te escribiremos cuando tengamos
+          Déjanos tu email para unirte a la waitlist. Sin spam. Solo te escribiremos cuando tengamos
           algo que realmente merezca la pena.
         </motion.p>
 

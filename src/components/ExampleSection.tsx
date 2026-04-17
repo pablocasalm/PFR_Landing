@@ -4,8 +4,8 @@ import { fadeUp, staggerContainer } from "./Motion";
 
 const bullets = [
   "Mismo concepto en distintos puntos reales.",
-  "Diferentes jugadores en la misma situacion.",
-  "Cuando usarlo y por que funciona.",
+  "Diferentes jugadores en la misma situación.",
+  "Cuándo usarlo y por qué funciona.",
 ];
 
 export function ExampleSection() {
@@ -23,13 +23,13 @@ export function ExampleSection() {
       <div className="mx-auto max-w-6xl">
         <SectionTitle
           eyebrow="Ejemplo"
-          title="Ejemplo de lo que veras dentro"
-          subtitle="Uso del globo. Globo para quitar presion."
+          title="Ejemplo de lo que verás dentro"
+          subtitle="Uso del globo. Globo para quitar presión."
         />
 
         <p className="mx-auto mt-6 max-w-3xl text-center text-sm text-muted sm:text-base">
-          No se trata de un highlight aislado. Se trata de ver un mismo patron varias veces hasta que
-          puedas reconocerlo tu tambien.
+          No se trata de un highlight aislado. Se trata de ver un mismo patrón varias veces hasta que
+          puedas reconocerlo tú también.
         </p>
 
         <motion.div
@@ -44,11 +44,11 @@ export function ExampleSection() {
               Concepto
             </p>
             <h3 className="font-display text-3xl uppercase leading-[1] text-text">
-              Globo para quitar presion
+              Globo para quitar presión
             </h3>
             <p className="text-sm leading-relaxed text-muted sm:text-base">
-              Veras el mismo concepto repetido en distintos partidos para entender que situacion lo
-              activa, que decision lo convierte en una buena solucion y por que termina funcionando.
+              Verás el mismo concepto repetido en distintos partidos para entender qué situación lo
+              activa, qué decisión lo convierte en una buena solución y por qué termina funcionando.
             </p>
 
             <ul className="space-y-3 pt-2 text-sm leading-relaxed text-text sm:text-base">
@@ -67,11 +67,11 @@ export function ExampleSection() {
             <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted sm:text-base">
               <p>
                 Cuando el rival te aprieta y no te conviene acelerar, el globo deja de ser un recurso
-                defensivo generico y pasa a ser una decision concreta para quitar presion.
+                defensivo genérico y pasa a ser una decisión concreta para quitar presión.
               </p>
               <p>
                 Ese cambio de lectura es lo que intentamos entrenar: no solo que sepas que existe el
-                golpe, sino que sepas identificar cuando corresponde.
+                golpe, sino que sepas identificar cuándo corresponde.
               </p>
             </div>
           </motion.article>

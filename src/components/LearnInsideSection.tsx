@@ -8,15 +8,15 @@ const pillars = [
     bullets: [
       "Un mismo concepto repetido en distintos partidos.",
       "Para que puedas reconocerlo en pista cuando vuelve a aparecer.",
-      "No videos sueltos. Mismo patron, distintas situaciones.",
+      "No vídeos sueltos. Mismo patrón, distintas situaciones.",
     ],
   },
   {
-    title: "Analisis de partidos completos",
+    title: "Análisis de partidos completos",
     bullets: [
-      "Para entender como se conectan las decisiones dentro del juego real.",
-      "Como se construyen los puntos y donde se decide cada juego.",
-      "Que patrones se repiten durante todo el partido.",
+      "Para entender cómo se conectan las decisiones dentro del juego real.",
+      "Cómo se construyen los puntos y dónde se decide cada juego.",
+      "Qué patrones se repiten durante todo el partido.",
     ],
   },
 ];
@@ -35,9 +35,9 @@ export function LearnInsideSection() {
     >
       <div className="mx-auto max-w-6xl">
         <SectionTitle
-          eyebrow="Como aprenderas dentro"
-          title="No veras videos sueltos."
-          subtitle="Veras un sistema pensado para que puedas entender el juego de verdad y elegir como aprender en cada momento."
+          eyebrow="Cómo aprenderás dentro"
+          title="No verás vídeos sueltos."
+          subtitle="Verás un sistema pensado para que puedas entender el juego de verdad y elegir cómo aprender en cada momento."
         />
 
         <motion.div
@@ -50,7 +50,7 @@ export function LearnInsideSection() {
           <motion.article variants={reduceMotion ? undefined : fadeUp()} className="border-b border-border/80 p-4 sm:p-5">
             <img
               src="https://images.unsplash.com/photo-1542144582-1ba00456b5e3?auto=format&fit=crop&w=1200&q=80"
-              alt="Jugadores de padel durante un punto en partido real."
+              alt="Jugadores de pádel durante un punto en partido real."
               loading="lazy"
               className="aspect-[21/9] w-full rounded-md object-cover"
             />
@@ -89,11 +89,11 @@ export function LearnInsideSection() {
           >
             <div className="grid gap-3 lg:grid-cols-[260px_1fr] lg:items-start">
               <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent-cyan">
-                Que cambia por dentro
+                Qué cambia por dentro
               </p>
               <p className="max-w-3xl text-base leading-relaxed text-text sm:text-lg">
                 No tienes que analizar partidos por tu cuenta. Nosotros seleccionamos, ordenamos y
-                explicamos lo importante para que tu solo tengas que verlo y entenderlo.
+                explicamos lo importante para que tú solo tengas que verlo y entenderlo.
               </p>
             </div>
           </motion.article>

@@ -3,9 +3,9 @@ import { SectionTitle } from "./SectionTitle";
 import { fadeUp, staggerContainer } from "./Motion";
 
 const situations = [
-  "Cuando estas bajo presion.",
-  "Cuando tienes ventaja.",
-  "Que decision corresponde en cada momento.",
+  "Cuándo estás bajo presión.",
+  "Cuándo tienes ventaja.",
+  "Qué decisión corresponde en cada momento.",
 ];
 
 export function LanguageSection() {
@@ -39,7 +39,7 @@ export function LanguageSection() {
           >
             <div className="space-y-4 text-sm leading-relaxed text-muted sm:text-base">
               <p>No queremos que solo veas contenido.</p>
-              <p>Queremos que aprendas a identificar lo que esta pasando en un punto.</p>
+              <p>Queremos que aprendas a identificar lo que está pasando en un punto.</p>
               <ul className="space-y-3 pt-2 text-text">
                 {situations.map((situation) => (
                   <li key={situation} className="border-l border-accent-lime/60 pl-4">
@@ -48,7 +48,7 @@ export function LanguageSection() {
                 ))}
               </ul>
               <p className="pt-2">
-                Cuando empiezas a verlo asi, el juego cambia completamente.
+                Cuando empiezas a verlo así, el juego cambia completamente.
               </p>
             </div>
           </motion.article>
@@ -58,19 +58,19 @@ export function LanguageSection() {
             className="glass-panel rounded-lg p-6 sm:p-8"
           >
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent-cyan">
-              En la practica
+              En la práctica
             </p>
             <div className="mt-5 space-y-4">
               <div className="rounded-md border border-border bg-surface-2 p-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-muted">Situacion</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-muted">Situación</p>
                 <p className="mt-2 text-base text-text">Segundo saque rival. Te cierran el medio.</p>
               </div>
               <div className="rounded-md border border-border bg-surface-2 p-4">
                 <p className="text-xs uppercase tracking-[0.18em] text-muted">Lectura</p>
-                <p className="mt-2 text-base text-text">Estas defendiendo, no cerrando el punto.</p>
+                <p className="mt-2 text-base text-text">Estás defendiendo, no cerrando el punto.</p>
               </div>
               <div className="rounded-md border border-border bg-surface-2 p-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-muted">Decision</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-muted">Decisión</p>
                 <p className="mt-2 text-base text-text">Elegir bien antes de pegar mejor.</p>
               </div>
             </div>

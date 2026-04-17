@@ -25,12 +25,12 @@ export function TeamSection() {
         </motion.article>
 
         <motion.article variants={reduceMotion ? undefined : fadeUp(36)} className="glass-panel rounded-lg p-6 sm:p-8">
-          <SectionTitle eyebrow="Quienes somos" title="Somos Andrea, Guille y Pablo." />
+          <SectionTitle eyebrow="Quiénes somos" title="Somos Andrea, Guille y Pablo." />
           <div className="mt-8 space-y-4 text-sm leading-relaxed text-muted sm:text-base">
-            <p>Una familia vinculada al padel desde siempre.</p>
-            <p>Hemos competido, entrenado y vivido el juego desde dentro durante anos.</p>
+            <p>Una familia vinculada al pádel desde siempre.</p>
+            <p>Hemos competido, entrenado y vivido el juego desde dentro durante años.</p>
             <p>
-              Guille, ademas, lleva anos trabajando con jugadores y analizando partidos a nivel
+              Guille, además, lleva años trabajando con jugadores y analizando partidos a nivel
               profesional.
             </p>
             <p>

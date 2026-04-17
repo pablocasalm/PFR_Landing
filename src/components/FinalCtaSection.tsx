@@ -19,7 +19,7 @@ export function FinalCtaSection() {
           Estamos construyendo esto desde cero.
         </h2>
         <p className="mt-5 text-base text-muted sm:text-lg">
-          Si quieres aprender padel de una forma diferente, dejanos tu email y te avisamos cuando
+          Si quieres aprender pádel de una forma diferente, déjanos tu email y te avisamos cuando
           lancemos los primeros contenidos.
         </p>
         <div className="mt-8">

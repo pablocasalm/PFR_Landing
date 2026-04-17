@@ -69,14 +69,6 @@ export function HeroSection() {
           verdad en pista.
         </motion.p>
 
-        <motion.p
-          className="mx-auto mt-4 max-w-2xl text-sm text-muted sm:text-base"
-          variants={reduceMotion ? undefined : itemVariant}
-        >
-          Déjanos tu email para unirte a la waitlist. Sin spam. Solo te escribiremos cuando tengamos
-          algo que realmente merezca la pena.
-        </motion.p>
-
         <motion.ul
           className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted"
           variants={reduceMotion ? undefined : itemVariant}

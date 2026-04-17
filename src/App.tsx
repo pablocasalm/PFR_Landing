@@ -1,8 +1,12 @@
 import { useEffect } from "react";
 import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/HeroSection";
-import { RecommendationsSection } from "./components/RecommendationsSection";
+import { ProblemInsightSection } from "./components/ProblemInsightSection";
+import { WhatIsSection } from "./components/WhatIsSection";
+import { LearnInsideSection } from "./components/LearnInsideSection";
 import { ExampleSection } from "./components/ExampleSection";
+import { LanguageSection } from "./components/LanguageSection";
+import { TeamSection } from "./components/TeamSection";
 import { FaqSection } from "./components/FaqSection";
 import { FinalCtaSection } from "./components/FinalCtaSection";
 import { Footer } from "./components/Footer";
@@ -26,8 +30,12 @@ function App() {
       <Navbar />
       <main id="main-content">
         <HeroSection />
-        <RecommendationsSection />
+        <ProblemInsightSection />
+        <WhatIsSection />
+        <LearnInsideSection />
         <ExampleSection />
+        <LanguageSection />
+        <TeamSection />
         <FaqSection />
         <FinalCtaSection />
       </main>

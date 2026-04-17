@@ -2,7 +2,9 @@ import { trackEvent } from "../lib/analytics";
 import type { MouseEvent } from "react";
 
 const links = [
-  { href: "#recomendaciones", label: "Recomendaciones" },
+  { href: "#que-es", label: "Que es" },
+  { href: "#como-aprenderas", label: "Como aprenderas" },
+  { href: "#quienes-somos", label: "Quienes somos" },
   { href: "#ejemplo", label: "Ejemplo" },
   { href: "#faq", label: "FAQ" },
 ];
@@ -31,7 +33,7 @@ export function Navbar() {
             Padel Film Room
           </a>
 
-          <ul className="flex flex-wrap items-center justify-center gap-5 font-mono text-xs uppercase tracking-[0.14em] text-muted">
+          <ul className="hidden flex-wrap items-center justify-center gap-5 font-mono text-xs uppercase tracking-[0.14em] text-muted md:flex">
             {links.map((link) => (
               <li key={link.href} className="shrink-0">
                 <a
@@ -51,7 +53,7 @@ export function Navbar() {
               trackEvent("cta_navbar_click", { location: "navbar" });
               handleSectionClick(event, "#waitlist-final");
             }}
-            className="focus-ring justify-self-end rounded-full border border-accent-cyan/40 bg-accent-cyan px-4 py-2 text-sm font-semibold text-bg shadow-glow transition hover:brightness-105"
+            className="focus-ring justify-self-end rounded-md border border-accent-cyan/40 bg-accent-cyan px-4 py-2 text-sm font-semibold text-bg shadow-glow transition hover:brightness-105"
           >
             Únete a la lista privada
           </a>

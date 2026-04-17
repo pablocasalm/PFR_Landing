@@ -105,22 +105,23 @@ export function WaitlistForm({ compact = false, source = "final_cta" }: Waitlist
               setMessage("");
             }
           }}
-          placeholder="tu mejor email para la waitlist"
+          placeholder="tu email para la waitlist"
           aria-invalid={status === "error"}
           aria-describedby={`${inputId}-help ${inputId}-status`}
-          className="focus-ring min-h-12 w-full rounded-full border border-border bg-surface-2 px-5 text-base text-text placeholder:text-muted/80"
+          className="focus-ring min-h-12 w-full rounded-md border border-border bg-surface-2 px-5 text-base text-text placeholder:text-muted/80"
           required
         />
         <button
           type="submit"
-          className="focus-ring min-h-12 shrink-0 rounded-full border border-accent-cyan/50 bg-accent-cyan px-6 font-semibold text-bg shadow-glow transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-75"
+          className="focus-ring min-h-12 shrink-0 rounded-md border border-accent-cyan/50 bg-accent-cyan px-6 font-semibold text-bg shadow-glow transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-75"
           disabled={status === "loading"}
         >
-          {status === "loading" ? "Enviando..." : "Únete a la lista privada"}
+          {status === "loading" ? "Enviando..." : "Quiero unirme a la waitlist"}
         </button>
       </div>
       <p id={`${inputId}-help`} className="text-sm text-muted">
-        Acceso anticipado + ejemplos de análisis. Cero spam. Puedes salir cuando quieras.
+        Dejanos tu email para unirte a la waitlist. Sin spam. Solo te escribiremos cuando tengamos
+        algo que realmente merezca la pena.
       </p>
       <p
         id={`${inputId}-status`}
@@ -133,4 +134,3 @@ export function WaitlistForm({ compact = false, source = "final_cta" }: Waitlist
     </motion.form>
   );
 }
-

@@ -4,20 +4,36 @@ import { fadeUp, staggerContainer } from "./Motion";
 
 const faqs = [
   {
-    q: "¿Esto sirve si no soy jugador avanzado?",
-    a: "Sí. El foco está en leer mejor el punto y decidir con criterio. Es útil desde nivel amateur.",
+    q: "¿Que es exactamente Padel Film Room?",
+    a: "Es una forma diferente de aprender padel. Analizamos partidos reales y los convertimos en contenido estructurado para entender el juego a traves de decisiones y patrones.",
   },
   {
-    q: "¿Qué voy a recibir exactamente?",
-    a: "Análisis táctico aplicado, patrones repetibles y ejemplos para trasladar decisiones reales a tu próximo partido.",
+    q: "¿Que voy a encontrar dentro?",
+    a: "Contenido organizado, no videos sueltos: bloques de aprendizaje por concepto y analisis de partidos completos.",
   },
   {
-    q: "¿Puedo darme de baja?",
-    a: "Sí. Baja inmediata en un clic desde cualquier correo.",
+    q: "¿Que son los bloques de aprendizaje?",
+    a: "Colecciones de clips sobre un mismo concepto repetido en distintos contextos para que puedas reconocerlo en pista.",
   },
   {
-    q: "¿Me vais a enviar spam?",
-    a: "No. Solo contenido relevante de la waitlist y avisos del lanzamiento.",
+    q: "¿Que hace diferente este enfoque?",
+    a: "Construimos un lenguaje simple para identificar situaciones de presion, ventaja y decision, y poder aplicarlas luego jugando.",
+  },
+  {
+    q: "¿Para que sirven los analisis de partidos completos?",
+    a: "Para ver como se conectan las decisiones dentro de un partido real, cuando aparecen y como afectan al resultado.",
+  },
+  {
+    q: "¿Trabajais con partidos profesionales?",
+    a: "Si, porque ahi se ven mejor los patrones, pero todo esta traducido a un lenguaje accesible.",
+  },
+  {
+    q: "¿Tengo que analizar partidos por mi cuenta?",
+    a: "No. Nosotros seleccionamos, organizamos y explicamos lo importante.",
+  },
+  {
+    q: "¿Cuando estara disponible?",
+    a: "Estamos construyendo desde cero. Dejanos tu email y te avisaremos.",
   },
 ];
 
@@ -46,7 +62,7 @@ export function FaqSection() {
             <motion.details
               key={item.q}
               variants={reduceMotion ? undefined : fadeUp()}
-              className="glass-panel group rounded-2xl px-5 py-4"
+              className="glass-panel group rounded-lg px-5 py-4"
             >
               <summary className="focus-ring cursor-pointer list-none pr-6 text-base font-semibold text-text">
                 {item.q}
@@ -59,4 +75,3 @@ export function FaqSection() {
     </motion.section>
   );
 }
-

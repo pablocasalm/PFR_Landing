@@ -1,0 +1,15 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#05070c"/>
+  <circle cx="200" cy="-80" r="260" fill="#28f0e0" fill-opacity="0.22"/>
+  <circle cx="1020" cy="80" r="240" fill="#befc4b" fill-opacity="0.16"/>
+  <rect x="56" y="56" width="1088" height="518" rx="36" fill="#0b0f12" stroke="rgba(255,255,255,0.16)"/>
+  <text x="112" y="222" fill="#28f0e0" font-family="Space Mono, monospace" font-size="30" letter-spacing="8">
+    PADEL FILM ROOM
+  </text>
+  <text x="112" y="320" fill="#f5f5f5" font-family="Clash Display, Space Grotesk, sans-serif" font-size="74">
+    Deja de copiar golpes.
+  </text>
+  <text x="112" y="396" fill="#f5f5f5" font-family="Clash Display, Space Grotesk, sans-serif" font-size="74">
+    Empieza a copiar decisiones.
+  </text>
+</svg>

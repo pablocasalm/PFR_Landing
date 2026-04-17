@@ -2,25 +2,10 @@ import { motion, useReducedMotion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { fadeUp, staggerContainer } from "./Motion";
 
-const steps = [
-  {
-    key: "Contexto",
-    detail:
-      "40-40, segundo saque rival, pareja cerrando por el medio. Qué está pasando antes de que salga la bola.",
-  },
-  {
-    key: "Señal",
-    detail: "El restador pisa dentro y abre hombros demasiado pronto. Muestra intención de cruzado rápido.",
-  },
-  {
-    key: "Decisión",
-    detail: "No buscar winner: bloquear paralelo profundo al cuerpo del volea y recuperar red en dos apoyos.",
-  },
-  {
-    key: "Consecuencia",
-    detail:
-      "Forzamos volea incómoda, sube bola corta y cerramos el punto en transición alta. Patrón repetible.",
-  },
+const bullets = [
+  "Mismo concepto en distintos puntos reales.",
+  "Diferentes jugadores en la misma situacion.",
+  "Cuando usarlo y por que funciona.",
 ];
 
 export function ExampleSection() {
@@ -38,39 +23,60 @@ export function ExampleSection() {
       <div className="mx-auto max-w-6xl">
         <SectionTitle
           eyebrow="Ejemplo"
-          title="Cómo se ve un análisis"
-          subtitle="Desglosamos decisiones punto a punto para que puedas trasladarlas tal cual a tus partidos."
+          title="Ejemplo de lo que veras dentro"
+          subtitle="Uso del globo. Globo para quitar presion."
         />
 
         <p className="mx-auto mt-6 max-w-3xl text-center text-sm text-muted sm:text-base">
-          Aquí no hay highlights aislados: hay lectura táctica real en partido para decidir mejor bajo
-          presión.
+          No se trata de un highlight aislado. Se trata de ver un mismo patron varias veces hasta que
+          puedas reconocerlo tu tambien.
         </p>
 
         <motion.div
-          className="glass-panel mt-12 rounded-3xl p-6 sm:p-8"
+          className="glass-panel mt-12 grid gap-5 rounded-lg p-6 sm:p-8 lg:grid-cols-[1fr_0.95fr]"
           initial={reduceMotion ? undefined : "hidden"}
           whileInView={reduceMotion ? undefined : "visible"}
           viewport={{ once: true, amount: 0.25 }}
           variants={reduceMotion ? undefined : staggerContainer}
         >
-          {steps.map((step, index) => (
-            <motion.div
-              key={step.key}
-              variants={reduceMotion ? undefined : fadeUp()}
-              className="group relative border-b border-border/80 py-5 last:border-b-0"
-            >
-              <div className="grid gap-3 md:grid-cols-[180px_1fr] md:gap-6">
-                <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent-cyan">
-                  {`0${index + 1}`} {step.key}
-                </p>
-                <p className="text-sm leading-relaxed text-text sm:text-base">{step.detail}</p>
-              </div>
-            </motion.div>
-          ))}
+          <motion.article variants={reduceMotion ? undefined : fadeUp()} className="space-y-4">
+            <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent-cyan">
+              Concepto
+            </p>
+            <h3 className="font-display text-3xl uppercase leading-[1] text-text">
+              Globo para quitar presion
+            </h3>
+            <p className="text-sm leading-relaxed text-muted sm:text-base">
+              Veras el mismo concepto repetido en distintos partidos para entender que situacion lo
+              activa, que decision lo convierte en una buena solucion y por que termina funcionando.
+            </p>
+
+            <ul className="space-y-3 pt-2 text-sm leading-relaxed text-text sm:text-base">
+              {bullets.map((bullet) => (
+                <li key={bullet} className="border-l border-accent-cyan/40 pl-4">
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+          </motion.article>
+
+          <motion.article variants={reduceMotion ? undefined : fadeUp(36)} className="rounded-md border border-border bg-surface-2 p-5">
+            <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent-cyan">
+              Lo que aprendes a ver
+            </p>
+            <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted sm:text-base">
+              <p>
+                Cuando el rival te aprieta y no te conviene acelerar, el globo deja de ser un recurso
+                defensivo generico y pasa a ser una decision concreta para quitar presion.
+              </p>
+              <p>
+                Ese cambio de lectura es lo que intentamos entrenar: no solo que sepas que existe el
+                golpe, sino que sepas identificar cuando corresponde.
+              </p>
+            </div>
+          </motion.article>
         </motion.div>
       </div>
     </motion.section>
   );
 }
-

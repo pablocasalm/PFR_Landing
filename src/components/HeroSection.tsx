@@ -24,9 +24,8 @@ const itemVariant = {
 };
 
 const valueBullets = [
-  "1 análisis táctico semanal",
-  "Patrones aplicables a amateur/intermedio",
-  "Acceso anticipado al lanzamiento",
+  "Partidos reales convertidos en aprendizajes claros.",
+  "Waitlist privada para acceso anticipado.",
 ];
 
 export function HeroSection() {
@@ -66,12 +65,16 @@ export function HeroSection() {
           className="mx-auto mt-6 max-w-2xl text-lg text-muted md:text-xl"
           variants={reduceMotion ? undefined : itemVariant}
         >
-          Análisis táctico de pádel profesional: decisiones correctas bajo presión, el porqué de cada
-          punto y los patrones que se repiten.
+          Analizamos partidos reales y los convertimos en aprendizajes claros para que mejores de
+          verdad en pista.
         </motion.p>
 
-        <motion.p className="mx-auto mt-4 max-w-2xl text-sm text-muted sm:text-base" variants={reduceMotion ? undefined : itemVariant}>
-          No enseñamos golpes aislados. Enseñamos decisiones en partido real.
+        <motion.p
+          className="mx-auto mt-4 max-w-2xl text-sm text-muted sm:text-base"
+          variants={reduceMotion ? undefined : itemVariant}
+        >
+          Dejanos tu email para unirte a la waitlist. Sin spam. Solo te escribiremos cuando tengamos
+          algo que realmente merezca la pena.
         </motion.p>
 
         <motion.ul
@@ -93,11 +96,26 @@ export function HeroSection() {
           <a
             href="#ejemplo"
             onClick={handleExampleClick}
-            className="focus-ring cursor-pointer rounded px-1 text-accent-cyan underline decoration-accent-cyan underline-offset-4 transition-opacity hover:opacity-80"
+            className="focus-ring cursor-pointer rounded-md px-1 text-accent-cyan underline decoration-accent-cyan underline-offset-4 transition-opacity hover:opacity-80"
           >
             Ver un ejemplo
           </a>
         </motion.p>
+
+        <a
+          href="#waitlist-final"
+          onClick={(event) => {
+            trackEvent("cta_mobile_sticky_click", { location: "hero_sticky" });
+            event.preventDefault();
+            const target = document.querySelector<HTMLElement>("#waitlist-final");
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          }}
+          className="focus-ring fixed inset-x-4 bottom-4 z-30 rounded-md border border-accent-cyan/40 bg-accent-cyan px-4 py-3 text-center text-sm font-semibold text-bg shadow-[0_18px_36px_rgba(0,0,0,0.35)] md:hidden"
+        >
+          Quiero unirme a la waitlist
+        </a>
       </motion.div>
     </section>
   );

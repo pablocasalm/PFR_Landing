@@ -2,22 +2,18 @@ import { motion, useReducedMotion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { fadeUp, staggerContainer } from "./Motion";
 
-const comparison = [
+const points = [
   {
-    title: "Canal típico",
-    bullets: [
-      "Tips sueltos sin contexto real de punto.",
-      "Golpes perfectos en situaciones artificiales.",
-      "Mejora técnica, poca transferencia táctica.",
-    ],
+    title: "Partidos reales",
+    text: "En Padel Film Room analizamos partidos reales y detectamos patrones que se repiten constantemente.",
   },
   {
-    title: "Padel Film Room",
-    bullets: [
-      "Partidos reales, presión real, decisiones reales.",
-      "Lectura de contexto y señales antes del golpe.",
-      "Framework aplicable: Contexto -> Señal -> Decisión -> Consecuencia.",
-    ],
+    title: "Lenguaje simple",
+    text: "Los traducimos a un lenguaje simple y te los enseñamos de forma que puedas reconocerlos en pista.",
+  },
+  {
+    title: "Diferencial",
+    text: "No tienes que analizar partidos. Nosotros lo hacemos por ti y ordenamos lo importante para que puedas entenderlo.",
   },
 ];
 
@@ -34,30 +30,39 @@ export function WhatIsSection() {
       viewport={{ once: true, amount: 0.3 }}
     >
       <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="Qué es" title="No es otro canal de pádel" />
+        <SectionTitle
+          eyebrow="Que es Padel Film Room"
+          title="No es solo contenido. Es una forma de entender el padel."
+        />
         <motion.div
-          className="mt-12 grid gap-6 md:grid-cols-2"
+          className="mt-12 grid gap-5 lg:grid-cols-[0.95fr_1.05fr]"
           initial={reduceMotion ? undefined : "hidden"}
           whileInView={reduceMotion ? undefined : "visible"}
           viewport={{ once: true, amount: 0.25 }}
           variants={reduceMotion ? undefined : staggerContainer}
         >
-          {comparison.map((card) => (
-            <motion.article
-              key={card.title}
-              variants={reduceMotion ? undefined : fadeUp()}
-              className="glass-panel rounded-3xl p-6"
-            >
-              <h3 className="font-display text-2xl uppercase text-text">{card.title}</h3>
-              <ul className="mt-5 space-y-3 text-sm text-muted sm:text-base">
-                {card.bullets.map((bullet) => (
-                  <li key={bullet} className="rounded-2xl border border-border/70 bg-surface-2 p-3">
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
-            </motion.article>
-          ))}
+          <motion.article variants={reduceMotion ? undefined : fadeUp()} className="glass-panel rounded-lg p-4 sm:p-5">
+            <img
+              src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=1200&q=80"
+              alt="Pista de padel durante un intercambio."
+              loading="lazy"
+              className="aspect-[4/5] w-full rounded-md object-cover"
+            />
+          </motion.article>
+
+          <motion.div
+            variants={reduceMotion ? undefined : fadeUp(36)}
+            className="grid gap-5"
+          >
+            {points.map((point) => (
+              <article key={point.title} className="glass-panel rounded-lg p-6 sm:p-8">
+                <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent-cyan">
+                  {point.title}
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-text sm:text-lg">{point.text}</p>
+              </article>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
     </motion.section>

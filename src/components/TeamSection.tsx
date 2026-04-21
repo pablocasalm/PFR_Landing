@@ -14,17 +14,18 @@ export function TeamSection() {
       transition={reduceMotion ? undefined : { duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
     >
-      <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+      <div className="mx-auto grid max-w-6xl items-stretch gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <motion.article variants={reduceMotion ? undefined : fadeUp()} className="glass-panel rounded-lg p-4 sm:p-5">
           <img
-            src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=1200&q=80"
+            src="/WhatsApp Image 2026-04-20 at 09.31.19.jpeg"
             alt="Equipo reunido trabajando sobre una mesa."
             loading="lazy"
-            className="aspect-[4/5] w-full rounded-md object-cover"
+            className="aspect-[2896/2170] h-full w-full rounded-md object-cover"
           />
         </motion.article>
 
-        <motion.article variants={reduceMotion ? undefined : fadeUp(36)} className="glass-panel rounded-lg p-6 sm:p-8">
+        <motion.article variants={reduceMotion ? undefined : fadeUp(36)} className="glass-panel flex rounded-lg p-6 sm:p-8">
+          <div className="self-center">
           <SectionTitle eyebrow="Quiénes somos" title="Somos Andrea, Guille y Pablo." />
           <div className="mt-8 space-y-4 text-sm leading-relaxed text-muted sm:text-base">
             <p>Una familia vinculada al pádel desde siempre.</p>
@@ -37,6 +38,7 @@ export function TeamSection() {
               Ahora estamos construyendo Padel Film Room: una forma de traducir lo que pasa en los
               partidos para que cualquier jugador pueda entenderlo.
             </p>
+          </div>
           </div>
         </motion.article>
       </div>

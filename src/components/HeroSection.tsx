@@ -93,21 +93,6 @@ export function HeroSection() {
             Ver un ejemplo
           </a>
         </motion.p>
-
-        <a
-          href="#waitlist-final"
-          onClick={(event) => {
-            trackEvent("cta_mobile_sticky_click", { location: "hero_sticky" });
-            event.preventDefault();
-            const target = document.querySelector<HTMLElement>("#waitlist-final");
-            if (target) {
-              target.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
-          }}
-          className="focus-ring fixed inset-x-4 bottom-4 z-30 rounded-md border border-accent-cyan/40 bg-accent-cyan px-4 py-3 text-center text-sm font-semibold text-bg shadow-[0_18px_36px_rgba(0,0,0,0.35)] md:hidden"
-        >
-          Quiero unirme a la waitlist
-        </a>
       </motion.div>
     </section>
   );

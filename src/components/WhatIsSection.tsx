@@ -43,7 +43,7 @@ export function WhatIsSection() {
         >
           <motion.article variants={reduceMotion ? undefined : fadeUp()} className="glass-panel rounded-lg p-4 sm:p-5">
             <img
-              src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=1200&q=80"
+              src="/763ffa9a689cde8b6ba0118157baa936cedb1cd66a839d56191dcda8cc1d73ae.png"
               alt="Pista de pádel durante un intercambio."
               loading="lazy"
               className="aspect-[4/5] w-full rounded-md object-cover"

@@ -49,7 +49,7 @@ export function LearnInsideSection() {
         >
           <motion.article variants={reduceMotion ? undefined : fadeUp()} className="border-b border-border/80 p-4 sm:p-5">
             <img
-              src="https://images.unsplash.com/photo-1542144582-1ba00456b5e3?auto=format&fit=crop&w=1200&q=80"
+              src="/0bdba3929dad426f6d2810ac6618685ba7ad9a0f1424217f8ea824f684a5c919.png"
               alt="Jugadores de pádel durante un punto en partido real."
               loading="lazy"
               className="aspect-[21/9] w-full rounded-md object-cover"

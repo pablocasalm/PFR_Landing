@@ -20,17 +20,22 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-bg/75 backdrop-blur-xl">
-      <div className="w-full px-4 py-4 sm:px-6">
-        <nav className="grid grid-cols-[1fr_auto_1fr] items-center gap-3" aria-label="Navegación principal">
+      <div className="w-full px-4 py-3 sm:px-6 sm:py-4">
+        <nav className="flex items-center justify-between gap-3 md:grid md:grid-cols-[1fr_auto_1fr]" aria-label="Navegación principal">
           <a
             href="#"
             onClick={(event) => {
               event.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="focus-ring justify-self-start rounded-lg px-2 py-1 font-display text-lg uppercase tracking-[0.06em] text-text sm:text-xl"
+            className="focus-ring min-w-0 shrink rounded-lg md:justify-self-start"
+            aria-label="Padel Film Room"
           >
-            Padel Film Room
+            <img
+              src="/download.jpg"
+              alt=""
+              className="h-16 w-auto object-contain sm:h-20 md:h-16"
+            />
           </a>
 
           <ul className="hidden flex-wrap items-center justify-center gap-5 font-mono text-xs uppercase tracking-[0.14em] text-muted md:flex">
@@ -53,9 +58,10 @@ export function Navbar() {
               trackEvent("cta_navbar_click", { location: "navbar" });
               handleSectionClick(event, "#waitlist-final");
             }}
-            className="focus-ring justify-self-end rounded-md border border-accent-cyan/40 bg-accent-cyan px-4 py-2 text-sm font-semibold text-bg shadow-glow transition hover:brightness-105"
+            className="focus-ring shrink-0 rounded-md border border-accent-cyan/40 bg-accent-cyan px-3 py-2 text-xs font-semibold text-bg shadow-glow transition hover:brightness-105 sm:px-4 sm:text-sm md:justify-self-end"
           >
-            Únete a la lista privada
+            <span className="sm:hidden">Lista privada</span>
+            <span className="hidden sm:inline">Únete a la lista privada</span>
           </a>
         </nav>
       </div>

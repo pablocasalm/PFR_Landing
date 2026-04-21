@@ -29,7 +29,7 @@ export function WaitlistForm({ compact = false, source = "final_cta" }: Waitlist
   }, []);
 
   const submitToWebhook = async (submittedEmail: string) => {
-    const webhookUrl = import.meta.env.VITE_WAITLIST_WEBHOOK_URL;
+    const webhookUrl = "https://hook.eu2.make.com/qrqujauo2b558c2p71irua9u92ikly2i";
     if (!webhookUrl) {
       throw new Error("La waitlist no está configurada todavía. Vuelve a intentarlo en breve.");
     }

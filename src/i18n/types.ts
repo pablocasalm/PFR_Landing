@@ -23,11 +23,24 @@ export type Translations = {
     bullets: string[];
     seeExample: string;
   };
-  recommendations: {
+  problemInsight: {
     eyebrow: string;
     title: string;
-    topics: { category: string; exampleClip: string }[];
-    thumbnailAlt: string;
+    blocks: { eyebrow: string; title: string; paragraphs: string[] }[];
+  };
+  whatIs: {
+    eyebrow: string;
+    title: string;
+    cards: { title: string; bullets: string[] }[];
+  };
+  learnInside: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    imgAlt: string;
+    pillars: { title: string; bullets: string[] }[];
+    changeEyebrow: string;
+    changeText: string;
   };
   example: {
     eyebrow: string;
@@ -36,10 +49,21 @@ export type Translations = {
     note: string;
     steps: { key: string; detail: string }[];
   };
-  whatIs: {
+  languageSection: {
     eyebrow: string;
     title: string;
-    cards: { title: string; bullets: string[] }[];
+    intro1: string;
+    intro2: string;
+    situations: string[];
+    outro: string;
+    practiceEyebrow: string;
+    practiceCards: { label: string; text: string }[];
+  };
+  team: {
+    eyebrow: string;
+    title: string;
+    imgAlt: string;
+    paragraphs: string[];
   };
   content: {
     eyebrow: string;

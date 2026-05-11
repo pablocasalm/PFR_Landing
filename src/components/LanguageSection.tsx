@@ -1,15 +1,11 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { fadeUp, staggerContainer } from "./Motion";
-
-const situations = [
-  "Cuándo estás bajo presión.",
-  "Cuándo tienes ventaja.",
-  "Qué decisión corresponde en cada momento.",
-];
+import { useLanguage } from "../i18n/LanguageContext";
 
 export function LanguageSection() {
   const reduceMotion = useReducedMotion();
+  const { t } = useLanguage();
 
   return (
     <motion.section
@@ -21,10 +17,7 @@ export function LanguageSection() {
       viewport={{ once: true, amount: 0.2 }}
     >
       <div className="mx-auto max-w-6xl">
-        <SectionTitle
-          eyebrow="Lenguaje"
-          title="Estamos construyendo un lenguaje simple para leer lo que pasa en cada punto."
-        />
+        <SectionTitle eyebrow={t.languageSection.eyebrow} title={t.languageSection.title} />
 
         <motion.div
           className="mt-12 grid gap-5 lg:grid-cols-[1fr_0.9fr]"
@@ -38,18 +31,16 @@ export function LanguageSection() {
             className="glass-panel rounded-lg p-6 sm:p-8"
           >
             <div className="space-y-4 text-sm leading-relaxed text-muted sm:text-base">
-              <p>No queremos que solo veas contenido.</p>
-              <p>Queremos que aprendas a identificar lo que está pasando en un punto.</p>
+              <p>{t.languageSection.intro1}</p>
+              <p>{t.languageSection.intro2}</p>
               <ul className="space-y-3 pt-2 text-text">
-                {situations.map((situation) => (
+                {t.languageSection.situations.map((situation) => (
                   <li key={situation} className="border-l border-accent-lime/60 pl-4">
                     {situation}
                   </li>
                 ))}
               </ul>
-              <p className="pt-2">
-                Cuando empiezas a verlo así, el juego cambia completamente.
-              </p>
+              <p className="pt-2">{t.languageSection.outro}</p>
             </div>
           </motion.article>
 
@@ -58,21 +49,15 @@ export function LanguageSection() {
             className="glass-panel rounded-lg p-6 sm:p-8"
           >
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent-cyan">
-              En la práctica
+              {t.languageSection.practiceEyebrow}
             </p>
             <div className="mt-5 space-y-4">
-              <div className="rounded-md border border-border bg-surface-2 p-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-muted">Situación</p>
-                <p className="mt-2 text-base text-text">Segundo saque rival. Te cierran el medio.</p>
-              </div>
-              <div className="rounded-md border border-border bg-surface-2 p-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-muted">Lectura</p>
-                <p className="mt-2 text-base text-text">Estás defendiendo, no cerrando el punto.</p>
-              </div>
-              <div className="rounded-md border border-border bg-surface-2 p-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-muted">Decisión</p>
-                <p className="mt-2 text-base text-text">Elegir bien antes de pegar mejor.</p>
-              </div>
+              {t.languageSection.practiceCards.map((card) => (
+                <div key={card.label} className="rounded-md border border-border bg-surface-2 p-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-muted">{card.label}</p>
+                  <p className="mt-2 text-base text-text">{card.text}</p>
+                </div>
+              ))}
             </div>
           </motion.article>
         </motion.div>

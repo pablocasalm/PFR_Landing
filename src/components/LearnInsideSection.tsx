@@ -1,28 +1,11 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { fadeUp, staggerContainer } from "./Motion";
-
-const pillars = [
-  {
-    title: "Bloques de aprendizaje",
-    bullets: [
-      "Un mismo concepto repetido en distintos partidos.",
-      "Para que puedas reconocerlo en pista cuando vuelve a aparecer.",
-      "No vídeos sueltos. Mismo patrón, distintas situaciones.",
-    ],
-  },
-  {
-    title: "Análisis de partidos completos",
-    bullets: [
-      "Para entender cómo se conectan las decisiones dentro del juego real.",
-      "Cómo se construyen los puntos y dónde se decide cada juego.",
-      "Qué patrones se repiten durante todo el partido.",
-    ],
-  },
-];
+import { useLanguage } from "../i18n/LanguageContext";
 
 export function LearnInsideSection() {
   const reduceMotion = useReducedMotion();
+  const { t } = useLanguage();
 
   return (
     <motion.section
@@ -35,9 +18,9 @@ export function LearnInsideSection() {
     >
       <div className="mx-auto max-w-6xl">
         <SectionTitle
-          eyebrow="Cómo aprenderás dentro"
-          title="No verás vídeos sueltos."
-          subtitle="Verás un sistema pensado para que puedas entender el juego de verdad y elegir cómo aprender en cada momento."
+          eyebrow={t.learnInside.eyebrow}
+          title={t.learnInside.title}
+          subtitle={t.learnInside.subtitle}
         />
 
         <motion.div
@@ -50,14 +33,14 @@ export function LearnInsideSection() {
           <motion.article variants={reduceMotion ? undefined : fadeUp()} className="border-b border-border/80 p-4 sm:p-5">
             <img
               src="/0bdba3929dad426f6d2810ac6618685ba7ad9a0f1424217f8ea824f684a5c919.png"
-              alt="Jugadores de pádel durante un punto en partido real."
+              alt={t.learnInside.imgAlt}
               loading="lazy"
               className="aspect-[21/9] w-full rounded-md object-cover"
             />
           </motion.article>
 
           <div className="divide-y divide-border/80">
-            {pillars.map((pillar) => (
+            {t.learnInside.pillars.map((pillar) => (
               <motion.article
                 key={pillar.title}
                 variants={reduceMotion ? undefined : fadeUp(24)}
@@ -68,7 +51,6 @@ export function LearnInsideSection() {
                     {pillar.title}
                   </h3>
                 </div>
-
                 <ul className="grid gap-3 sm:grid-cols-3">
                   {pillar.bullets.map((bullet) => (
                     <li
@@ -89,11 +71,10 @@ export function LearnInsideSection() {
           >
             <div className="grid gap-3 lg:grid-cols-[260px_1fr] lg:items-start">
               <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent-cyan">
-                Qué cambia por dentro
+                {t.learnInside.changeEyebrow}
               </p>
               <p className="max-w-3xl text-base leading-relaxed text-text sm:text-lg">
-                No tienes que analizar partidos por tu cuenta. Nosotros seleccionamos, ordenamos y
-                explicamos lo importante para que tú solo tengas que verlo y entenderlo.
+                {t.learnInside.changeText}
               </p>
             </div>
           </motion.article>

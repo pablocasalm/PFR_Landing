@@ -1,28 +1,11 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { fadeUp, staggerContainer } from "./Motion";
-
-const blocks = [
-  {
-    eyebrow: "Problema",
-    title: "Ves mucho. Aplicas poco.",
-    paragraphs: [
-      "Hoy puedes ver miles de vídeos de pádel. Golpes, trucos, consejos y puntos espectaculares.",
-      "Pero cuando vuelves a pista, es difícil aplicar todo eso. Porque el pádel no se decide solo en el golpe. Se decide en lo que pasa antes.",
-    ],
-  },
-  {
-    eyebrow: "Insight",
-    title: "Los mejores no solo ejecutan mejor.",
-    paragraphs: [
-      "Toman mejores decisiones. Y esas decisiones se repiten una y otra vez en los partidos.",
-      "Si aprendes a reconocerlas, empiezas a entender el juego de una forma mucho más útil que viendo highlights sueltos.",
-    ],
-  },
-];
+import { useLanguage } from "../i18n/LanguageContext";
 
 export function ProblemInsightSection() {
   const reduceMotion = useReducedMotion();
+  const { t } = useLanguage();
 
   return (
     <motion.section
@@ -34,10 +17,7 @@ export function ProblemInsightSection() {
       viewport={{ once: true, amount: 0.2 }}
     >
       <div className="mx-auto max-w-6xl">
-        <SectionTitle
-          eyebrow="Por qué existe"
-          title="El juego no cambia cuando ves más pádel. Cambia cuando empiezas a leerlo."
-        />
+        <SectionTitle eyebrow={t.problemInsight.eyebrow} title={t.problemInsight.title} />
 
         <motion.div
           className="mt-12 grid gap-5 md:grid-cols-2"
@@ -46,7 +26,7 @@ export function ProblemInsightSection() {
           viewport={{ once: true, amount: 0.25 }}
           variants={reduceMotion ? undefined : staggerContainer}
         >
-          {blocks.map((block) => (
+          {t.problemInsight.blocks.map((block) => (
             <motion.article
               key={block.eyebrow}
               variants={reduceMotion ? undefined : fadeUp()}

@@ -106,9 +106,15 @@ export function WaitlistForm({ compact = false, source = "final_cta" }: Waitlist
 
   useEffect(() => {
     const savedEmail = localStorage.getItem(EMAIL_KEY);
-    if (savedEmail) {
-      setEmail(savedEmail);
-    }
+    if (savedEmail) setEmail(savedEmail);
+
+    const onCleared = () => {
+      setEmail("");
+      setStatus("idle");
+      setMessage("");
+    };
+    window.addEventListener("pfr:email-cleared", onCleared);
+    return () => window.removeEventListener("pfr:email-cleared", onCleared);
   }, []);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -147,10 +153,8 @@ export function WaitlistForm({ compact = false, source = "final_cta" }: Waitlist
           <SuccessModal
             onClose={() => {
               setShowModal(false);
-              setEmail("");
-              setStatus("idle");
-              setMessage("");
               localStorage.removeItem(EMAIL_KEY);
+              window.dispatchEvent(new Event("pfr:email-cleared"));
             }}
           />
         )}

@@ -25,41 +25,25 @@ export const es: Translations = {
     bullets: ["Patrones aplicables a amateur/intermedio", "Plaza en la lista de espera"],
     seeExample: "Ver un ejemplo",
   },
-  recommendations: {
-    eyebrow: "Recomendaciones",
-    title: "Tendencias ahora",
-    topics: [
-      { category: "Salida de pared", exampleClip: "Clip de ejemplo: Bandeja y transición" },
-      { category: "Resto agresivo", exampleClip: "Clip de ejemplo: Lectura de señal" },
-      { category: "Bola de oro", exampleClip: "Clip de ejemplo: Contexto 40-40" },
-      { category: "Defensa profunda", exampleClip: "Clip de ejemplo: No forzar winner" },
-      { category: "Cierre en volea", exampleClip: "Clip de ejemplo: Consecuencia del patrón" },
-    ],
-    thumbnailAlt: "Portada de la categoria:",
-  },
-  example: {
-    eyebrow: "Ejemplo",
-    title: "Como se ve un analisis",
-    subtitle: "Desglosamos decisiones punto a punto para que puedas trasladarlas tal cual a tus partidos.",
-    note: "Aquí no hay highlights aislados: hay lectura táctica real en partido para decidir mejor bajo presión.",
-    steps: [
+  problemInsight: {
+    eyebrow: "Por qué existe",
+    title: "El juego no cambia cuando ves más pádel. Cambia cuando empiezas a leerlo.",
+    blocks: [
       {
-        key: "Contexto",
-        detail:
-          "40-40, segundo saque rival, pareja cerrando por el medio. Qué está pasando antes de que salga la bola.",
+        eyebrow: "Problema",
+        title: "Ves mucho. Aplicas poco.",
+        paragraphs: [
+          "Hoy puedes ver miles de vídeos de pádel. Golpes, trucos, consejos y puntos espectaculares.",
+          "Pero cuando vuelves a pista, es difícil aplicar todo eso. Porque el pádel no se decide solo en el golpe. Se decide en lo que pasa antes.",
+        ],
       },
       {
-        key: "Señal",
-        detail: "El restador pisa dentro y abre hombros demasiado pronto. Muestra intención de cruzado rápido.",
-      },
-      {
-        key: "Decisión",
-        detail: "No buscar winner: bloquear paralelo profundo al cuerpo del volea y recuperar red en dos apoyos.",
-      },
-      {
-        key: "Consecuencia",
-        detail:
-          "Forzamos volea incómoda, sube bola corta y cerramos el punto en transición alta. Patrón repetible.",
+        eyebrow: "Insight",
+        title: "Los mejores no solo ejecutan mejor.",
+        paragraphs: [
+          "Toman mejores decisiones. Y esas decisiones se repiten una y otra vez en los partidos.",
+          "Si aprendes a reconocerlas, empiezas a entender el juego de una forma mucho más útil que viendo highlights sueltos.",
+        ],
       },
     ],
   },
@@ -83,6 +67,85 @@ export const es: Translations = {
           "Framework aplicable: Contexto -> Señal -> Decisión -> Consecuencia.",
         ],
       },
+    ],
+  },
+  learnInside: {
+    eyebrow: "Cómo aprenderás dentro",
+    title: "No verás vídeos sueltos.",
+    subtitle: "Verás un sistema pensado para que puedas entender el juego de verdad y elegir cómo aprender en cada momento.",
+    imgAlt: "Jugadores de pádel durante un punto en partido real.",
+    pillars: [
+      {
+        title: "Bloques de aprendizaje",
+        bullets: [
+          "Un mismo concepto repetido en distintos partidos.",
+          "Para que puedas reconocerlo en pista cuando vuelve a aparecer.",
+          "No vídeos sueltos. Mismo patrón, distintas situaciones.",
+        ],
+      },
+      {
+        title: "Análisis de partidos completos",
+        bullets: [
+          "Para entender cómo se conectan las decisiones dentro del juego real.",
+          "Cómo se construyen los puntos y dónde se decide cada juego.",
+          "Qué patrones se repiten durante todo el partido.",
+        ],
+      },
+    ],
+    changeEyebrow: "Qué cambia por dentro",
+    changeText: "No tienes que analizar partidos por tu cuenta. Nosotros seleccionamos, ordenamos y explicamos lo importante para que tú solo tengas que verlo y entenderlo.",
+  },
+  example: {
+    eyebrow: "Ejemplo",
+    title: "Como se ve un analisis",
+    subtitle: "Desglosamos decisiones punto a punto para que puedas trasladarlas tal cual a tus partidos.",
+    note: "Aquí no hay highlights aislados: hay lectura táctica real en partido para decidir mejor bajo presión.",
+    steps: [
+      {
+        key: "Contexto",
+        detail: "40-40, segundo saque rival, pareja cerrando por el medio. Qué está pasando antes de que salga la bola.",
+      },
+      {
+        key: "Señal",
+        detail: "El restador pisa dentro y abre hombros demasiado pronto. Muestra intención de cruzado rápido.",
+      },
+      {
+        key: "Decisión",
+        detail: "No buscar winner: bloquear paralelo profundo al cuerpo del volea y recuperar red en dos apoyos.",
+      },
+      {
+        key: "Consecuencia",
+        detail: "Forzamos volea incómoda, sube bola corta y cerramos el punto en transición alta. Patrón repetible.",
+      },
+    ],
+  },
+  languageSection: {
+    eyebrow: "Lenguaje",
+    title: "Estamos construyendo un lenguaje simple para leer lo que pasa en cada punto.",
+    intro1: "No queremos que solo veas contenido.",
+    intro2: "Queremos que aprendas a identificar lo que está pasando en un punto.",
+    situations: [
+      "Cuándo estás bajo presión.",
+      "Cuándo tienes ventaja.",
+      "Qué decisión corresponde en cada momento.",
+    ],
+    outro: "Cuando empiezas a verlo así, el juego cambia completamente.",
+    practiceEyebrow: "En la práctica",
+    practiceCards: [
+      { label: "Situación", text: "Segundo saque rival. Te cierran el medio." },
+      { label: "Lectura", text: "Estás defendiendo, no cerrando el punto." },
+      { label: "Decisión", text: "Elegir bien antes de pegar mejor." },
+    ],
+  },
+  team: {
+    eyebrow: "Quiénes somos",
+    title: "Somos Andrea, Guille y Pablo.",
+    imgAlt: "Equipo reunido trabajando sobre una mesa.",
+    paragraphs: [
+      "Una familia vinculada al pádel desde siempre.",
+      "Hemos competido, entrenado y vivido el juego desde dentro durante años.",
+      "Guille, además, lleva años trabajando con jugadores y analizando partidos a nivel profesional.",
+      "Ahora estamos construyendo Padel Film Room: una forma de traducir lo que pasa en los partidos para que cualquier jugador pueda entenderlo.",
     ],
   },
   content: {
@@ -109,27 +172,43 @@ export const es: Translations = {
     title: "Preguntas frecuentes",
     items: [
       {
-        q: "Esto sirve si no soy jugador avanzado?",
-        a: "Si. El foco esta en leer mejor el punto y decidir con criterio. Es util desde nivel amateur.",
+        q: "¿Qué es exactamente Padel Film Room?",
+        a: "Es una forma diferente de aprender pádel. Analizamos partidos reales y los convertimos en contenido estructurado para entender el juego a través de decisiones y patrones.",
       },
       {
-        q: "Que voy a recibir exactamente?",
-        a: "Analisis tactico aplicado y patrones repetibles para trasladar decisiones reales a tu proximo partido.",
+        q: "¿Qué voy a encontrar dentro?",
+        a: "Contenido organizado, no vídeos sueltos: bloques de aprendizaje por concepto y análisis de partidos completos.",
       },
       {
-        q: "Puedo darme de baja?",
-        a: "Si. Baja inmediata en un clic desde cualquier correo.",
+        q: "¿Qué son los bloques de aprendizaje?",
+        a: "Colecciones de clips sobre un mismo concepto repetido en distintos contextos para que puedas reconocerlo en pista.",
       },
       {
-        q: "Me vais a enviar spam?",
-        a: "No. Solo contenido relevante de la waitlist y avisos del lanzamiento.",
+        q: "¿Qué hace diferente este enfoque?",
+        a: "Construimos un lenguaje simple para identificar situaciones de presión, ventaja y decisión, y poder aplicarlas luego jugando.",
+      },
+      {
+        q: "¿Para qué sirven los análisis de partidos completos?",
+        a: "Para ver cómo se conectan las decisiones dentro de un partido real, cuándo aparecen y cómo afectan al resultado.",
+      },
+      {
+        q: "¿Trabajáis con partidos profesionales?",
+        a: "Sí, porque ahí se ven mejor los patrones, pero todo está traducido a un lenguaje accesible.",
+      },
+      {
+        q: "¿Tengo que analizar partidos por mi cuenta?",
+        a: "No. Nosotros seleccionamos, organizamos y explicamos lo importante.",
+      },
+      {
+        q: "¿Cuándo estará disponible?",
+        a: "Estamos construyendo desde cero. Déjanos tu email y te avisaremos.",
       },
     ],
   },
   finalCta: {
-    eyebrow: "Waitlist",
-    heading: "Jugar mejor no es golpear mas fuerte. Es decidir mejor.",
-    subtitle: "Unete hoy para entrar en la lista de espera del lanzamiento.",
+    eyebrow: "Waitlist privada",
+    heading: "Estamos construyendo esto desde cero.",
+    subtitle: "Si quieres aprender pádel de una forma diferente, déjanos tu email y te avisamos cuando lancemos los primeros contenidos.",
   },
   form: {
     emailLabel: "Email",

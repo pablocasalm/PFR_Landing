@@ -1,9 +1,11 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { fadeUp } from "./Motion";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export function TeamSection() {
   const reduceMotion = useReducedMotion();
+  const { t } = useLanguage();
 
   return (
     <motion.section
@@ -18,7 +20,7 @@ export function TeamSection() {
         <motion.article variants={reduceMotion ? undefined : fadeUp()} className="glass-panel rounded-lg p-4 sm:p-5">
           <img
             src="/WhatsApp Image 2026-04-20 at 09.31.19.jpeg"
-            alt="Equipo reunido trabajando sobre una mesa."
+            alt={t.team.imgAlt}
             loading="lazy"
             className="aspect-[2896/2170] h-full w-full rounded-md object-cover"
           />
@@ -26,19 +28,12 @@ export function TeamSection() {
 
         <motion.article variants={reduceMotion ? undefined : fadeUp(36)} className="glass-panel flex rounded-lg p-6 sm:p-8">
           <div className="self-center">
-          <SectionTitle eyebrow="Quiénes somos" title="Somos Andrea, Guille y Pablo." />
-          <div className="mt-8 space-y-4 text-sm leading-relaxed text-muted sm:text-base">
-            <p>Una familia vinculada al pádel desde siempre.</p>
-            <p>Hemos competido, entrenado y vivido el juego desde dentro durante años.</p>
-            <p>
-              Guille, además, lleva años trabajando con jugadores y analizando partidos a nivel
-              profesional.
-            </p>
-            <p>
-              Ahora estamos construyendo Padel Film Room: una forma de traducir lo que pasa en los
-              partidos para que cualquier jugador pueda entenderlo.
-            </p>
-          </div>
+            <SectionTitle eyebrow={t.team.eyebrow} title={t.team.title} />
+            <div className="mt-8 space-y-4 text-sm leading-relaxed text-muted sm:text-base">
+              {t.team.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
           </div>
         </motion.article>
       </div>

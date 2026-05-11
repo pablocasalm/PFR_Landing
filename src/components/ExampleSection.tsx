@@ -1,30 +1,11 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { fadeUp, staggerContainer } from "./Motion";
-
-const steps = [
-  {
-    key: "Contexto",
-    detail:
-      "40-40, segundo saque rival, pareja cerrando por el medio. Qué está pasando antes de que salga la bola.",
-  },
-  {
-    key: "Señal",
-    detail: "El restador pisa dentro y abre hombros demasiado pronto. Muestra intención de cruzado rápido.",
-  },
-  {
-    key: "Decisión",
-    detail: "No buscar winner: bloquear paralelo profundo al cuerpo del volea y recuperar red en dos apoyos.",
-  },
-  {
-    key: "Consecuencia",
-    detail:
-      "Forzamos volea incómoda, sube bola corta y cerramos el punto en transición alta. Patrón repetible.",
-  },
-];
+import { useLanguage } from "../i18n/LanguageContext";
 
 export function ExampleSection() {
   const reduceMotion = useReducedMotion();
+  const { t } = useLanguage();
 
   return (
     <motion.section
@@ -37,14 +18,13 @@ export function ExampleSection() {
     >
       <div className="mx-auto max-w-6xl">
         <SectionTitle
-          eyebrow="Ejemplo"
-          title="Como se ve un analisis"
-          subtitle="Desglosamos decisiones punto a punto para que puedas trasladarlas tal cual a tus partidos."
+          eyebrow={t.example.eyebrow}
+          title={t.example.title}
+          subtitle={t.example.subtitle}
         />
 
         <p className="mx-auto mt-6 max-w-3xl text-center text-sm text-muted sm:text-base">
-          Aquí no hay highlights aislados: hay lectura táctica real en partido para decidir mejor bajo
-          presión.
+          {t.example.note}
         </p>
 
         <motion.div
@@ -54,7 +34,7 @@ export function ExampleSection() {
           viewport={{ once: true, amount: 0.25 }}
           variants={reduceMotion ? undefined : staggerContainer}
         >
-          {steps.map((step, index) => (
+          {t.example.steps.map((step, index) => (
             <motion.div
               key={step.key}
               variants={reduceMotion ? undefined : fadeUp()}
@@ -73,4 +53,3 @@ export function ExampleSection() {
     </motion.section>
   );
 }
-

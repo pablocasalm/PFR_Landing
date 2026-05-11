@@ -1,28 +1,11 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
-
-const faqs = [
-  {
-    q: "Esto sirve si no soy jugador avanzado?",
-    a: "Si. El foco esta en leer mejor el punto y decidir con criterio. Es util desde nivel amateur.",
-  },
-  {
-    q: "Que voy a recibir exactamente?",
-    a: "Analisis tactico aplicado y patrones repetibles para trasladar decisiones reales a tu proximo partido.",
-  },
-  {
-    q: "Puedo darme de baja?",
-    a: "Si. Baja inmediata en un clic desde cualquier correo.",
-  },
-  {
-    q: "Me vais a enviar spam?",
-    a: "No. Solo contenido relevante de la waitlist y avisos del lanzamiento.",
-  },
-];
+import { useLanguage } from "../i18n/LanguageContext";
 
 export function FaqSection() {
   const reduceMotion = useReducedMotion();
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -35,9 +18,9 @@ export function FaqSection() {
       viewport={{ once: true, amount: 0.3 }}
     >
       <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="FAQ" title="Preguntas frecuentes" />
+        <SectionTitle eyebrow={t.faq.eyebrow} title={t.faq.title} />
         <div className="mt-12 grid gap-4">
-          {faqs.map((item, index) => {
+          {t.faq.items.map((item, index) => {
             const isOpen = openIndex === index;
             return (
               <article key={item.q} className="glass-panel overflow-hidden rounded-2xl">

@@ -1,28 +1,11 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { fadeUp, staggerContainer } from "./Motion";
-
-const comparison = [
-  {
-    title: "Canal típico",
-    bullets: [
-      "Tips sueltos sin contexto real de punto.",
-      "Golpes perfectos en situaciones artificiales.",
-      "Mejora técnica, poca transferencia táctica.",
-    ],
-  },
-  {
-    title: "Padel Film Room",
-    bullets: [
-      "Partidos reales, presión real, decisiones reales.",
-      "Lectura de contexto y señales antes del golpe.",
-      "Framework aplicable: Contexto -> Señal -> Decisión -> Consecuencia.",
-    ],
-  },
-];
+import { useLanguage } from "../i18n/LanguageContext";
 
 export function WhatIsSection() {
   const reduceMotion = useReducedMotion();
+  const { t } = useLanguage();
 
   return (
     <motion.section
@@ -34,7 +17,7 @@ export function WhatIsSection() {
       viewport={{ once: true, amount: 0.3 }}
     >
       <div className="mx-auto max-w-6xl">
-        <SectionTitle eyebrow="Qué es" title="No es otro canal de pádel" />
+        <SectionTitle eyebrow={t.whatIs.eyebrow} title={t.whatIs.title} />
         <motion.div
           className="mt-12 grid gap-6 md:grid-cols-2"
           initial={reduceMotion ? undefined : "hidden"}
@@ -42,7 +25,7 @@ export function WhatIsSection() {
           viewport={{ once: true, amount: 0.25 }}
           variants={reduceMotion ? undefined : staggerContainer}
         >
-          {comparison.map((card) => (
+          {t.whatIs.cards.map((card) => (
             <motion.article
               key={card.title}
               variants={reduceMotion ? undefined : fadeUp()}

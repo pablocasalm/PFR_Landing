@@ -1,8 +1,10 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { WaitlistForm } from "./WaitlistForm";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export function FinalCtaSection() {
   const reduceMotion = useReducedMotion();
+  const { t } = useLanguage();
 
   return (
     <motion.section
@@ -14,12 +16,12 @@ export function FinalCtaSection() {
       viewport={{ once: true, amount: 0.3 }}
     >
       <div className="glass-panel mx-auto max-w-4xl rounded-3xl p-6 sm:p-10">
-        <p className="font-mono text-xs uppercase tracking-[0.26em] text-accent-cyan">Waitlist</p>
+        <p className="font-mono text-xs uppercase tracking-[0.26em] text-accent-cyan">{t.finalCta.eyebrow}</p>
         <h2 className="mt-4 max-w-3xl font-display text-3xl uppercase leading-[0.98] text-text sm:text-5xl">
-          Jugar mejor no es golpear mas fuerte. Es decidir mejor.
+          {t.finalCta.heading}
         </h2>
         <p className="mt-5 text-base text-muted sm:text-lg">
-          Unete hoy para entrar en la lista de espera del lanzamiento.
+          {t.finalCta.subtitle}
         </p>
         <div className="mt-8">
           <WaitlistForm source="final_cta" />

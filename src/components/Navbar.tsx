@@ -2,16 +2,57 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { MouseEvent } from "react";
 import { trackEvent } from "../lib/analytics";
+import { useLanguage } from "../i18n/LanguageContext";
+import type { Language } from "../i18n/types";
 
-const links = [
-  { href: "#recomendaciones", label: "Recomendaciones" },
-  { href: "#ejemplo", label: "Ejemplo" },
-  { href: "#faq", label: "FAQ" },
+const langOptions: { code: Language; display: string; ariaLabel: string }[] = [
+  { code: "es", display: "ES", ariaLabel: "Español" },
+  { code: "en", display: "EN", ariaLabel: "English" },
 ];
 
+function LangSwitcher() {
+  const { lang, setLanguage } = useLanguage();
+  return (
+    <div className="flex items-center rounded-full border border-border bg-surface-2 p-1">
+      {langOptions.map(({ code, display, ariaLabel }) => (
+        <button
+          key={code}
+          type="button"
+          onClick={() => setLanguage(code)}
+          aria-label={ariaLabel}
+          aria-pressed={lang === code}
+          className="relative flex h-7 w-8 items-center justify-center rounded-full font-mono text-xs font-semibold uppercase tracking-wide"
+        >
+          {lang === code && (
+            <motion.div
+              layoutId="lang-pill"
+              className="absolute inset-0 rounded-full bg-surface-1 shadow-sm"
+              transition={{ type: "spring", stiffness: 420, damping: 32 }}
+            />
+          )}
+          <span
+            className={`relative z-10 leading-none transition-colors duration-150 ${
+              lang === code ? "text-text" : "text-muted hover:text-text/60"
+            }`}
+          >
+            {display}
+          </span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
 export function Navbar() {
+  const { t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
+
+  const links = [
+    { href: "#recomendaciones", label: t.nav.recommendations },
+    { href: "#ejemplo", label: t.nav.example },
+    { href: "#faq", label: t.nav.faq },
+  ];
 
   useEffect(() => {
     if (!isMenuOpen) {
@@ -46,7 +87,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-bg/95 backdrop-blur-xl">
       <div className="w-full px-4 py-3 sm:px-6">
-        <nav className="md:hidden" aria-label="Navegacion principal movil">
+        <nav className="md:hidden" aria-label={t.nav.mainNavMobile}>
           <div className="flex items-center justify-between">
             <a
               href="#"
@@ -59,26 +100,29 @@ export function Navbar() {
             >
               Padel Film Room
             </a>
-            <button
-              type="button"
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-nav-menu"
-              aria-label={isMenuOpen ? "Cerrar menu" : "Abrir menu"}
-              onClick={() => setIsMenuOpen((prev) => !prev)}
-              className="focus-ring inline-flex h-9 w-9 appearance-none items-center justify-center rounded-full border-0 bg-transparent text-text shadow-none outline-none transition hover:bg-transparent hover:opacity-80 active:bg-transparent"
-            >
-              <span className="relative block h-4 w-4">
-                <span
-                  className={`absolute left-0 top-0.5 block h-0.5 w-4 rounded bg-current transition-transform duration-300 ${isMenuOpen ? "translate-y-[6px] rotate-45" : ""}`}
-                />
-                <span
-                  className={`absolute left-0 top-[7px] block h-0.5 w-4 rounded bg-current transition-opacity duration-200 ${isMenuOpen ? "opacity-0" : "opacity-100"}`}
-                />
-                <span
-                  className={`absolute left-0 top-[13px] block h-0.5 w-4 rounded bg-current transition-transform duration-300 ${isMenuOpen ? "-translate-y-[6px] -rotate-45" : ""}`}
-                />
-              </span>
-            </button>
+            <div className="flex items-center gap-2">
+              <LangSwitcher />
+              <button
+                type="button"
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-nav-menu"
+                aria-label={isMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
+                onClick={() => setIsMenuOpen((prev) => !prev)}
+                className="focus-ring inline-flex h-9 w-9 appearance-none items-center justify-center rounded-full border-0 bg-transparent text-text shadow-none outline-none transition hover:bg-transparent hover:opacity-80 active:bg-transparent"
+              >
+                <span className="relative block h-4 w-4">
+                  <span
+                    className={`absolute left-0 top-0.5 block h-0.5 w-4 rounded bg-current transition-transform duration-300 ${isMenuOpen ? "translate-y-[6px] rotate-45" : ""}`}
+                  />
+                  <span
+                    className={`absolute left-0 top-[7px] block h-0.5 w-4 rounded bg-current transition-opacity duration-200 ${isMenuOpen ? "opacity-0" : "opacity-100"}`}
+                  />
+                  <span
+                    className={`absolute left-0 top-[13px] block h-0.5 w-4 rounded bg-current transition-transform duration-300 ${isMenuOpen ? "-translate-y-[6px] -rotate-45" : ""}`}
+                  />
+                </span>
+              </button>
+            </div>
           </div>
 
           <AnimatePresence>
@@ -94,7 +138,7 @@ export function Navbar() {
               >
                 <button
                   type="button"
-                  aria-label="Cerrar menu"
+                  aria-label={t.nav.closeMenu}
                   onClick={() => setIsMenuOpen(false)}
                   className="absolute inset-0 bg-black/85 backdrop-blur-[48px]"
                 />
@@ -107,11 +151,11 @@ export function Navbar() {
                 >
                   <div className="h-screen w-screen bg-[rgba(5,7,12,0.95)] p-4">
                     <div className="mb-3 flex items-center justify-between">
-                      <span className="font-display text-sm uppercase tracking-[0.05em] text-text">Menu</span>
+                      <span className="font-display text-sm uppercase tracking-[0.05em] text-text">{t.nav.menu}</span>
                       <button
                         type="button"
                         onClick={() => setIsMenuOpen(false)}
-                        aria-label="Cerrar menu"
+                        aria-label={t.nav.closeMenu}
                         className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full bg-surface-2 text-text transition hover:bg-surface-1"
                       >
                         <span className="relative block h-4 w-4">
@@ -157,7 +201,7 @@ export function Navbar() {
                       transition={{ duration: shouldReduceMotion ? 0.1 : 0.24, ease: "easeOut", delay: shouldReduceMotion ? 0 : 0.14 }}
                       className="focus-ring mt-4 flex w-full items-center justify-center rounded-2xl bg-accent-cyan px-5 py-4 text-center font-mono text-sm font-semibold uppercase tracking-[0.12em] text-bg shadow-glow transition hover:brightness-105"
                     >
-                      UNETE A LA WAITLIST
+                      {t.nav.joinWaitlistMobile}
                     </motion.a>
                   </div>
                 </motion.div>
@@ -166,7 +210,7 @@ export function Navbar() {
           </AnimatePresence>
         </nav>
 
-        <nav className="hidden grid-cols-[1fr_auto_1fr] items-center gap-3 md:grid" aria-label="Navegacion principal">
+        <nav className="hidden grid-cols-[1fr_auto_1fr] items-center gap-3 md:grid" aria-label={t.nav.mainNav}>
           <a
             href="#"
             onClick={(event) => {
@@ -192,16 +236,19 @@ export function Navbar() {
             ))}
           </ul>
 
-          <a
-            href="#waitlist-final"
-            onClick={(event) => {
-              trackEvent("cta_navbar_click", { location: "navbar" });
-              handleSectionClick(event, "#waitlist-final");
-            }}
-            className="focus-ring justify-self-end rounded-full border border-accent-cyan/40 bg-accent-cyan px-4 py-2 text-sm font-semibold text-bg shadow-glow transition hover:brightness-105"
-          >
-            Unete a la waitlist
-          </a>
+          <div className="flex items-center justify-self-end gap-3">
+            <LangSwitcher />
+            <a
+              href="#waitlist-final"
+              onClick={(event) => {
+                trackEvent("cta_navbar_click", { location: "navbar" });
+                handleSectionClick(event, "#waitlist-final");
+              }}
+              className="focus-ring rounded-full border border-accent-cyan/40 bg-accent-cyan px-4 py-2 text-sm font-semibold text-bg shadow-glow transition hover:brightness-105"
+            >
+              {t.nav.joinWaitlist}
+            </a>
+          </div>
         </nav>
       </div>
     </header>

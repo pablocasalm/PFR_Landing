@@ -24,6 +24,10 @@ export const submitLandingEmail = async (email: string) => {
     throw new Error(errorMessage);
   }
 
-  return text ? JSON.parse(text) : {};
+  try {
+    return text ? JSON.parse(text) : {};
+  } catch {
+    return {};
+  }
 };
 

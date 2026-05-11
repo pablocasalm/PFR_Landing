@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { WaitlistForm } from "./WaitlistForm";
 import { trackEvent } from "../lib/analytics";
 import type { MouseEvent } from "react";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const heroContainer = {
   hidden: {},
@@ -23,10 +24,10 @@ const itemVariant = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: "easeOut" } },
 };
 
-const valueBullets = ["Patrones aplicables a amateur/intermedio", "Plaza en la lista de espera"];
-
 export function HeroSection() {
   const reduceMotion = useReducedMotion();
+  const { t } = useLanguage();
+
   const handleExampleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     trackEvent("hero_example_click", { location: "hero" });
@@ -54,22 +55,22 @@ export function HeroSection() {
           className="mx-auto max-w-4xl font-display text-5xl uppercase leading-[1.05] tracking-tight text-text sm:text-6xl md:text-7xl lg:text-8xl"
           variants={reduceMotion ? undefined : titleVariant}
         >
-          <span className="hero-gradient-text hero-gradient-cyan block">Deja de copiar golpes.</span>
-          <span className="hero-gradient-text hero-gradient-lime block">Empieza a copiar decisiones.</span>
+          <span className="hero-gradient-text hero-gradient-cyan block">{t.hero.line1}</span>
+          <span className="hero-gradient-text hero-gradient-lime block">{t.hero.line2}</span>
         </motion.h1>
 
         <motion.p
           className="mx-auto mt-6 max-w-2xl text-lg text-muted md:text-xl"
           variants={reduceMotion ? undefined : itemVariant}
         >
-          Decisiones correctas bajo presion, el porque de cada punto y los patrones que se repiten.
+          {t.hero.subtitle}
         </motion.p>
 
         <motion.ul
           className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted"
           variants={reduceMotion ? undefined : itemVariant}
         >
-          {valueBullets.map((bullet) => (
+          {t.hero.bullets.map((bullet) => (
             <li key={bullet} className="font-medium">
               {bullet}
             </li>
@@ -86,7 +87,7 @@ export function HeroSection() {
             onClick={handleExampleClick}
             className="focus-ring cursor-pointer rounded px-1 text-accent-cyan underline decoration-accent-cyan underline-offset-4 transition-opacity hover:opacity-80"
           >
-            Ver un ejemplo
+            {t.hero.seeExample}
           </a>
         </motion.p>
       </motion.div>

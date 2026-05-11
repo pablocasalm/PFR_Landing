@@ -6,8 +6,11 @@ import { ExampleSection } from "./components/ExampleSection";
 import { FaqSection } from "./components/FaqSection";
 import { FinalCtaSection } from "./components/FinalCtaSection";
 import { Footer } from "./components/Footer";
+import { LanguageProvider, useLanguage } from "./i18n/LanguageContext";
 
-function App() {
+function AppContent() {
+  const { t } = useLanguage();
+
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
@@ -21,7 +24,7 @@ function App() {
         href="#main-content"
         className="focus-ring sr-only rounded bg-accent-cyan px-3 py-2 text-bg focus:not-sr-only"
       >
-        Saltar al contenido
+        {t.nav.skipToContent}
       </a>
       <Navbar />
       <main id="main-content">
@@ -33,6 +36,14 @@ function App() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }
 

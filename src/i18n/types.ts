@@ -1,6 +1,8 @@
 export type Translations = {
   nav: {
-    recommendations: string;
+    whatIs: string;
+    howYouLearn: string;
+    whoWeAre: string;
     example: string;
     faq: string;
     joinWaitlist: string;

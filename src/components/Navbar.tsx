@@ -49,7 +49,9 @@ export function Navbar() {
   const shouldReduceMotion = useReducedMotion();
 
   const links = [
-    { href: "#recomendaciones", label: t.nav.recommendations },
+    { href: "#que-es", label: t.nav.whatIs },
+    { href: "#como-aprenderas", label: t.nav.howYouLearn },
+    { href: "#quienes-somos", label: t.nav.whoWeAre },
     { href: "#ejemplo", label: t.nav.example },
     { href: "#faq", label: t.nav.faq },
   ];

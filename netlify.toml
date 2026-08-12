@@ -1,0 +1,7 @@
+# Configuración de despliegue en Netlify (landing padelfilmroom.com).
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

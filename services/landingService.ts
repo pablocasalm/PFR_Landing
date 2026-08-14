@@ -1,7 +1,10 @@
-const WEBHOOK_URL = "https://hook.eu2.make.com/qrqujauo2b558c2p71irua9u92ikly2i";
+// Solicita un código de invitación a la beta (mismo endpoint que usa la app para
+// "solicitar otro código"): guarda el email como InviteRequest pendiente, y el admin
+// lo ve en /app/admin/invitaciones para invitar con un clic.
+const INVITE_REQUEST_URL = "https://api.padelfilmroom.com/api/invite-requests";
 
 export const submitLandingEmail = async (email: string) => {
-  const response = await fetch(WEBHOOK_URL, {
+  const response = await fetch(INVITE_REQUEST_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

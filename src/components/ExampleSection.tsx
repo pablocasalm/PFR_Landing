@@ -28,7 +28,7 @@ export function ExampleSection() {
         >
           {t.example.steps.map((step, index) => (
             <motion.div
-              key={step.key}
+              key={index}
               variants={reduceMotion ? undefined : fadeUp()}
               className="group relative border-b border-border/80 py-5 last:border-b-0"
             >

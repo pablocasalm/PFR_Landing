@@ -74,7 +74,7 @@ export const es: Translations = {
     eyebrow: "Cómo aprenderás dentro",
     title: "Los clips no están sueltos.",
     subtitle: "Puedes ver un análisis completo o ir directamente a clips organizados por bloques y conceptos. Todo está conectado para ayudarte a reconocer las mismas ideas en situaciones distintas.",
-    imgAlt: "Jugadores de pádel durante un punto en partido real.",
+    imgAlt: "Análisis completo de un partido en Padel Film Room, con la lista de capítulos junto al vídeo.",
     pillars: [
       {
         title: "Clips por conceptos",

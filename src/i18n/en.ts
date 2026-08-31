@@ -74,7 +74,7 @@ export const en: Translations = {
     eyebrow: "How you'll learn inside",
     title: "The clips aren't random.",
     subtitle: "You can watch a full analysis or go straight to clips organized by blocks and concepts. Everything is connected to help you recognize the same ideas in different situations.",
-    imgAlt: "Padel players during a point in a real match.",
+    imgAlt: "A complete match analysis in Padel Film Room, with the chapter list next to the video.",
     pillars: [
       {
         title: "Clips by concept",

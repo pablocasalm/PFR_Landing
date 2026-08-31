@@ -32,7 +32,7 @@ export function LearnInsideSection() {
         >
           <motion.article variants={reduceMotion ? undefined : fadeUp()} className="border-b border-border/80 p-4 sm:p-5">
             <img
-              src="/0bdba3929dad426f6d2810ac6618685ba7ad9a0f1424217f8ea824f684a5c919.png"
+              src="/learn-inside-analisis.png"
               alt={t.learnInside.imgAlt}
               loading="lazy"
               className="aspect-[21/9] w-full rounded-md object-cover"

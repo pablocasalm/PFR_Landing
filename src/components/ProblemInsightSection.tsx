@@ -9,7 +9,7 @@ export function ProblemInsightSection() {
 
   return (
     <motion.section
-      id="que-es"
+      id="por-que-existe"
       className="px-4 py-20 sm:px-6 lg:py-24"
       initial={reduceMotion ? undefined : { opacity: 0, y: 40 }}
       whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}

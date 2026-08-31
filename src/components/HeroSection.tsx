@@ -90,6 +90,15 @@ export function HeroSection() {
             {t.hero.seeExample}
           </a>
         </motion.p>
+
+        <motion.div className="mx-auto mt-12 max-w-4xl" variants={reduceMotion ? undefined : itemVariant}>
+          <img
+            src="/hero-mockup-tres-moviles.png"
+            alt={t.hero.mockupAlt}
+            className="w-full select-none"
+            draggable={false}
+          />
+        </motion.div>
       </motion.div>
     </section>
   );

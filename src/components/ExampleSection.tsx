@@ -17,15 +17,7 @@ export function ExampleSection() {
       viewport={{ once: true, amount: 0.3 }}
     >
       <div className="mx-auto max-w-6xl">
-        <SectionTitle
-          eyebrow={t.example.eyebrow}
-          title={t.example.title}
-          subtitle={t.example.subtitle}
-        />
-
-        <p className="mx-auto mt-6 max-w-3xl text-center text-sm text-muted sm:text-base">
-          {t.example.note}
-        </p>
+        <SectionTitle eyebrow={t.example.eyebrow} title={t.example.title} />
 
         <motion.div
           className="glass-panel mt-12 rounded-3xl p-6 sm:p-8"

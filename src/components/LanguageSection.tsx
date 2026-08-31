@@ -20,7 +20,7 @@ export function LanguageSection() {
         <SectionTitle eyebrow={t.languageSection.eyebrow} title={t.languageSection.title} />
 
         <motion.div
-          className="mt-12 grid gap-5 lg:grid-cols-[1fr_0.9fr]"
+          className="mx-auto mt-12 max-w-xl"
           initial={reduceMotion ? undefined : "hidden"}
           whileInView={reduceMotion ? undefined : "visible"}
           viewport={{ once: true, amount: 0.25 }}
@@ -30,28 +30,7 @@ export function LanguageSection() {
             variants={reduceMotion ? undefined : fadeUp()}
             className="glass-panel rounded-lg p-6 sm:p-8"
           >
-            <div className="space-y-4 text-sm leading-relaxed text-muted sm:text-base">
-              <p>{t.languageSection.intro1}</p>
-              <p>{t.languageSection.intro2}</p>
-              <ul className="space-y-3 pt-2 text-text">
-                {t.languageSection.situations.map((situation) => (
-                  <li key={situation} className="border-l border-accent-lime/60 pl-4">
-                    {situation}
-                  </li>
-                ))}
-              </ul>
-              <p className="pt-2">{t.languageSection.outro}</p>
-            </div>
-          </motion.article>
-
-          <motion.article
-            variants={reduceMotion ? undefined : fadeUp(36)}
-            className="glass-panel rounded-lg p-6 sm:p-8"
-          >
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent-cyan">
-              {t.languageSection.practiceEyebrow}
-            </p>
-            <div className="mt-5 space-y-4">
+            <div className="space-y-4">
               {t.languageSection.practiceCards.map((card) => (
                 <div key={card.label} className="rounded-md border border-border bg-surface-2 p-4">
                   <p className="text-xs uppercase tracking-[0.18em] text-muted">{card.label}</p>

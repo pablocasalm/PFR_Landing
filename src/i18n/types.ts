@@ -22,6 +22,7 @@ export type Translations = {
     subtitle: string;
     bullets: string[];
     seeExample: string;
+    mockupAlt: string;
   };
   problemInsight: {
     eyebrow: string;
@@ -45,18 +46,11 @@ export type Translations = {
   example: {
     eyebrow: string;
     title: string;
-    subtitle: string;
-    note: string;
     steps: { key: string; detail: string }[];
   };
   languageSection: {
     eyebrow: string;
     title: string;
-    intro1: string;
-    intro2: string;
-    situations: string[];
-    outro: string;
-    practiceEyebrow: string;
     practiceCards: { label: string; text: string }[];
   };
   team: {

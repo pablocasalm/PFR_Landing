@@ -30,8 +30,8 @@ export function TeamSection() {
           <div className="self-center">
             <SectionTitle eyebrow={t.team.eyebrow} title={t.team.title} />
             <div className="mt-8 space-y-4 text-sm leading-relaxed text-muted sm:text-base">
-              {t.team.paragraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+              {t.team.paragraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
               ))}
             </div>
           </div>

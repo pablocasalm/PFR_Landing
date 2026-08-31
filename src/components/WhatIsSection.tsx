@@ -25,16 +25,16 @@ export function WhatIsSection() {
           viewport={{ once: true, amount: 0.25 }}
           variants={reduceMotion ? undefined : staggerContainer}
         >
-          {t.whatIs.cards.map((card) => (
+          {t.whatIs.cards.map((card, cardIndex) => (
             <motion.article
-              key={card.title}
+              key={cardIndex}
               variants={reduceMotion ? undefined : fadeUp()}
               className="glass-panel rounded-3xl p-6"
             >
               <h3 className="font-display text-2xl uppercase text-text">{card.title}</h3>
               <ul className="mt-5 space-y-3 text-sm text-muted sm:text-base">
-                {card.bullets.map((bullet) => (
-                  <li key={bullet} className="rounded-2xl border border-border/70 bg-surface-2 p-3">
+                {card.bullets.map((bullet, bulletIndex) => (
+                  <li key={bulletIndex} className="rounded-2xl border border-border/70 bg-surface-2 p-3">
                     {bullet}
                   </li>
                 ))}

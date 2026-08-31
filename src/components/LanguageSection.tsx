@@ -31,8 +31,8 @@ export function LanguageSection() {
             className="glass-panel rounded-lg p-6 sm:p-8"
           >
             <div className="space-y-4">
-              {t.languageSection.practiceCards.map((card) => (
-                <div key={card.label} className="rounded-md border border-border bg-surface-2 p-4">
+              {t.languageSection.practiceCards.map((card, index) => (
+                <div key={index} className="rounded-md border border-border bg-surface-2 p-4">
                   <p className="text-xs uppercase tracking-[0.18em] text-muted">{card.label}</p>
                   <p className="mt-2 text-base text-text">{card.text}</p>
                 </div>

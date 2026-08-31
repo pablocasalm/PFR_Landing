@@ -29,9 +29,9 @@ export function ContentSection() {
           viewport={{ once: true, amount: 0.25 }}
           variants={reduceMotion ? undefined : staggerContainer}
         >
-          {t.content.pillars.map((item) => (
+          {t.content.pillars.map((item, index) => (
             <motion.article
-              key={item.title}
+              key={index}
               variants={reduceMotion ? undefined : fadeUp()}
               className="glass-panel rounded-3xl p-6"
             >

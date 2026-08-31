@@ -23,7 +23,7 @@ export function FaqSection() {
           {t.faq.items.map((item, index) => {
             const isOpen = openIndex === index;
             return (
-              <article key={item.q} className="glass-panel overflow-hidden rounded-2xl">
+              <article key={index} className="glass-panel overflow-hidden rounded-2xl">
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}

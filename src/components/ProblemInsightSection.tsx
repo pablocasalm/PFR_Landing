@@ -26,9 +26,9 @@ export function ProblemInsightSection() {
           viewport={{ once: true, amount: 0.25 }}
           variants={reduceMotion ? undefined : staggerContainer}
         >
-          {t.problemInsight.blocks.map((block) => (
+          {t.problemInsight.blocks.map((block, blockIndex) => (
             <motion.article
-              key={block.eyebrow}
+              key={blockIndex}
               variants={reduceMotion ? undefined : fadeUp()}
               className="glass-panel rounded-lg p-6 sm:p-8"
             >
@@ -39,8 +39,8 @@ export function ProblemInsightSection() {
                 {block.title}
               </h3>
               <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted sm:text-base">
-                {block.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+                {block.paragraphs.map((paragraph, paragraphIndex) => (
+                  <p key={paragraphIndex}>{paragraph}</p>
                 ))}
               </div>
             </motion.article>

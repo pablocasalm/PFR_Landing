@@ -70,8 +70,8 @@ export function HeroSection() {
           className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted"
           variants={reduceMotion ? undefined : itemVariant}
         >
-          {t.hero.bullets.map((bullet) => (
-            <li key={bullet} className="font-medium">
+          {t.hero.bullets.map((bullet, index) => (
+            <li key={index} className="font-medium">
               {bullet}
             </li>
           ))}

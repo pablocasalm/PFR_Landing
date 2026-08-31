@@ -40,9 +40,9 @@ export function LearnInsideSection() {
           </motion.article>
 
           <div className="divide-y divide-border/80">
-            {t.learnInside.pillars.map((pillar) => (
+            {t.learnInside.pillars.map((pillar, pillarIndex) => (
               <motion.article
-                key={pillar.title}
+                key={pillarIndex}
                 variants={reduceMotion ? undefined : fadeUp(24)}
                 className="grid gap-6 p-6 sm:p-8 lg:grid-cols-[260px_1fr]"
               >
@@ -52,9 +52,9 @@ export function LearnInsideSection() {
                   </h3>
                 </div>
                 <ul className="grid gap-3 sm:grid-cols-3">
-                  {pillar.bullets.map((bullet) => (
+                  {pillar.bullets.map((bullet, bulletIndex) => (
                     <li
-                      key={bullet}
+                      key={bulletIndex}
                       className="rounded-md border border-border bg-surface-2 px-4 py-4 text-sm leading-relaxed text-muted sm:text-base"
                     >
                       {bullet}

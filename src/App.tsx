@@ -10,10 +10,12 @@ import { TeamSection } from "./components/TeamSection";
 import { FaqSection } from "./components/FaqSection";
 import { FinalCtaSection } from "./components/FinalCtaSection";
 import { Footer } from "./components/Footer";
+import { Precios } from "./pages/Precios";
 import { LanguageProvider, useLanguage } from "./i18n/LanguageContext";
 
 function AppContent() {
   const { t } = useLanguage();
+  const isPricingPage = window.location.pathname.replace(/\/$/, "") === "/precios";
 
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
@@ -32,15 +34,21 @@ function AppContent() {
       </a>
       <Navbar />
       <main id="main-content">
-        <HeroSection />
-        <ProblemInsightSection />
-        <WhatIsSection />
-        <LearnInsideSection />
-        <ExampleSection />
-        <LanguageSection />
-        <TeamSection />
-        <FaqSection />
-        <FinalCtaSection />
+        {isPricingPage ? (
+          <Precios />
+        ) : (
+          <>
+            <HeroSection />
+            <ProblemInsightSection />
+            <WhatIsSection />
+            <LearnInsideSection />
+            <ExampleSection />
+            <LanguageSection />
+            <TeamSection />
+            <FaqSection />
+            <FinalCtaSection />
+          </>
+        )}
       </main>
       <Footer />
     </div>

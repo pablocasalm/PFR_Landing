@@ -48,12 +48,15 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
+  const isPricingPage = window.location.pathname.replace(/\/$/, "") === "/precios";
+  const homeHref = (hash: string) => (isPricingPage ? `/${hash}` : hash);
+
   const links = [
-    { href: "#que-es", label: t.nav.whatIs },
-    { href: "#como-aprenderas", label: t.nav.howYouLearn },
-    { href: "#quienes-somos", label: t.nav.whoWeAre },
-    { href: "#ejemplo", label: t.nav.example },
-    { href: "#faq", label: t.nav.faq },
+    { href: homeHref("#que-es"), label: t.nav.whatIs },
+    { href: homeHref("#como-aprenderas"), label: t.nav.howYouLearn },
+    { href: homeHref("#quienes-somos"), label: t.nav.whoWeAre },
+    { href: homeHref("#ejemplo"), label: t.nav.example },
+    { href: homeHref("#faq"), label: t.nav.faq },
   ];
 
   useEffect(() => {
@@ -78,12 +81,15 @@ export function Navbar() {
   }, [isMenuOpen]);
 
   const handleSectionClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    setIsMenuOpen(false);
+    if (!href.startsWith("#")) {
+      return;
+    }
     event.preventDefault();
     const target = document.querySelector<HTMLElement>(href);
     if (target) {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    setIsMenuOpen(false);
   };
 
   return (
@@ -92,8 +98,9 @@ export function Navbar() {
         <nav className="md:hidden" aria-label={t.nav.mainNavMobile}>
           <div className="flex items-center justify-between">
             <a
-              href="#"
+              href="/"
               onClick={(event) => {
+                if (isPricingPage) return;
                 event.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
                 setIsMenuOpen(false);
@@ -192,10 +199,10 @@ export function Navbar() {
                     </ul>
 
                     <motion.a
-                      href="#waitlist-final"
+                      href={homeHref("#waitlist-final")}
                       onClick={(event) => {
                         trackEvent("cta_navbar_click", { location: "navbar" });
-                        handleSectionClick(event, "#waitlist-final");
+                        handleSectionClick(event, homeHref("#waitlist-final"));
                       }}
                       initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -214,8 +221,9 @@ export function Navbar() {
 
         <nav className="hidden grid-cols-[1fr_auto_1fr] items-center gap-3 md:grid" aria-label={t.nav.mainNav}>
           <a
-            href="#"
+            href="/"
             onClick={(event) => {
+              if (isPricingPage) return;
               event.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
@@ -241,10 +249,10 @@ export function Navbar() {
           <div className="flex items-center justify-self-end gap-3">
             <LangSwitcher />
             <a
-              href="#waitlist-final"
+              href={homeHref("#waitlist-final")}
               onClick={(event) => {
                 trackEvent("cta_navbar_click", { location: "navbar" });
-                handleSectionClick(event, "#waitlist-final");
+                handleSectionClick(event, homeHref("#waitlist-final"));
               }}
               className="focus-ring rounded-full border border-accent-cyan/40 bg-accent-cyan px-4 py-2 text-sm font-semibold text-bg shadow-glow transition hover:brightness-105"
             >

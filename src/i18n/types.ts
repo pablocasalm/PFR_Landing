@@ -5,6 +5,7 @@ export type Translations = {
     whoWeAre: string;
     example: string;
     faq: string;
+    pricing: string;
     joinWaitlist: string;
     joinWaitlistMobile: string;
     skipToContent: string;
@@ -69,6 +70,22 @@ export type Translations = {
     eyebrow: string;
     title: string;
     items: { q: string; a: string }[];
+  };
+  pricing: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    comingSoon: string;
+    mostPopular: string;
+    monthlySuffix: string;
+    availabilityLabel: string;
+    availabilityOpen: string;
+    availabilityLimited: string;
+    planNames: { starter: string; club: string; coach: string };
+    /** 7 filas, mismo orden que FEATURE_TIERS en Precios.tsx (qué planes incluyen cada una). */
+    featureRows: string[];
+    ctaBandTitle: string;
+    ctaBandButton: string;
   };
   finalCta: {
     eyebrow: string;

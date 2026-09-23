@@ -5,3 +5,9 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# SPA fallback: permite recargar/navegar directo a rutas como /precios sin 404 de Netlify.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -17,7 +17,7 @@ import { trackEvent } from "../lib/analytics";
  * la Fase 0 del backend) para volver a hacer esto dinámico, en vez de PLAN_PRICES de abajo.
  */
 
-const PLAN_PRICES: Record<"starter" | "club" | "coach", number> = { starter: 9.9, club: 24.9, coach: 74.9 };
+const PLAN_PRICES: Record<"starter" | "club" | "coach", number> = { starter: 14.9, club: 24.9, coach: 74.9 };
 
 // Qué planes incluye cada fila de features — mismo orden que t.pricing.featureRows. Es lógica
 // (no texto), así que no vive en el diccionario de idiomas.

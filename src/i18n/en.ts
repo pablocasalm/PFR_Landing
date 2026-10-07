@@ -206,7 +206,7 @@ export const en: Translations = {
     availabilityLabel: "Availability:",
     availabilityOpen: "Open",
     availabilityLimited: "Limited spots",
-    planNames: { starter: "PFR Starter", club: "PFR Club", coach: "PFR Coach" },
+    planNames: { starter: "PFR Essential", club: "PFR Club", coach: "PFR Coach" },
     featureRows: [
       "Every clip and analysis, including new ones",
       "Favorites, My Game, stats and story",

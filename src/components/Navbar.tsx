@@ -52,10 +52,10 @@ export function Navbar() {
   const homeHref = (hash: string) => (isPricingPage ? `/${hash}` : hash);
 
   const links = [
-    { href: homeHref("#que-es"), label: t.nav.whatIs },
     { href: homeHref("#como-aprenderas"), label: t.nav.howYouLearn },
-    { href: homeHref("#quienes-somos"), label: t.nav.whoWeAre },
     { href: homeHref("#ejemplo"), label: t.nav.example },
+    { href: homeHref("#quienes-somos"), label: t.nav.whoWeAre },
+    { href: homeHref("#club"), label: t.nav.club },
     { href: homeHref("#faq"), label: t.nav.faq },
   ];
 

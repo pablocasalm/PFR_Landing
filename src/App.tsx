@@ -7,6 +7,7 @@ import { LearnInsideSection } from "./components/LearnInsideSection";
 import { ExampleSection } from "./components/ExampleSection";
 import { LanguageSection } from "./components/LanguageSection";
 import { TeamSection } from "./components/TeamSection";
+import { ClubSection } from "./components/ClubSection";
 import { FaqSection } from "./components/FaqSection";
 import { FinalCtaSection } from "./components/FinalCtaSection";
 import { Footer } from "./components/Footer";
@@ -41,10 +42,11 @@ function AppContent() {
             <HeroSection />
             <ProblemInsightSection />
             <WhatIsSection />
+            <LanguageSection />
             <LearnInsideSection />
             <ExampleSection />
-            <LanguageSection />
             <TeamSection />
+            <ClubSection />
             <FaqSection />
             <FinalCtaSection />
           </>

@@ -66,6 +66,10 @@ export function HeroSection() {
           {t.hero.subtitle}
         </motion.p>
 
+        <motion.p className="mx-auto mt-3 text-sm text-muted" variants={reduceMotion ? undefined : itemVariant}>
+          {t.hero.languagesNote}
+        </motion.p>
+
         <motion.ul
           className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted"
           variants={reduceMotion ? undefined : itemVariant}

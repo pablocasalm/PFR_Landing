@@ -1,9 +1,9 @@
 export type Translations = {
   nav: {
-    whatIs: string;
     howYouLearn: string;
     whoWeAre: string;
     example: string;
+    club: string;
     faq: string;
     pricing: string;
     joinWaitlist: string;
@@ -17,10 +17,17 @@ export type Translations = {
     langToggle: string;
     langToggleLabel: string;
   };
+  /** Título de la pestaña y descripción de la página: cambian con el idioma (ver LanguageContext). */
+  meta: {
+    title: string;
+    description: string;
+  };
   hero: {
     line1: string;
     line2: string;
     subtitle: string;
+    /** Línea pequeña bajo el subtítulo: idiomas en que está disponible. */
+    languagesNote: string;
     bullets: string[];
     seeExample: string;
     mockupAlt: string;
@@ -47,18 +54,30 @@ export type Translations = {
   example: {
     eyebrow: string;
     title: string;
+    subtitle: string;
     steps: { key: string; detail: string }[];
   };
   languageSection: {
     eyebrow: string;
     title: string;
     practiceCards: { label: string; text: string }[];
+    /** Línea pequeña al final de la sección. */
+    note: string;
   };
   team: {
     eyebrow: string;
     title: string;
     imgAlt: string;
     paragraphs: string[];
+  };
+  club: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    cards: { title: string; text: string }[];
+    /** Línea pequeña final, sobre PFR Coach. */
+    coachNote: string;
+    cta: string;
   };
   content: {
     eyebrow: string;

@@ -39,6 +39,9 @@ export function LanguageSection() {
               ))}
             </div>
           </motion.article>
+          <motion.p variants={reduceMotion ? undefined : fadeUp(24)} className="mt-5 text-center text-sm text-muted">
+            {t.languageSection.note}
+          </motion.p>
         </motion.div>
       </div>
     </motion.section>

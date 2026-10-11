@@ -1,6 +1,6 @@
 // Precios de la suscripción, ya resueltos por país (IP) en el backend. Endpoint público,
 // pensado explícitamente para poder mostrarse desde la landing sin sesión.
-const BILLING_PLANS_URL = "https://api.padelfilmroom.com/api/billing/plans";
+const BILLING_PLANS_URL = "https://azureapi.padelfilmroom.com/api/billing/plans";
 
 export type BillingInterval = "Monthly" | "Yearly";
 

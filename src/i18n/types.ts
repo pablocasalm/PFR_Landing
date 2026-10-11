@@ -127,6 +127,22 @@ export type Translations = {
       close: string;
     };
   };
+  /** Página /confirmar: a la que llega quien pulsa el botón del email de acceso anticipado. */
+  confirm: {
+    loading: string;
+    title: string;
+    eyebrow: string;
+    paragraphs: string[];
+    /** Recordatorio de qué pasa después de confirmar: el acceso llega por email. */
+    nextTitle: string;
+    nextSteps: string[];
+    signature: string;
+    signatureRole: string;
+    backHome: string;
+    errorTitle: string;
+    errorText: string;
+    errorJoin: string;
+  };
   footer: {
     tagline: string;
   };

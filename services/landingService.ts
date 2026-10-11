@@ -1,15 +1,16 @@
 // Solicita un código de invitación a la beta (mismo endpoint que usa la app para
 // "solicitar otro código"): guarda el email como InviteRequest pendiente, y el admin
-// lo ve en /app/admin/invitaciones para invitar con un clic.
-const INVITE_REQUEST_URL = "https://api.padelfilmroom.com/api/invite-requests";
+// lo ve en /app/admin/invitaciones para invitar con un clic. Se envía también el idioma en el
+// que el visitante está viendo la landing, para invitarle después en ese idioma.
+const INVITE_REQUEST_URL = "https://azureapi.padelfilmroom.com/api/invite-requests";
 
-export const submitLandingEmail = async (email: string) => {
+export const submitLandingEmail = async (email: string, language: "es" | "en") => {
   const response = await fetch(INVITE_REQUEST_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email }),
+    body: JSON.stringify({ email, language }),
   });
 
   const text = await response.text();
@@ -34,3 +35,16 @@ export const submitLandingEmail = async (email: string) => {
   }
 };
 
+
+// Botón del email de acceso anticipado ("Cuenta conmigo" / "Count me in"): guarda que la persona
+// confirma su plaza y en qué idioma. Devuelve false si el enlace no se reconoce.
+export const confirmEarlyAccess = async (token: string, language: "es" | "en"): Promise<boolean> => {
+  const response = await fetch(`${INVITE_REQUEST_URL}/confirm`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ token, language }),
+  });
+  return response.ok;
+};

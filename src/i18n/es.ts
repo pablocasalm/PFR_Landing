@@ -264,6 +264,26 @@ export const es: Translations = {
       close: "Entendido",
     },
   },
+  confirm: {
+    loading: "Guardando tu plaza...",
+    eyebrow: "Plaza confirmada",
+    title: "¡Estás dentro!",
+    paragraphs: [
+      "Eres de las primeras personas en entrar en Padel Film Room. Literalmente.",
+      "Gracias por ayudarnos a construirlo. Te escribiremos muy pronto con tu acceso: mientras tanto, no hace falta que hagas nada más.",
+    ],
+    nextTitle: "Qué pasa ahora",
+    nextSteps: [
+      "Cuando abramos, te enviaremos el acceso por email, a la misma dirección en la que has recibido este mensaje.",
+      "Si no lo ves en tu bandeja de entrada, mira en spam o promociones: llegará desde noreply@padelfilmroom.com.",
+    ],
+    signature: "Andrea, Guille y Pablo",
+    signatureRole: "El equipo de Padel Film Room",
+    backHome: "Volver a la web",
+    errorTitle: "No hemos podido confirmar tu plaza",
+    errorText: "Escríbenos y lo solucionamos.",
+    errorJoin: "Apúntate a la lista",
+  },
   footer: {
     tagline: "Decisions over highlights",
   },

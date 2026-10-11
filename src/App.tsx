@@ -12,11 +12,14 @@ import { FaqSection } from "./components/FaqSection";
 import { FinalCtaSection } from "./components/FinalCtaSection";
 import { Footer } from "./components/Footer";
 import { Precios } from "./pages/Precios";
+import { Confirmar } from "./pages/Confirmar";
 import { LanguageProvider, useLanguage } from "./i18n/LanguageContext";
 
 function AppContent() {
   const { t } = useLanguage();
-  const isPricingPage = window.location.pathname.replace(/\/$/, "") === "/precios";
+  const path = window.location.pathname.replace(/\/$/, "");
+  const isPricingPage = path === "/precios";
+  const isConfirmPage = path === "/confirmar";
 
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
@@ -35,7 +38,9 @@ function AppContent() {
       </a>
       <Navbar />
       <main id="main-content">
-        {isPricingPage ? (
+        {isConfirmPage ? (
+          <Confirmar />
+        ) : isPricingPage ? (
           <Precios />
         ) : (
           <>

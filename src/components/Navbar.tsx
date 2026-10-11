@@ -48,8 +48,9 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
-  const isPricingPage = window.location.pathname.replace(/\/$/, "") === "/precios";
-  const homeHref = (hash: string) => (isPricingPage ? `/${hash}` : hash);
+  // Fuera de la portada (/precios, /confirmar) los enlaces a secciones tienen que volver a ella.
+  const isSubPage = window.location.pathname.replace(/\/$/, "") !== "";
+  const homeHref = (hash: string) => (isSubPage ? `/${hash}` : hash);
 
   const links = [
     { href: homeHref("#como-aprenderas"), label: t.nav.howYouLearn },
@@ -100,7 +101,7 @@ export function Navbar() {
             <a
               href="/"
               onClick={(event) => {
-                if (isPricingPage) return;
+                if (isSubPage) return;
                 event.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
                 setIsMenuOpen(false);
@@ -223,7 +224,7 @@ export function Navbar() {
           <a
             href="/"
             onClick={(event) => {
-              if (isPricingPage) return;
+              if (isSubPage) return;
               event.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}

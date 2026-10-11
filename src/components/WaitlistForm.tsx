@@ -97,7 +97,7 @@ function SuccessModal({ onClose }: { onClose: () => void }) {
 
 export function WaitlistForm({ compact = false, source = "final_cta" }: WaitlistFormProps) {
   const reduceMotion = useReducedMotion();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<FormStatus>("idle");
   const [message, setMessage] = useState("");
@@ -132,7 +132,7 @@ export function WaitlistForm({ compact = false, source = "final_cta" }: Waitlist
       setStatus("loading");
       setMessage(t.form.sendingMessage);
       trackEvent("waitlist_submit_start", { source });
-      await submitLandingEmail(normalizedEmail);
+      await submitLandingEmail(normalizedEmail, lang);
       localStorage.setItem(EMAIL_KEY, normalizedEmail);
       setStatus("success");
       setMessage(t.form.successMessage);

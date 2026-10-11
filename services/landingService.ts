@@ -2,6 +2,8 @@
 // "solicitar otro código"): guarda el email como InviteRequest pendiente, y el admin
 // lo ve en /app/admin/invitaciones para invitar con un clic. Se envía también el idioma en el
 // que el visitante está viendo la landing, para invitarle después en ese idioma.
+import { getAttribution } from "../src/lib/attribution";
+
 const INVITE_REQUEST_URL = "https://azureapi.padelfilmroom.com/api/invite-requests";
 
 export const submitLandingEmail = async (email: string, language: "es" | "en") => {
@@ -10,7 +12,8 @@ export const submitLandingEmail = async (email: string, language: "es" | "en") =
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, language }),
+    // Con el origen del visitante (utm_source, ref…), si llegó por un enlace que lo traía.
+    body: JSON.stringify({ email, language, ...getAttribution() }),
   });
 
   const text = await response.text();

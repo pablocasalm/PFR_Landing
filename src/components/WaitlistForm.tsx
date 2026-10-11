@@ -7,7 +7,9 @@ import { trackEvent } from "../lib/analytics";
 import { submitLandingEmail } from "../../services/landingService";
 import { useLanguage } from "../i18n/LanguageContext";
 
-const EMAIL_KEY = "pfr_waitlist_email";
+// Antes el email enviado se guardaba en el navegador y volvía a aparecer en la casilla en cada
+// visita. Ya no se guarda: la clave solo se conserva para borrar lo que quedara de entonces.
+const LEGACY_EMAIL_KEY = "pfr_waitlist_email";
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
 type WaitlistFormSource = "hero" | "final_cta";
@@ -105,8 +107,11 @@ export function WaitlistForm({ compact = false, source = "final_cta" }: Waitlist
   const inputId = useId();
 
   useEffect(() => {
-    const savedEmail = localStorage.getItem(EMAIL_KEY);
-    if (savedEmail) setEmail(savedEmail);
+    try {
+      localStorage.removeItem(LEGACY_EMAIL_KEY);
+    } catch {
+      /* modo privado: nada que borrar */
+    }
 
     const onCleared = () => {
       setEmail("");
@@ -133,7 +138,6 @@ export function WaitlistForm({ compact = false, source = "final_cta" }: Waitlist
       setMessage(t.form.sendingMessage);
       trackEvent("waitlist_submit_start", { source });
       await submitLandingEmail(normalizedEmail, lang);
-      localStorage.setItem(EMAIL_KEY, normalizedEmail);
       setStatus("success");
       setMessage(t.form.successMessage);
       setShowModal(true);
@@ -153,7 +157,6 @@ export function WaitlistForm({ compact = false, source = "final_cta" }: Waitlist
           <SuccessModal
             onClose={() => {
               setShowModal(false);
-              localStorage.removeItem(EMAIL_KEY);
               window.dispatchEvent(new Event("pfr:email-cleared"));
             }}
           />

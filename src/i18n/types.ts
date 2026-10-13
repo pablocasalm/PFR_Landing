@@ -126,6 +126,9 @@ export type Translations = {
       body: string;
       close: string;
     };
+    /** Frase bajo el formulario: texto + enlace a la política de privacidad. */
+    privacyPrefix: string;
+    privacyLink: string;
   };
   /** Página /confirmar: a la que llega quien pulsa el botón del email de acceso anticipado. */
   confirm: {
@@ -145,6 +148,12 @@ export type Translations = {
   };
   footer: {
     tagline: string;
+    /** Enlaces a los documentos legales (Lawwwing). */
+    legalNav: string;
+    legalNotice: string;
+    privacy: string;
+    cookies: string;
+    terms: string;
   };
 };
 

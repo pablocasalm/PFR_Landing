@@ -263,6 +263,8 @@ export const es: Translations = {
       body: "Te avisaremos antes del lanzamiento. Revisa tu bandeja de entrada.",
       close: "Entendido",
     },
+    privacyPrefix: "Al apuntarte aceptas nuestra",
+    privacyLink: "Política de privacidad",
   },
   confirm: {
     loading: "Guardando tu plaza...",
@@ -286,5 +288,10 @@ export const es: Translations = {
   },
   footer: {
     tagline: "Decisions over highlights",
+    legalNav: "Información legal",
+    legalNotice: "Aviso legal",
+    privacy: "Privacidad",
+    cookies: "Cookies",
+    terms: "Términos y condiciones",
   },
 };

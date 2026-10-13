@@ -263,6 +263,8 @@ export const en: Translations = {
       body: "We'll reach out before the launch. Check your inbox.",
       close: "Got it",
     },
+    privacyPrefix: "By joining you accept our",
+    privacyLink: "Privacy Policy",
   },
   confirm: {
     loading: "Saving your spot...",
@@ -286,5 +288,10 @@ export const en: Translations = {
   },
   footer: {
     tagline: "Decisions over highlights",
+    legalNav: "Legal information",
+    legalNotice: "Legal notice",
+    privacy: "Privacy",
+    cookies: "Cookies",
+    terms: "Terms and conditions",
   },
 };

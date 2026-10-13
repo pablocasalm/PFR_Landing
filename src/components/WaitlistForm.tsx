@@ -5,6 +5,7 @@ import { fadeUp } from "./Motion";
 import type { FormStatus } from "../types";
 import { trackEvent } from "../lib/analytics";
 import { submitLandingEmail } from "../../services/landingService";
+import { legalUrl } from "../lib/legal";
 import { useLanguage } from "../i18n/LanguageContext";
 
 // Antes el email enviado se guardaba en el navegador y volvía a aparecer en la casilla en cada
@@ -204,6 +205,18 @@ export function WaitlistForm({ compact = false, source = "final_cta" }: Waitlist
         </div>
         <p id={`${inputId}-help`} className="text-sm text-muted">
           {t.form.helpText}
+        </p>
+        <p className="text-xs text-muted">
+          {t.form.privacyPrefix}{" "}
+          <a
+            href={legalUrl("privacy", lang)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="focus-ring underline underline-offset-4 transition hover:text-text"
+          >
+            {t.form.privacyLink}
+          </a>
+          .
         </p>
         <p
           id={`${inputId}-status`}

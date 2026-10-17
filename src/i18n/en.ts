@@ -293,5 +293,6 @@ export const en: Translations = {
     privacy: "Privacy",
     cookies: "Cookies",
     terms: "Terms and conditions",
+    cookieSettings: "Cookie settings",
   },
 };

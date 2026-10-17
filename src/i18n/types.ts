@@ -154,6 +154,8 @@ export type Translations = {
     privacy: string;
     cookies: string;
     terms: string;
+    /** Vuelve a abrir la configuración de cookies de Lawwwing. */
+    cookieSettings: string;
   };
 };
 

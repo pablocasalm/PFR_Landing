@@ -30,6 +30,14 @@ export function Footer() {
               {label}
             </a>
           ))}
+          {/* Pulsa el "Configurar" del pie de Lawwwing, que tenemos oculto (index.css). */}
+          <button
+            type="button"
+            onClick={() => document.querySelector<HTMLElement>("#lw-footer .lw-consent-edit")?.click()}
+            className="focus-ring underline-offset-4 transition hover:text-text hover:underline"
+          >
+            {t.footer.cookieSettings}
+          </button>
         </nav>
       </div>
     </footer>

@@ -146,3 +146,74 @@ section[id] {
     animation: none;
   }
 }
+
+/* Aviso de cookies de Lawwwing con el aspecto de la landing. El #lw-widget-root delante gana a
+   sus reglas (se inyectan después que las nuestras). Rechazar y Aceptar, iguales: la AEPD pide que
+   rechazar sea tan fácil y visible como aceptar. */
+#lw-widget-root #lw-banner {
+  background: var(--surface-1);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -16px 40px rgba(0, 0, 0, 0.45);
+  padding: 16px 16px calc(16px + env(safe-area-inset-bottom));
+}
+#lw-widget-root #lw-banner .lw-banner-wrapper {
+  gap: 12px;
+}
+#lw-widget-root #lw-banner .lw-banner-brand {
+  display: none;
+}
+#lw-widget-root #lw-banner .lw-banner-text,
+#lw-widget-root #lw-banner .lw-banner-text * {
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+#lw-widget-root #lw-banner .lw-banner-buttons-wrapper {
+  margin: 0 !important;
+}
+#lw-widget-root #lw-banner .lw-banner-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+#lw-widget-root #lw-banner .lw-banner-buttons button {
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+  padding: 10px 8px;
+  border-radius: 9999px;
+  border: 1px solid var(--text);
+  background: var(--text);
+  color: var(--bg);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: normal;
+}
+#lw-widget-root #lw-banner .lw-banner-buttons button.lw-consent-edit {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+@media (min-width: 768px) {
+  #lw-widget-root #lw-banner .lw-banner-wrapper {
+    flex-direction: row;
+    align-items: center;
+    max-width: 72rem;
+  }
+  #lw-widget-root #lw-banner .lw-banner-buttons-wrapper {
+    width: auto;
+    flex-shrink: 0;
+  }
+  #lw-widget-root #lw-banner .lw-banner-buttons {
+    width: 420px;
+  }
+}
+
+/* Lawwwing añade al final de la página sus propios enlaces legales; ya están en nuestro pie. Su
+   botón "Configurar" sigue ahí, oculto: el de nuestro pie lo pulsa (Footer.tsx). */
+#lw-widget-root #lw-footer {
+  display: none;
+}

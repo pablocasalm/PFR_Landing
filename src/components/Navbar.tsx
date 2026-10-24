@@ -5,6 +5,10 @@ import { trackEvent } from "../lib/analytics";
 import { useLanguage } from "../i18n/LanguageContext";
 import type { Language } from "../i18n/types";
 
+// Acceso para quien ya tiene cuenta: el login de la app, en el idioma en que se ve la landing
+// (LoginPage lee ?lang). Si ya tenía la sesión abierta, la app le lleva directa a Inicio.
+const loginUrl = (lang: Language) => `https://app.padelfilmroom.com/login?lang=${lang}`;
+
 const langOptions: { code: Language; display: string; ariaLabel: string }[] = [
   { code: "es", display: "ES", ariaLabel: "Español" },
   { code: "en", display: "EN", ariaLabel: "English" },
@@ -44,7 +48,7 @@ function LangSwitcher() {
 }
 
 export function Navbar() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
@@ -96,7 +100,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-bg/95 backdrop-blur-xl">
       <div className="w-full px-4 py-3 sm:px-6">
-        <nav className="md:hidden" aria-label={t.nav.mainNavMobile}>
+        <nav className="xl:hidden" aria-label={t.nav.mainNavMobile}>
           <div className="flex items-center justify-between">
             <a
               href="/"
@@ -111,6 +115,13 @@ export function Navbar() {
               Padel Film Room
             </a>
             <div className="flex items-center gap-2">
+              <a
+                href={loginUrl(lang)}
+                onClick={() => trackEvent("login_click", { location: "navbar_mobile" })}
+                className="focus-ring rounded-full px-2 py-1 text-sm font-semibold text-text transition hover:opacity-80"
+              >
+                {t.nav.loginShort}
+              </a>
               <LangSwitcher />
               <button
                 type="button"
@@ -213,6 +224,17 @@ export function Navbar() {
                     >
                       {t.nav.joinWaitlistMobile}
                     </motion.a>
+                    <motion.a
+                      href={loginUrl(lang)}
+                      onClick={() => trackEvent("login_click", { location: "navbar_menu" })}
+                      initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 8 }}
+                      transition={{ duration: shouldReduceMotion ? 0.1 : 0.24, ease: "easeOut", delay: shouldReduceMotion ? 0 : 0.18 }}
+                      className="focus-ring mt-3 flex w-full items-center justify-center rounded-2xl border border-border bg-bg px-5 py-4 text-center text-sm font-semibold text-text transition hover:bg-surface-1"
+                    >
+                      {t.nav.loginMenu}
+                    </motion.a>
                   </div>
                 </motion.div>
               </motion.div>
@@ -220,7 +242,7 @@ export function Navbar() {
           </AnimatePresence>
         </nav>
 
-        <nav className="hidden grid-cols-[1fr_auto_1fr] items-center gap-3 md:grid" aria-label={t.nav.mainNav}>
+        <nav className="hidden grid-cols-[1fr_auto_1fr] items-center gap-3 xl:grid" aria-label={t.nav.mainNav}>
           <a
             href="/"
             onClick={(event) => {
@@ -250,12 +272,19 @@ export function Navbar() {
           <div className="flex items-center justify-self-end gap-3">
             <LangSwitcher />
             <a
+              href={loginUrl(lang)}
+              onClick={() => trackEvent("login_click", { location: "navbar" })}
+              className="focus-ring whitespace-nowrap rounded-full border border-border px-4 py-2 text-sm font-semibold text-text transition hover:border-accent-cyan/60"
+            >
+              {t.nav.login}
+            </a>
+            <a
               href={homeHref("#waitlist-final")}
               onClick={(event) => {
                 trackEvent("cta_navbar_click", { location: "navbar" });
                 handleSectionClick(event, homeHref("#waitlist-final"));
               }}
-              className="focus-ring rounded-full border border-accent-cyan/40 bg-accent-cyan px-4 py-2 text-sm font-semibold text-bg shadow-glow transition hover:brightness-105"
+              className="focus-ring whitespace-nowrap rounded-full border border-accent-cyan/40 bg-accent-cyan px-4 py-2 text-sm font-semibold text-bg shadow-glow transition hover:brightness-105"
             >
               {t.nav.joinWaitlist}
             </a>

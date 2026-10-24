@@ -8,6 +8,9 @@ export type Translations = {
     pricing: string;
     joinWaitlist: string;
     joinWaitlistMobile: string;
+    login: string;
+    loginShort: string;
+    loginMenu: string;
     skipToContent: string;
     openMenu: string;
     closeMenu: string;

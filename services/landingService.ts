@@ -1,4 +1,5 @@
-// Solicita un código de invitación a la beta (mismo endpoint que usa la app para
+// Del 24 al 26/10/2026 (alta abierta) el backend envía la invitación al momento (ver
+// src/i18n/openSignup.ts). El resto del tiempo: solicita un código de invitación a la beta (mismo endpoint que usa la app para
 // "solicitar otro código"): guarda el email como InviteRequest pendiente, y el admin
 // lo ve en /app/admin/invitaciones para invitar con un clic. Se envía también el idioma en el
 // que el visitante está viendo la landing, para invitarle después en ese idioma.

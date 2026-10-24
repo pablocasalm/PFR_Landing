@@ -3,6 +3,7 @@ import type { Language, Translations } from "./types";
 import { es } from "./es";
 import { en } from "./en";
 import { applyRemote, fetchRemoteTexts, readCachedTexts } from "./remote";
+import { isOpenSignup, OPEN_SIGNUP_TEXTS } from "./openSignup";
 
 const translations: Record<Language, Translations> = { es, en };
 
@@ -41,7 +42,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     };
   }, [lang]);
 
-  const t = useMemo(() => applyRemote(translations[lang], remote[lang] ?? null), [lang, remote]);
+  // Durante el alta abierta (openSignup.ts), sus textos van por encima de todo lo demás.
+  const t = useMemo(() => {
+    const base = applyRemote(translations[lang], remote[lang] ?? null);
+    return isOpenSignup() ? applyRemote(base, OPEN_SIGNUP_TEXTS[lang]) : base;
+  }, [lang, remote]);
 
   const setLanguage = useCallback((next: Language) => {
     setLang(next);

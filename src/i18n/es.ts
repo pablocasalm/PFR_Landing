@@ -226,7 +226,7 @@ export const es: Translations = {
   pricing: {
     eyebrow: "Precio",
     title: "Elige tu nivel de acompañamiento.",
-    subtitle: "Muy pronto podrás suscribirte — así quedarán los planes.",
+    subtitle: "Empieza con 7 días gratis en Essential y Club. Cancela cuando quieras.",
     comingSoon: "Próximamente",
     mostPopular: "Más popular",
     monthlySuffix: "/ mes",
@@ -245,6 +245,13 @@ export const es: Translations = {
     ],
     ctaBandTitle: "Empieza a entender el pádel de otra forma.",
     ctaBandButton: "Suscríbete",
+    startTrial: "Empieza 7 días gratis",
+    subscribeCoach: "Contratar",
+    full: "Completo",
+    trialNote: "Hoy 0 €. El primer cobro, a los 7 días.",
+    coachNote: "Se cobra al contratar.",
+    founder: "Precio fundador",
+    founderLeft: "Precio fundador · quedan {count} plazas",
   },
   finalCta: {
     eyebrow: "Waitlist privada",

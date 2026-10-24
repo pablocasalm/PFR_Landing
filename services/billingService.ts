@@ -10,8 +10,21 @@ export type PriceOption = {
   currency: string;
 };
 
+export type PlanTier = "Starter" | "Club" | "Coach";
+
+export type TierPlan = {
+  tier: PlanTier;
+  prices: PriceOption[];
+};
+
+/** Lo mismo que lee la pantalla de Precios de la app (src/lib/api/billing.ts en PFR): el precio
+ * de cada plan para quien mira (fundador o normal, España o resto del mundo) y las plazas. */
 export type BillingPlans = {
   prices: PriceOption[];
+  plans?: TierPlan[];
+  isFounder?: boolean;
+  founderSlotsLeft?: number;
+  coachFull?: boolean;
 };
 
 export const getBillingPlans = async (): Promise<BillingPlans> => {

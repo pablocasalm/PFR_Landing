@@ -108,6 +108,19 @@ export type Translations = {
     featureRows: string[];
     ctaBandTitle: string;
     ctaBandButton: string;
+    /** Botón de Essential y Club: crear cuenta y empezar la prueba de 7 días en Stripe. */
+    startTrial: string;
+    /** Botón de Coach (sin prueba). */
+    subscribeCoach: string;
+    /** Coach sin plazas. */
+    full: string;
+    /** Debajo del botón: Essential y Club. */
+    trialNote: string;
+    /** Debajo del botón: Coach. */
+    coachNote: string;
+    founder: string;
+    /** {count} = plazas de fundador libres. */
+    founderLeft: string;
   };
   finalCta: {
     eyebrow: string;

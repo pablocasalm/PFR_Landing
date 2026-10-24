@@ -163,7 +163,7 @@ export function Precios() {
                 </span>
               ) : (
                 <a
-                  href={`${APP_REGISTER_URL}?plan=${TIER_BY_KEY[plan.key]}&lang=${lang}`}
+                  href={`${APP_REGISTER_URL}?plan=${plan.key === "starter" ? "Essential" : TIER_BY_KEY[plan.key]}&lang=${lang}`}
                   onClick={() => trackEvent("pricing_plan_click", { plan: plan.key })}
                   className={`focus-ring mt-6 flex w-full items-center justify-center rounded-full py-3 text-sm font-semibold transition hover:brightness-105 ${
                     plan.accent ? "bg-accent-cyan text-bg shadow-glow" : "border border-border bg-surface-2 text-text hover:border-accent-cyan/60"

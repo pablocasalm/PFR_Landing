@@ -12,8 +12,9 @@ import type { Language } from "./types";
  */
 export const OPEN_SIGNUP_UNTIL = new Date("2026-10-26T22:59:59Z"); // lunes 26/10, 23:59 en Madrid (CET)
 
-// Solo en local (npm run dev): «?preview=tras-beta» enseña ya la web de después del alta abierta.
-const previewAfterBeta = import.meta.env.DEV && new URLSearchParams(window.location.search).get("preview") === "tras-beta";
+// «?preview=tras-beta» enseña ya la web de después del alta abierta (para revisarla antes de las
+// 23:59 del 26/10; pasada esa hora no cambia nada). Quitar después del 26/10.
+const previewAfterBeta = new URLSearchParams(window.location.search).get("preview") === "tras-beta";
 
 export const isOpenSignup = (now: Date = new Date()) => !previewAfterBeta && now < OPEN_SIGNUP_UNTIL;
 

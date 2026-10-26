@@ -5,7 +5,8 @@ import type { Language } from "./types";
  * email no entra en la lista de espera, sino que recibe al momento la invitación para crear su
  * cuenta con 14 días gratis (lo hace el backend, POST /api/invite-requests). Mientras dure, estos
  * textos pisan a los de siempre, también a los de la base de datos; pasada la fecha, la landing
- * vuelve sola a los de la lista de espera sin tener que publicar nada.
+ * pasa sola a la web tras la beta (prueba de 7 días: botones a /precios en vez del formulario,
+ * «Crear cuenta» en el menú; ver `isOpenSignup` en los componentes) sin tener que publicar nada.
  *
  * Mismas claves que remote.ts ("landing." + ruta dentro de `Translations`).
  */
@@ -19,6 +20,7 @@ export const OPEN_SIGNUP_TEXTS: Record<Language, Record<string, string>> = {
     "landing.nav.joinWaitlistMobile": "PRUEBA 14 DÍAS GRATIS",
     "landing.hero.bullets.1": "14 días gratis, sin tarjeta",
     "landing.club.cta": "Prueba 14 días gratis",
+    "landing.faq.items.8.q": "¿Cuándo estará disponible?",
     "landing.faq.items.8.a": "Ya. Hasta el lunes 26 por la noche, déjanos tu email y te enviamos al momento el enlace para crear tu cuenta, con 14 días gratis.",
     "landing.finalCta.eyebrow": "Acceso abierto hasta el lunes",
     "landing.finalCta.subtitle": "Hasta el lunes 26 por la noche no hay lista de espera: déjanos tu email y te enviamos al momento el enlace para crear tu cuenta, con 14 días gratis y sin tarjeta. Los primeros 50 miembros tendrán precio fundador.",
@@ -32,6 +34,7 @@ export const OPEN_SIGNUP_TEXTS: Record<Language, Record<string, string>> = {
     "landing.nav.joinWaitlistMobile": "TRY 14 DAYS FREE",
     "landing.hero.bullets.1": "14 days free, no card needed",
     "landing.club.cta": "Try 14 days free",
+    "landing.faq.items.8.q": "When will it be available?",
     "landing.faq.items.8.a": "Now. Until Monday the 26th at night, leave us your email and we'll send you the link to create your account right away, with 14 days free.",
     "landing.finalCta.eyebrow": "Open access until Monday",
     "landing.finalCta.subtitle": "Until Monday the 26th at night there's no waitlist: leave us your email and we'll send you the link to create your account right away, with 14 days free and no card needed. Our first 50 members get the founding price.",

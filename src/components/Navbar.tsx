@@ -4,10 +4,8 @@ import type { MouseEvent } from "react";
 import { trackEvent } from "../lib/analytics";
 import { useLanguage } from "../i18n/LanguageContext";
 import type { Language } from "../i18n/types";
-
-// Acceso para quien ya tiene cuenta: el login de la app, en el idioma en que se ve la landing
-// (LoginPage lee ?lang). Si ya tenía la sesión abierta, la app le lleva directa a Inicio.
-const loginUrl = (lang: Language) => `https://app.padelfilmroom.com/login?lang=${lang}`;
+import { isOpenSignup } from "../i18n/openSignup";
+import { loginUrl } from "../lib/appLinks";
 
 const langOptions: { code: Language; display: string; ariaLabel: string }[] = [
   { code: "es", display: "ES", ariaLabel: "Español" },
@@ -62,7 +60,17 @@ export function Navbar() {
     { href: homeHref("#quienes-somos"), label: t.nav.whoWeAre },
     { href: homeHref("#club"), label: t.nav.club },
     { href: homeHref("#faq"), label: t.nav.faq },
+    { href: "/precios", label: t.nav.pricing },
   ];
+  // Hasta el fin del alta abierta, el botón principal baja al formulario de email; después,
+  // «Crear cuenta» lleva a /precios: se elige el plan y de ahí se crea la cuenta y se va a Stripe
+  // (en la app, crear la cuenta sin plan todavía pide código de invitación).
+  const openSignup = isOpenSignup();
+  const ctaHref = openSignup ? homeHref("#waitlist-final") : "/precios";
+  const ctaClick = (event: MouseEvent<HTMLAnchorElement>, location: string) => {
+    trackEvent(openSignup ? "cta_navbar_click" : "register_click", { location });
+    if (openSignup) handleSectionClick(event, ctaHref);
+  };
 
   useEffect(() => {
     if (!isMenuOpen) {
@@ -211,18 +219,15 @@ export function Navbar() {
                     </ul>
 
                     <motion.a
-                      href={homeHref("#waitlist-final")}
-                      onClick={(event) => {
-                        trackEvent("cta_navbar_click", { location: "navbar" });
-                        handleSectionClick(event, homeHref("#waitlist-final"));
-                      }}
+                      href={ctaHref}
+                      onClick={(event) => ctaClick(event, "navbar_menu")}
                       initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 8 }}
                       transition={{ duration: shouldReduceMotion ? 0.1 : 0.24, ease: "easeOut", delay: shouldReduceMotion ? 0 : 0.14 }}
                       className="focus-ring mt-4 flex w-full items-center justify-center rounded-2xl bg-accent-cyan px-5 py-4 text-center font-mono text-sm font-semibold uppercase tracking-[0.12em] text-bg shadow-glow transition hover:brightness-105"
                     >
-                      {t.nav.joinWaitlistMobile}
+                      {openSignup ? t.nav.joinWaitlistMobile : t.nav.createAccount.toUpperCase()}
                     </motion.a>
                     <motion.a
                       href={loginUrl(lang)}
@@ -279,14 +284,11 @@ export function Navbar() {
               {t.nav.login}
             </a>
             <a
-              href={homeHref("#waitlist-final")}
-              onClick={(event) => {
-                trackEvent("cta_navbar_click", { location: "navbar" });
-                handleSectionClick(event, homeHref("#waitlist-final"));
-              }}
+              href={ctaHref}
+              onClick={(event) => ctaClick(event, "navbar")}
               className="focus-ring whitespace-nowrap rounded-full border border-accent-cyan/40 bg-accent-cyan px-4 py-2 text-sm font-semibold text-bg shadow-glow transition hover:brightness-105"
             >
-              {t.nav.joinWaitlist}
+              {openSignup ? t.nav.joinWaitlist : t.nav.createAccount}
             </a>
           </div>
         </nav>

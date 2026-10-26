@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { WaitlistForm } from "./WaitlistForm";
+import { isOpenSignup } from "../i18n/openSignup";
 import { trackEvent } from "../lib/analytics";
 import type { MouseEvent } from "react";
 import { useLanguage } from "../i18n/LanguageContext";
@@ -82,7 +83,17 @@ export function HeroSection() {
         </motion.ul>
 
         <motion.div className="mx-auto mt-8 max-w-2xl" variants={reduceMotion ? undefined : itemVariant}>
-          <WaitlistForm compact source="hero" />
+          {isOpenSignup() ? (
+            <WaitlistForm compact source="hero" />
+          ) : (
+            <a
+              href="/precios"
+              onClick={() => trackEvent("cta_trial_click", { location: "hero" })}
+              className="focus-ring inline-flex items-center justify-center rounded-full bg-accent-cyan px-7 py-3.5 text-center font-semibold text-bg shadow-glow transition hover:brightness-105"
+            >
+              {t.hero.trialCta}
+            </a>
+          )}
         </motion.div>
 
         <motion.p className="mt-5 text-sm text-muted" variants={reduceMotion ? undefined : itemVariant}>

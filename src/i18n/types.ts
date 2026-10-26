@@ -11,6 +11,8 @@ export type Translations = {
     login: string;
     loginShort: string;
     loginMenu: string;
+    /** Botón para crear la cuenta en la app (sin plan: elige el plan después, en /suscripcion). */
+    createAccount: string;
     skipToContent: string;
     openMenu: string;
     closeMenu: string;
@@ -34,6 +36,8 @@ export type Translations = {
     bullets: string[];
     seeExample: string;
     mockupAlt: string;
+    /** Botón que sustituye al formulario de email tras la beta: lleva a /precios. También en la sección final. */
+    trialCta: string;
   };
   problemInsight: {
     eyebrow: string;
@@ -104,6 +108,8 @@ export type Translations = {
     availabilityOpen: string;
     availabilityLimited: string;
     planNames: { starter: string; club: string; coach: string };
+    /** Frase bajo el nombre de cada plan. */
+    taglines: { starter: string; club: string; coach: string };
     /** 7 filas, mismo orden que FEATURE_TIERS en Precios.tsx (qué planes incluyen cada una). */
     featureRows: string[];
     ctaBandTitle: string;
@@ -121,6 +127,12 @@ export type Translations = {
     founder: string;
     /** {count} = plazas de fundador libres. */
     founderLeft: string;
+    /** Coach: {count} plazas libres de {total}, mientras el fundador sigue abierto. */
+    coachLeftFounder: string;
+    /** Coach: lo mismo, con el fundador ya cerrado. */
+    coachLeft: string;
+    /** Para lectores de pantalla, junto al precio tachado. {price} = precio normal. */
+    regularPrice: string;
   };
   finalCta: {
     eyebrow: string;

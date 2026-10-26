@@ -8,6 +8,8 @@ export type PriceOption = {
   interval: BillingInterval;
   displayAmount: number;
   currency: string;
+  /** Si displayAmount es el de fundador: el precio normal, para enseñarlo tachado. */
+  regularAmount?: number | null;
 };
 
 export type PlanTier = "Starter" | "Club" | "Coach";
@@ -25,6 +27,9 @@ export type BillingPlans = {
   isFounder?: boolean;
   founderSlotsLeft?: number;
   coachFull?: boolean;
+  /** Plazas de Coach libres y en total (5). Un backend antiguo no las manda. */
+  coachSlotsLeft?: number;
+  coachMaxMembers?: number;
 };
 
 export const getBillingPlans = async (): Promise<BillingPlans> => {

@@ -4,6 +4,7 @@ import { SectionTitle } from "./SectionTitle";
 import { fadeUp, staggerContainer } from "./Motion";
 import { trackEvent } from "../lib/analytics";
 import { useLanguage } from "../i18n/LanguageContext";
+import { isOpenSignup } from "../i18n/openSignup";
 
 /**
  * PFR Club: qué añade el plan Club (masterclass mensual, plan del mes y archivo) y una mención a
@@ -16,8 +17,9 @@ export function ClubSection() {
   const { t } = useLanguage();
 
   const handleCtaClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
     trackEvent("cta_club_click", { location: "club" });
+    if (!isOpenSignup()) return; // tras la beta, el enlace lleva a /precios
+    event.preventDefault();
     document.querySelector<HTMLElement>("#waitlist-final")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
@@ -59,7 +61,7 @@ export function ClubSection() {
           >
             <p className="max-w-2xl text-sm leading-relaxed text-muted sm:text-base">{t.club.coachNote}</p>
             <a
-              href="#waitlist-final"
+              href={isOpenSignup() ? "#waitlist-final" : "/precios"}
               onClick={handleCtaClick}
               className="focus-ring shrink-0 rounded-full border border-accent-cyan/40 bg-accent-cyan px-5 py-2.5 text-center text-sm font-semibold text-bg shadow-glow transition hover:brightness-105"
             >

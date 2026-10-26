@@ -1,6 +1,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { WaitlistForm } from "./WaitlistForm";
 import { useLanguage } from "../i18n/LanguageContext";
+import { isOpenSignup } from "../i18n/openSignup";
+import { trackEvent } from "../lib/analytics";
 
 export function FinalCtaSection() {
   const reduceMotion = useReducedMotion();
@@ -24,7 +26,17 @@ export function FinalCtaSection() {
           {t.finalCta.subtitle}
         </p>
         <div className="mt-8">
-          <WaitlistForm source="final_cta" />
+          {isOpenSignup() ? (
+            <WaitlistForm source="final_cta" />
+          ) : (
+            <a
+              href="/precios"
+              onClick={() => trackEvent("cta_trial_click", { location: "final_cta" })}
+              className="focus-ring inline-flex w-full items-center justify-center rounded-full bg-accent-cyan px-7 py-3.5 text-center font-semibold text-bg shadow-glow transition hover:brightness-105 sm:w-auto"
+            >
+              {t.hero.trialCta}
+            </a>
+          )}
         </div>
       </div>
     </motion.section>

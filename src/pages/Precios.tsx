@@ -5,6 +5,7 @@ import { fadeUp, staggerContainer } from "../components/Motion";
 import { useLanguage } from "../i18n/LanguageContext";
 import { trackEvent } from "../lib/analytics";
 import { getBillingPlans, type BillingPlans, type PlanTier } from "../../services/billingService";
+import { registerUrl } from "../lib/appLinks";
 
 /**
  * Precios — comparativa de los 3 planes (§Stripe 3 planes), igual que la pantalla de Precios de
@@ -15,12 +16,14 @@ import { getBillingPlans, type BillingPlans, type PlanTier } from "../../service
  * las plazas de fundador que quedan y si Coach está completo. Nada de precios fijos aquí: si
  * cambian en Stripe o se acaban las plazas, la landing lo enseña sola.
  *
+ * Con precio fundador, al lado va tachado el precio normal (los dos salen de Stripe). Coach lleva
+ * su propio contador: como mucho 5 personas, sea o no precio fundador.
+ *
  * Cada plan lleva a crear la cuenta en la app con ese plan (/register?plan=…), que después abre
  * Stripe Checkout: Essential y Club con 7 días de prueba (tarjeta, sin cobro hasta el día 7),
  * Coach pagando al momento.
  */
 
-const APP_REGISTER_URL = "https://app.padelfilmroom.com/register";
 
 const TIER_BY_KEY: Record<"starter" | "club" | "coach", PlanTier> = { starter: "Starter", club: "Club", coach: "Coach" };
 
@@ -80,10 +83,19 @@ export function Precios() {
       : t.pricing.founder
     : null;
 
-  const plans: { key: "starter" | "club" | "coach"; name: string; accent: boolean; availability: string }[] = [
-    { key: "starter", name: t.pricing.planNames.starter, accent: false, availability: t.pricing.availabilityOpen },
-    { key: "club", name: t.pricing.planNames.club, accent: true, availability: t.pricing.availabilityOpen },
-    { key: "coach", name: t.pricing.planNames.coach, accent: false, availability: t.pricing.availabilityLimited },
+  // Coach: sus propias plazas (5), no las 50 de fundador. Sin el dato (backend antiguo), solo
+  // «Precio fundador» si toca, para no enseñar un número que no es el suyo.
+  const coachText = (() => {
+    if (!backend) return null;
+    if (backend.coachSlotsLeft == null || !backend.coachMaxMembers) return backend.isFounder ? t.pricing.founder : null;
+    const text = backend.isFounder ? t.pricing.coachLeftFounder : t.pricing.coachLeft;
+    return text.replace("{count}", String(backend.coachSlotsLeft)).replace("{total}", String(backend.coachMaxMembers));
+  })();
+
+  const plans: { key: "starter" | "club" | "coach"; name: string; tagline: string; accent: boolean }[] = [
+    { key: "starter", name: t.pricing.planNames.starter, tagline: t.pricing.taglines.starter, accent: false },
+    { key: "club", name: t.pricing.planNames.club, tagline: t.pricing.taglines.club, accent: true },
+    { key: "coach", name: t.pricing.planNames.coach, tagline: t.pricing.taglines.coach, accent: false },
   ];
 
   return (
@@ -129,19 +141,27 @@ export function Precios() {
               )}
 
               <h3 className="font-display text-lg text-text">{plan.name}</h3>
-              <p className="mt-2 font-display text-4xl leading-none text-text">
-                {(() => {
-                  const price = monthlyPrice(plan.key);
-                  if (price) return currencyFormat(price.displayAmount, price.currency);
-                  return loadFailed ? "—" : "…";
-                })()}
-                <span className="ml-1 align-middle text-sm font-normal text-muted">{t.pricing.monthlySuffix}</span>
-              </p>
-              {founderText && <p className="mt-2 text-xs font-semibold text-accent-lime">{founderText}</p>}
-              <p className="mt-2 text-xs text-muted">
-                {t.pricing.availabilityLabel}{" "}
-                {plan.key === "coach" && backend?.coachFull ? t.pricing.full : plan.availability}
-              </p>
+              <p className="mt-1 text-sm text-muted">{plan.tagline}</p>
+              {(() => {
+                const price = monthlyPrice(plan.key);
+                const regular = price?.regularAmount && price.regularAmount > price.displayAmount ? price.regularAmount : null;
+                return (
+                  <p className="mt-4 flex flex-wrap items-baseline gap-x-2 font-display text-4xl leading-none text-text">
+                    {regular != null && price && (
+                      <del className="text-2xl text-muted decoration-2" aria-label={t.pricing.regularPrice.replace("{price}", currencyFormat(regular, price.currency))}>
+                        {currencyFormat(regular, price.currency)}
+                      </del>
+                    )}
+                    <span>
+                      {price ? currencyFormat(price.displayAmount, price.currency) : loadFailed ? "—" : "…"}
+                      <span className="ml-1 align-middle text-sm font-normal text-muted">{t.pricing.monthlySuffix}</span>
+                    </span>
+                  </p>
+                );
+              })()}
+              {(plan.key === "coach" ? coachText : founderText) && (
+                <p className="mt-2 text-xs font-semibold text-accent-lime">{plan.key === "coach" ? coachText : founderText}</p>
+              )}
 
               <ul className="mt-5 flex-1 space-y-2.5 text-sm">
                 {t.pricing.featureRows.map((label, i) => {
@@ -163,7 +183,7 @@ export function Precios() {
                 </span>
               ) : (
                 <a
-                  href={`${APP_REGISTER_URL}?plan=${plan.key === "starter" ? "Essential" : TIER_BY_KEY[plan.key]}&lang=${lang}`}
+                  href={registerUrl(lang, plan.key === "starter" ? "Essential" : plan.key === "club" ? "Club" : "Coach")}
                   onClick={() => trackEvent("pricing_plan_click", { plan: plan.key })}
                   className={`focus-ring mt-6 flex w-full items-center justify-center rounded-full py-3 text-sm font-semibold transition hover:brightness-105 ${
                     plan.accent ? "bg-accent-cyan text-bg shadow-glow" : "border border-border bg-surface-2 text-text hover:border-accent-cyan/60"

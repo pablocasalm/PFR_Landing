@@ -12,7 +12,10 @@ import type { Language } from "./types";
  */
 export const OPEN_SIGNUP_UNTIL = new Date("2026-10-26T22:59:59Z"); // lunes 26/10, 23:59 en Madrid (CET)
 
-export const isOpenSignup = (now: Date = new Date()) => now < OPEN_SIGNUP_UNTIL;
+// Solo en local (npm run dev): «?preview=tras-beta» enseña ya la web de después del alta abierta.
+const previewAfterBeta = import.meta.env.DEV && new URLSearchParams(window.location.search).get("preview") === "tras-beta";
+
+export const isOpenSignup = (now: Date = new Date()) => !previewAfterBeta && now < OPEN_SIGNUP_UNTIL;
 
 export const OPEN_SIGNUP_TEXTS: Record<Language, Record<string, string>> = {
   es: {

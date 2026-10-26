@@ -17,7 +17,7 @@
  */
 
 // ID del píxel (Business Manager de Meta → Orígenes de datos). No es secreto. Vacío = apagado.
-const META_PIXEL_ID = "";
+const META_PIXEL_ID = "1708545336911346";
 
 const EVENT_MAP: Record<string, string> = {
   waitlist_submit_success: "Lead",

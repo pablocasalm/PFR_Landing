@@ -1,7 +1,7 @@
 import type { Language } from "./types";
 
 /**
- * Alta abierta (decidido el 24/10/2026): hasta el lunes 26/10 a las 23:59 (Madrid), quien deja su
+ * Alta abierta (decidido el 24/10/2026; se cerró el lunes 26/10 por la tarde): hasta entonces, quien deja su
  * email no entra en la lista de espera, sino que recibe al momento la invitación para crear su
  * cuenta con 14 días gratis (lo hace el backend, POST /api/invite-requests). Mientras dure, estos
  * textos pisan a los de siempre, también a los de la base de datos; pasada la fecha, la landing
@@ -10,13 +10,9 @@ import type { Language } from "./types";
  *
  * Mismas claves que remote.ts ("landing." + ruta dentro de `Translations`).
  */
-export const OPEN_SIGNUP_UNTIL = new Date("2026-10-26T22:59:59Z"); // lunes 26/10, 23:59 en Madrid (CET)
+export const OPEN_SIGNUP_UNTIL = new Date("2026-10-26T16:45:00Z"); // cerrada el lunes 26/10 a las 17:45 (Madrid), antes de lo previsto
 
-// «?preview=tras-beta» enseña ya la web de después del alta abierta (para revisarla antes de las
-// 23:59 del 26/10; pasada esa hora no cambia nada). Quitar después del 26/10.
-const previewAfterBeta = new URLSearchParams(window.location.search).get("preview") === "tras-beta";
-
-export const isOpenSignup = (now: Date = new Date()) => !previewAfterBeta && now < OPEN_SIGNUP_UNTIL;
+export const isOpenSignup = (now: Date = new Date()) => now < OPEN_SIGNUP_UNTIL;
 
 export const OPEN_SIGNUP_TEXTS: Record<Language, Record<string, string>> = {
   es: {

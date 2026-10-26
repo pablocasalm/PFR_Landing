@@ -108,7 +108,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/80 bg-bg/95 backdrop-blur-xl">
       <div className="w-full px-4 py-3 sm:px-6">
-        <nav className="xl:hidden" aria-label={t.nav.mainNavMobile}>
+        <nav className="min-[1100px]:hidden" aria-label={t.nav.mainNavMobile}>
           <div className="flex items-center justify-between">
             <a
               href="/"
@@ -247,7 +247,10 @@ export function Navbar() {
           </AnimatePresence>
         </nav>
 
-        <nav className="hidden grid-cols-[1fr_auto_1fr] items-center gap-3 xl:grid" aria-label={t.nav.mainNav}>
+        {/* Escritorio desde 1100 px (portátiles pequeños incluidos). Hasta 1440 px va más compacto
+            (logo más pequeño, enlaces más juntos, «Entrar» en vez de «Iniciar sesión») para que no
+            se toquen; el espacio que sobra se reparte a los dos lados de los enlaces. */}
+        <nav className="hidden items-center justify-between gap-6 min-[1100px]:flex" aria-label={t.nav.mainNav}>
           <a
             href="/"
             onClick={(event) => {
@@ -255,18 +258,18 @@ export function Navbar() {
               event.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="focus-ring justify-self-start rounded-lg px-2 py-1 font-display text-xl uppercase tracking-[0.06em] text-text"
+            className="focus-ring shrink-0 whitespace-nowrap rounded-lg px-2 py-1 font-display text-base uppercase tracking-[0.06em] text-text min-[1440px]:text-xl"
           >
             Padel Film Room
           </a>
 
-          <ul className="flex items-center justify-center gap-5 font-mono text-xs uppercase tracking-[0.14em] text-muted">
+          <ul className="flex items-center justify-center gap-1 font-mono text-[11px] uppercase tracking-[0.08em] text-muted min-[1440px]:gap-5 min-[1440px]:text-xs min-[1440px]:tracking-[0.14em]">
             {links.map((link) => (
               <li key={link.href} className="shrink-0">
                 <a
                   href={link.href}
                   onClick={(event) => handleSectionClick(event, link.href)}
-                  className="focus-ring rounded-md border border-transparent px-2 py-1 transition hover:border-border hover:text-text"
+                  className="focus-ring whitespace-nowrap rounded-md border border-transparent px-2 py-1 transition hover:border-border hover:text-text"
                 >
                   {link.label}
                 </a>
@@ -274,19 +277,20 @@ export function Navbar() {
             ))}
           </ul>
 
-          <div className="flex items-center justify-self-end gap-3">
+          <div className="flex items-center shrink-0 gap-2 min-[1440px]:gap-3">
             <LangSwitcher />
             <a
               href={loginUrl(lang)}
               onClick={() => trackEvent("login_click", { location: "navbar" })}
-              className="focus-ring whitespace-nowrap rounded-full border border-border px-4 py-2 text-sm font-semibold text-text transition hover:border-accent-cyan/60"
+              className="focus-ring whitespace-nowrap rounded-full border border-border px-3 py-2 text-sm font-semibold text-text transition hover:border-accent-cyan/60 min-[1440px]:px-4"
             >
-              {t.nav.login}
+              <span className="min-[1440px]:hidden">{t.nav.loginShort}</span>
+              <span className="hidden min-[1440px]:inline">{t.nav.login}</span>
             </a>
             <a
               href={ctaHref}
               onClick={(event) => ctaClick(event, "navbar")}
-              className="focus-ring whitespace-nowrap rounded-full border border-accent-cyan/40 bg-accent-cyan px-4 py-2 text-sm font-semibold text-bg shadow-glow transition hover:brightness-105"
+              className="focus-ring whitespace-nowrap rounded-full border border-accent-cyan/40 bg-accent-cyan px-3 py-2 min-[1440px]:px-4 text-sm font-semibold text-bg shadow-glow transition hover:brightness-105"
             >
               {openSignup ? t.nav.joinWaitlist : t.nav.createAccount}
             </a>

@@ -11,8 +11,10 @@ import "@fontsource/space-mono/400.css";
 import "@fontsource/space-mono/700.css";
 import "./index.css";
 import { keepAttributionOnInternalLinks } from "./lib/attribution";
+import { setupMetaPixel } from "./lib/metaPixel";
 
 keepAttributionOnInternalLinks();
+setupMetaPixel();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

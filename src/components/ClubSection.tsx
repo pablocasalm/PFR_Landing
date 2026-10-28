@@ -5,6 +5,7 @@ import { fadeUp, staggerContainer } from "./Motion";
 import { trackEvent } from "../lib/analytics";
 import { useLanguage } from "../i18n/LanguageContext";
 import { isOpenSignup } from "../i18n/openSignup";
+import { TestimonialQuote } from "./TestimonialQuote";
 
 /**
  * PFR Club: qué añade el plan Club (masterclass mensual, plan del mes y archivo) y una mención a
@@ -54,6 +55,11 @@ export function ClubSection() {
               </motion.li>
             ))}
           </ul>
+
+          {/* Lo que dice una beta tester de la masterclass (aprobado por ella). */}
+          <motion.div variants={reduceMotion ? undefined : fadeUp(32)} className="px-6 pb-6 sm:px-8 sm:pb-8">
+            <TestimonialQuote item={t.club.quote} />
+          </motion.div>
 
           <motion.article
             variants={reduceMotion ? undefined : fadeUp(40)}

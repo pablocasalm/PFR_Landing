@@ -25,7 +25,15 @@ export const en: Translations = {
   },
   meta: {
     title: "Padel Film Room | Learn to read padel",
-    description: "Learn to read the point and make better choices in your matches with real pro padel situations, explained by a former World Padel Tour player.",
+    description: "Learn to read the point through real pro match situations, explained by a former World Padel Tour player. 7 days free.",
+    pricingTitle: "Pricing: Essential, Club and Coach | Padel Film Room",
+    pricingDescription: "Monthly plans, no commitment. Founding price for our first 50 members and 7 days free on Essential and Club.",
+    notFoundTitle: "Page not found | Padel Film Room",
+  },
+  notFound: {
+    title: "This page doesn't exist.",
+    text: "The link may be mistyped, or the page may no longer be here.",
+    backHome: "Back to home",
   },
   hero: {
     line1: "Stop copying shots.",
@@ -36,6 +44,8 @@ export const en: Translations = {
     seeExample: "See how it works",
     mockupAlt: "Padel Film Room on mobile: a clip, the Explore section, and your learning summary",
     trialCta: "Start your 7-day free trial",
+    trialNote: "€0 today. First charge after 7 days. Cancel anytime.",
+    catalogStrip: "A library of 150+ tactical clips · New content every week",
   },
   problemInsight: {
     eyebrow: "The problem",
@@ -151,6 +161,8 @@ export const en: Translations = {
       "Guille is the one who breaks down the analyses. And he still coaches amateur players every week: he knows what happens in a pro match and what happens in yours.",
       "That's how Padel Film Room was born: a way to organize and explain what happens in matches so any player can take it into their own.",
     ],
+    instagram: "Follow us on Instagram",
+    instagramGuille: "Guille on Instagram",
   },
   club: {
     eyebrow: "PFR Club",
@@ -163,6 +175,12 @@ export const en: Translations = {
     ],
     coachNote: "Want to go further? With PFR Coach, we also analyze one of your matches every month. Only 5 spots.",
     cta: "Start your 7-day free trial",
+    quote: { text: "Guille really knows padel, and it shows. And the masterclasses with Andrea are relaxed: I've even laughed while learning.", name: "Marta", detail: "Playtomic level 2.74" },
+  },
+  testimonials: {
+    eyebrow: "Testimonials",
+    // Se enseñan cuando haya 3 (ahora 1: Marta, aprobado el 26/10).
+    items: [{ text: "I focused on defense, which is what I struggle with most. Watching videos on the same thing over and over can get tiring, but it works: now I hear Guille in my head during my matches and I'm applying it little by little.", name: "Marta", detail: "Playtomic level 2.74" }],
   },
   content: {
     eyebrow: "Content",
@@ -221,7 +239,7 @@ export const en: Translations = {
       },
       {
         q: "How much does it cost?",
-        a: "There are three monthly plans, with no commitment: Essential, Club and Coach. Essential and Club start with 7 days free. Our first 50 members get the founding price and keep it as long as they stay subscribed. See the price for your region on Pricing.",
+        a: "There are three monthly plans, with no commitment: Essential, Club and Coach. Essential and Club start with 7 days free. Our first 50 members get the founding price and keep it as long as they stay subscribed. See the price for your region on Pricing. Club costs less per month than a single padel lesson.",
       },
     ],
   },
@@ -239,7 +257,7 @@ export const en: Translations = {
     taglines: {
       starter: "Learn to read the game at your own pace.",
       club: "Every month you know what to work on and why.",
-      coach: "Your match, analysed by a former pro player.",
+      coach: "Your match, analyzed by a former pro player.",
     },
     featureRows: [
       "Every clip and analysis, including new ones",
@@ -248,7 +266,7 @@ export const en: Translations = {
       "Send your questions for the masterclass",
       "The plan of the month: which concepts and clips to work on",
       "Archive with every past masterclass",
-      "Every month, Guille analyses one of your matches (video up to 20 min)",
+      "Every month, Guille analyzes one of your matches (video up to 20 min)",
     ],
     ctaBandTitle: "Start understanding padel differently.",
     ctaBandButton: "Start your 7-day free trial",
@@ -262,11 +280,13 @@ export const en: Translations = {
     coachLeftFounder: "Founding price · {count} of {total} spots left",
     coachLeft: "{count} of {total} spots left",
     regularPrice: "Regular price: {price}",
+    securePayment: "Secure payment with Stripe.",
   },
   finalCta: {
     eyebrow: "Founding price",
     heading: "Get in first.",
     subtitle: "Our first 50 members get the founding price and keep it as long as they stay subscribed. Start with 7 days free on Essential or Club and cancel anytime.",
+    spotsLeft: "{count} founding spots left",
   },
   form: {
     emailLabel: "Email",
@@ -314,5 +334,8 @@ export const en: Translations = {
     cookies: "Cookies",
     terms: "Terms and conditions",
     cookieSettings: "Cookie settings",
+    siteNav: "Site navigation",
+    home: "Home",
+    contact: "Contact",
   },
 };

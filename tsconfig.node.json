@@ -5,12 +5,17 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
-    "outDir": "node_modules/.tmp/tsconfig-node"
+    "outDir": "node_modules/.tmp/tsconfig-node",
+    "target": "ES2022",
+    "lib": [
+      "ES2023"
+    ]
   },
   "include": [
     "vite.config.ts",
     "tailwind.config.ts",
     "src/i18n/es.ts",
-    "src/i18n/types.ts"
+    "src/i18n/types.ts",
+    "node-shims.d.ts"
   ]
 }

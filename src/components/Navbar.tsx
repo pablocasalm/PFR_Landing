@@ -6,6 +6,7 @@ import { useLanguage } from "../i18n/LanguageContext";
 import type { Language } from "../i18n/types";
 import { isOpenSignup } from "../i18n/openSignup";
 import { loginUrl } from "../lib/appLinks";
+import { currentRoute } from "../lib/route";
 
 const langOptions: { code: Language; display: string; ariaLabel: string }[] = [
   { code: "es", display: "ES", ariaLabel: "Español" },
@@ -51,7 +52,7 @@ export function Navbar() {
   const shouldReduceMotion = useReducedMotion();
 
   // Fuera de la portada (/precios, /confirmar) los enlaces a secciones tienen que volver a ella.
-  const isSubPage = window.location.pathname.replace(/\/$/, "") !== "";
+  const isSubPage = currentRoute() !== "home";
   const homeHref = (hash: string) => (isSubPage ? `/${hash}` : hash);
 
   const links = [
@@ -169,7 +170,7 @@ export function Navbar() {
                   type="button"
                   aria-label={t.nav.closeMenu}
                   onClick={() => setIsMenuOpen(false)}
-                  className="absolute inset-0 bg-black/85 backdrop-blur-[48px]"
+                  className="absolute inset-0 bg-bg"
                 />
                 <motion.div
                   initial={shouldReduceMotion ? { opacity: 1 } : { y: -10, opacity: 0.96 }}
@@ -178,7 +179,8 @@ export function Navbar() {
                   transition={{ duration: shouldReduceMotion ? 0.1 : 0.26, ease: "easeOut" }}
                   className="relative flex h-screen w-screen items-start justify-center"
                 >
-                  <div className="h-screen w-screen bg-[rgba(5,7,12,0.95)] p-4">
+                  {/* Fondo opaco: antes era semitransparente y detrás se leía el texto de la página. */}
+                  <div className="h-screen w-screen bg-bg p-4">
                     <div className="mb-3 flex items-center justify-between">
                       <span className="font-display text-sm uppercase tracking-[0.05em] text-text">{t.nav.menu}</span>
                       <button

@@ -7,19 +7,20 @@ import { LearnInsideSection } from "./components/LearnInsideSection";
 import { ExampleSection } from "./components/ExampleSection";
 import { LanguageSection } from "./components/LanguageSection";
 import { TeamSection } from "./components/TeamSection";
+import { TestimonialsSection } from "./components/TestimonialsSection";
 import { ClubSection } from "./components/ClubSection";
 import { FaqSection } from "./components/FaqSection";
 import { FinalCtaSection } from "./components/FinalCtaSection";
 import { Footer } from "./components/Footer";
 import { Precios } from "./pages/Precios";
 import { Confirmar } from "./pages/Confirmar";
+import { NotFound } from "./pages/NotFound";
+import { currentRoute } from "./lib/route";
 import { LanguageProvider, useLanguage } from "./i18n/LanguageContext";
 
 function AppContent() {
   const { t } = useLanguage();
-  const path = window.location.pathname.replace(/\/$/, "");
-  const isPricingPage = path === "/precios";
-  const isConfirmPage = path === "/confirmar";
+  const route = currentRoute();
 
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
@@ -38,10 +39,12 @@ function AppContent() {
       </a>
       <Navbar />
       <main id="main-content">
-        {isConfirmPage ? (
+        {route === "confirm" ? (
           <Confirmar />
-        ) : isPricingPage ? (
+        ) : route === "pricing" ? (
           <Precios />
+        ) : route === "notFound" ? (
+          <NotFound />
         ) : (
           <>
             <HeroSection />
@@ -50,6 +53,7 @@ function AppContent() {
             <LanguageSection />
             <LearnInsideSection />
             <ExampleSection />
+            <TestimonialsSection />
             <TeamSection />
             <ClubSection />
             <FaqSection />

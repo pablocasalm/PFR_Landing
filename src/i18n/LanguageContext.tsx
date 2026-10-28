@@ -4,6 +4,7 @@ import { es } from "./es";
 import { en } from "./en";
 import { applyRemote, fetchRemoteTexts, readCachedTexts } from "./remote";
 import { isOpenSignup, OPEN_SIGNUP_TEXTS } from "./openSignup";
+import { currentRoute } from "../lib/route";
 
 const translations: Record<Language, Translations> = { es, en };
 
@@ -56,13 +57,19 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   // Idioma del documento, título de la pestaña y descripción: siguen al idioma elegido (también
   // al cargar, si el visitante ya tenía guardado el inglés). index.html trae los de español.
   useEffect(() => {
-    const { title, description } = t.meta;
+    // Título y descripción de la página en la que está (cada una tiene los suyos, también en el
+    // HTML que se publica: ver vite.config.ts).
+    const route = currentRoute();
+    const title = route === "pricing" ? t.meta.pricingTitle : route === "notFound" ? t.meta.notFoundTitle : t.meta.title;
+    const description = route === "pricing" ? t.meta.pricingDescription : t.meta.description;
     document.documentElement.lang = lang;
     document.title = title;
     const setMeta = (selector: string, value: string) => document.querySelector(selector)?.setAttribute("content", value);
     setMeta('meta[name="description"]', description);
     setMeta('meta[property="og:title"]', title);
     setMeta('meta[property="og:description"]', description);
+    setMeta('meta[name="twitter:title"]', title);
+    setMeta('meta[name="twitter:description"]', description);
     setMeta('meta[property="og:locale"]', lang === "en" ? "en_US" : "es_ES");
   }, [lang, t]);
 

@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { fadeUp } from "./Motion";
 import { useLanguage } from "../i18n/LanguageContext";
+import { INSTAGRAM_GUILLE, INSTAGRAM_PFR } from "../lib/social";
 
 export function TeamSection() {
   const reduceMotion = useReducedMotion();
@@ -35,6 +36,14 @@ export function TeamSection() {
               {t.team.paragraphs.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
+            </div>
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold">
+              <a href={INSTAGRAM_PFR} target="_blank" rel="noopener noreferrer" className="focus-ring inline-flex min-h-11 items-center text-accent-cyan underline-offset-4 hover:underline">
+                {t.team.instagram}
+              </a>
+              <a href={INSTAGRAM_GUILLE} target="_blank" rel="noopener noreferrer" className="focus-ring inline-flex min-h-11 items-center text-accent-cyan underline-offset-4 hover:underline">
+                {t.team.instagramGuille}
+              </a>
             </div>
           </div>
         </motion.article>

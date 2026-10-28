@@ -25,7 +25,15 @@ export const es: Translations = {
   },
   meta: {
     title: "Padel Film Room | Aprende a leer el pádel",
-    description: "Aprende a leer el punto y a elegir mejor en tus partidos con situaciones reales de pádel profesional, explicadas por un exjugador del World Padel Tour.",
+    description: "Aprende a leer el punto con situaciones reales de partidos profesionales, explicadas por un exjugador del World Padel Tour. 7 días gratis.",
+    pricingTitle: "Precios: Essential, Club y Coach | Padel Film Room",
+    pricingDescription: "Planes mensuales sin permanencia. Precio fundador para los primeros 50 miembros y 7 días gratis en Essential y Club.",
+    notFoundTitle: "Página no encontrada | Padel Film Room",
+  },
+  notFound: {
+    title: "Esta página no existe.",
+    text: "Puede que el enlace esté mal escrito o que la página ya no esté.",
+    backHome: "Volver al inicio",
   },
   hero: {
     line1: "Deja de copiar golpes.",
@@ -36,6 +44,8 @@ export const es: Translations = {
     seeExample: "Ver cómo funciona",
     mockupAlt: "Padel Film Room en el móvil: un clip, la sección Explorar y tu resumen de aprendizaje",
     trialCta: "Empieza tu prueba gratis de 7 días",
+    trialNote: "Hoy 0 €. El primer cobro, a los 7 días. Cancela cuando quieras.",
+    catalogStrip: "Biblioteca de 150+ clips tácticos · Contenido nuevo cada semana",
   },
   problemInsight: {
     eyebrow: "El problema",
@@ -151,6 +161,8 @@ export const es: Translations = {
       "Guille es quien explica los análisis. Y sigue entrenando a jugadores amateurs cada semana: sabe lo que pasa en un partido profesional y lo que pasa en el tuyo.",
       "De ahí nace Padel Film Room: una forma de ordenar y explicar lo que pasa en los partidos para que cualquier jugador pueda llevarlo al suyo.",
     ],
+    instagram: "Síguenos en Instagram",
+    instagramGuille: "Guille en Instagram",
   },
   club: {
     eyebrow: "PFR Club",
@@ -163,6 +175,12 @@ export const es: Translations = {
     ],
     coachNote: "¿Quieres ir más lejos? Con PFR Coach, cada mes analizamos también un partido tuyo. Solo 5 plazas.",
     cta: "Empieza tu prueba gratis de 7 días",
+    quote: { text: "Guille sabe mucho de pádel y se nota. Y las masterclasses con Andrea son distendidas: hasta me he reído mientras aprendía.", name: "Marta", detail: "Nivel 2,74 en Playtomic" },
+  },
+  testimonials: {
+    eyebrow: "Testimonios",
+    // Se enseñan cuando haya 3 (ahora 1: Marta, aprobado el 26/10).
+    items: [{ text: "Me centré en la defensa, que es lo que más me cuesta. A veces repetir vídeos sobre lo mismo cansa, pero funciona: ahora en mis partidos escucho a Guille en mi cabeza y lo voy aplicando poco a poco.", name: "Marta", detail: "Nivel 2,74 en Playtomic" }],
   },
   content: {
     eyebrow: "Contenido",
@@ -221,7 +239,7 @@ export const es: Translations = {
       },
       {
         q: "¿Cuánto cuesta?",
-        a: "Hay tres planes mensuales, sin permanencia: Essential, Club y Coach. Essential y Club empiezan con 7 días gratis. Los primeros 50 miembros tienen precio fundador y lo mantienen mientras sigan suscritos. Mira el precio de tu zona en Precios.",
+        a: "Hay tres planes mensuales, sin permanencia: Essential, Club y Coach. Essential y Club empiezan con 7 días gratis. Los primeros 50 miembros tienen precio fundador y lo mantienen mientras sigan suscritos. Mira el precio de tu zona en Precios. Club cuesta al mes menos que una clase de pádel.",
       },
     ],
   },
@@ -262,11 +280,13 @@ export const es: Translations = {
     coachLeftFounder: "Precio fundador · quedan {count} de {total} plazas",
     coachLeft: "Quedan {count} de {total} plazas",
     regularPrice: "Precio normal: {price}",
+    securePayment: "Pago seguro con Stripe.",
   },
   finalCta: {
     eyebrow: "Precio fundador",
     heading: "Entra de los primeros.",
     subtitle: "Los primeros 50 miembros tienen precio fundador y lo mantienen mientras sigan suscritos. Empieza con 7 días gratis en Essential o Club y cancela cuando quieras.",
+    spotsLeft: "Quedan {count} plazas a precio fundador",
   },
   form: {
     emailLabel: "Email",
@@ -314,5 +334,8 @@ export const es: Translations = {
     cookies: "Cookies",
     terms: "Términos y condiciones",
     cookieSettings: "Configurar cookies",
+    siteNav: "Navegación del sitio",
+    home: "Inicio",
+    contact: "Contacto",
   },
 };

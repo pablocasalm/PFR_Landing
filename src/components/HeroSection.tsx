@@ -52,6 +52,21 @@ export function HeroSection() {
         animate={reduceMotion ? undefined : "visible"}
         variants={reduceMotion ? undefined : heroContainer}
       >
+        {/* Qué es PFR y cuánto hay, antes del titular (auditoría: la categoría no se veía arriba). */}
+        {/* En móvil, cada parte en su línea y sin píldora (en una sola no cabe); desde sm, en
+            una línea dentro de la píldora. */}
+        <motion.p
+          className="mx-auto mb-6 flex flex-col items-center gap-1 font-mono text-[11px] uppercase tracking-[0.14em] text-accent-cyan sm:inline-flex sm:flex-row sm:gap-2 sm:rounded-full sm:border sm:border-accent-cyan/30 sm:bg-accent-cyan/[0.06] sm:px-4 sm:py-1.5 sm:text-xs"
+          variants={reduceMotion ? undefined : itemVariant}
+        >
+          {t.hero.catalogStrip.split(" · ").map((part, i) => (
+            <span key={i} className="flex items-center gap-2">
+              {i > 0 && <span className="hidden sm:inline" aria-hidden>·</span>}
+              {part}
+            </span>
+          ))}
+        </motion.p>
+
         <motion.h1
           className="mx-auto max-w-4xl font-display text-5xl uppercase leading-[1.05] tracking-tight text-text sm:text-6xl md:text-7xl lg:text-8xl"
           variants={reduceMotion ? undefined : titleVariant}
@@ -86,13 +101,16 @@ export function HeroSection() {
           {isOpenSignup() ? (
             <WaitlistForm compact source="hero" />
           ) : (
-            <a
-              href="/precios"
-              onClick={() => trackEvent("cta_trial_click", { location: "hero" })}
-              className="focus-ring inline-flex items-center justify-center rounded-full bg-accent-cyan px-7 py-3.5 text-center font-semibold text-bg shadow-glow transition hover:brightness-105"
-            >
-              {t.hero.trialCta}
-            </a>
+            <>
+              <a
+                href="/precios"
+                onClick={() => trackEvent("cta_trial_click", { location: "hero" })}
+                className="focus-ring inline-flex items-center justify-center rounded-full bg-accent-cyan px-7 py-3.5 text-center font-semibold text-bg shadow-glow transition hover:brightness-105"
+              >
+                {t.hero.trialCta}
+              </a>
+              <p className="mt-3 text-sm text-muted">{t.hero.trialNote}</p>
+            </>
           )}
         </motion.div>
 

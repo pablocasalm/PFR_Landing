@@ -1,3 +1,6 @@
+/** Frase de un usuario, con su nombre y un dato (p. ej. su nivel en Playtomic). */
+export type Testimonial = { text: string; name: string; detail: string };
+
 export type Translations = {
   nav: {
     howYouLearn: string;
@@ -26,6 +29,17 @@ export type Translations = {
   meta: {
     title: string;
     description: string;
+    /** /precios: título y descripción propios (tarjeta «SEO técnico», punto 2). */
+    pricingTitle: string;
+    pricingDescription: string;
+    /** Página que no existe (404). */
+    notFoundTitle: string;
+  };
+  /** Página 404: cualquier dirección que no sea /, /precios o /confirmar. */
+  notFound: {
+    title: string;
+    text: string;
+    backHome: string;
   };
   hero: {
     line1: string;
@@ -38,6 +52,10 @@ export type Translations = {
     mockupAlt: string;
     /** Botón que sustituye al formulario de email tras la beta: lleva a /precios. También en la sección final. */
     trialCta: string;
+    /** Línea bajo el botón principal: qué se paga hoy y cuándo (tarjeta «SEO técnico», punto 4). */
+    trialNote: string;
+    /** Franja sobre el titular: qué es PFR y cuánto contenido hay (punto 5). */
+    catalogStrip: string;
   };
   problemInsight: {
     eyebrow: string;
@@ -76,6 +94,9 @@ export type Translations = {
     title: string;
     imgAlt: string;
     paragraphs: string[];
+    /** Enlaces bajo el texto (tarjeta «SEO técnico», punto 7). */
+    instagram: string;
+    instagramGuille: string;
   };
   club: {
     eyebrow: string;
@@ -85,6 +106,14 @@ export type Translations = {
     /** Línea pequeña final, sobre PFR Coach. */
     coachNote: string;
     cta: string;
+    /** Frase de una beta tester sobre la masterclass, aprobada por ella (tarjeta de testimonios). */
+    quote: Testimonial;
+  };
+  /** Testimonios de beta testers (entre «El método» y «Quiénes somos»). La sección solo se
+   * enseña cuando hay 3: hasta entonces no aparece nada. Son sus palabras: no se retocan. */
+  testimonials: {
+    eyebrow: string;
+    items: Testimonial[];
   };
   content: {
     eyebrow: string;
@@ -133,11 +162,15 @@ export type Translations = {
     coachLeft: string;
     /** Para lectores de pantalla, junto al precio tachado. {price} = precio normal. */
     regularPrice: string;
+    /** Bajo los planes: con quién se paga. */
+    securePayment: string;
   };
   finalCta: {
     eyebrow: string;
     heading: string;
     subtitle: string;
+    /** Contador de plazas de fundador (el mismo que en /precios). {count} = plazas libres. */
+    spotsLeft: string;
   };
   form: {
     emailLabel: string;
@@ -184,6 +217,10 @@ export type Translations = {
     terms: string;
     /** Vuelve a abrir la configuración de cookies de Lawwwing. */
     cookieSettings: string;
+    /** Enlaces del sitio en el pie (auditoría SEO: enlaces internos y contacto). */
+    siteNav: string;
+    home: string;
+    contact: string;
   };
 };
 

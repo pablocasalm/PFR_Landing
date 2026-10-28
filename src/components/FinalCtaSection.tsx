@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { getBillingPlans } from "../../services/billingService";
 import { WaitlistForm } from "./WaitlistForm";
 import { useLanguage } from "../i18n/LanguageContext";
 import { isOpenSignup } from "../i18n/openSignup";
@@ -7,6 +9,14 @@ import { trackEvent } from "../lib/analytics";
 export function FinalCtaSection() {
   const reduceMotion = useReducedMotion();
   const { t } = useLanguage();
+  // Plazas de fundador que quedan: el mismo contador que /precios. Si falla o ya no queda
+  // ninguna, no se enseña nada.
+  const [spotsLeft, setSpotsLeft] = useState<number | null>(null);
+  useEffect(() => {
+    getBillingPlans()
+      .then((plans) => setSpotsLeft(plans.isFounder && plans.founderSlotsLeft ? plans.founderSlotsLeft : null))
+      .catch(() => {});
+  }, []);
 
   return (
     <motion.section
@@ -25,6 +35,9 @@ export function FinalCtaSection() {
         <p className="mt-5 text-base text-muted sm:text-lg">
           {t.finalCta.subtitle}
         </p>
+        {spotsLeft != null && (
+          <p className="mt-3 text-sm font-semibold text-accent-lime">{t.finalCta.spotsLeft.replace("{count}", String(spotsLeft))}</p>
+        )}
         <div className="mt-8">
           {isOpenSignup() ? (
             <WaitlistForm source="final_cta" />

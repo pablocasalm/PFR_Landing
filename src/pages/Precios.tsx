@@ -66,10 +66,10 @@ export function Precios() {
     getBillingPlans().then(setBackend).catch(() => setLoadFailed(true));
   }, []);
 
+  // El título de la pestaña lo pone LanguageContext (meta.pricingTitle), igual que el del HTML publicado.
   useEffect(() => {
-    document.title = `${t.pricing.eyebrow} | Padel Film Room`;
     trackEvent("pricing_page_view");
-  }, [t.pricing.eyebrow]);
+  }, []);
 
   const currencyFormat = (amount: number, currency = "EUR") =>
     new Intl.NumberFormat(lang === "en" ? "en-GB" : "es-ES", { style: "currency", currency }).format(amount);
@@ -196,6 +196,7 @@ export function Precios() {
             </motion.div>
           ))}
         </motion.div>
+        <p className="mx-auto mt-6 max-w-6xl text-center text-xs text-muted">{t.pricing.securePayment}</p>
       </section>
 
       {/* Barra de CTA final, mismo patrón que FinalCtaSection — independiente de qué plan se elija */}

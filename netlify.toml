@@ -6,8 +6,23 @@
 [build.environment]
   NODE_VERSION = "22"
 
-# SPA fallback: permite recargar/navegar directo a rutas como /precios sin 404 de Netlify.
+# Páginas de la landing (src/lib/route.ts). "/" y "/precios" tienen su propio HTML (index.html y
+# precios/index.html, ver vite.config.ts). "/confirmar" es el enlace de los emails de la lista
+# de espera: usa el HTML de la portada y la app pinta la página. Cualquier otra dirección que no
+# sea un archivo (robots.txt, sitemap.xml, llms.txt, imágenes…) recibe 404.html con estado 404:
+# antes la regla "/*" devolvía la portada con un 200 para todo y Google lo veía como copias.
 [[redirects]]
-  from = "/*"
+  from = "/confirmar"
   to = "/index.html"
   status = 200
+
+# Cabeceras de seguridad (auditoría SEO de HeyCatch, t_security_headers). La CSP va solo en modo
+# Report-Only: avisa en la consola de lo que bloquearía, sin bloquear nada (Lawwwing, Stripe,
+# vídeos, analítica…). Endurecerla cuando se haya revisado.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy-Report-Only = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.lawwwing.com https://*.lawwwing.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://*.lawwwing.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://azureapi.padelfilmroom.com https://*.lawwwing.com https://www.facebook.com https://connect.facebook.net; frame-src 'self' https://*.lawwwing.com https://www.youtube.com https://www.youtube-nocookie.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"

@@ -108,8 +108,10 @@ export function HeroSection() {
 
         <motion.div className="mx-auto mt-12 max-w-4xl" variants={reduceMotion ? undefined : itemVariant}>
           <img
-            src="/hero-mockup-tres-moviles.png"
+            src="/hero-mockup-tres-moviles.webp"
             alt={t.hero.mockupAlt}
+            width={1200}
+            height={630}
             className="w-full select-none"
             draggable={false}
           />

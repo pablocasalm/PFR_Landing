@@ -19,10 +19,12 @@ export function TeamSection() {
       <div className="mx-auto grid max-w-6xl items-stretch gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <motion.article variants={reduceMotion ? undefined : fadeUp()} className="glass-panel rounded-lg p-4 sm:p-5">
           <img
-            src="/WhatsApp Image 2026-04-20 at 09.31.19.jpeg"
+            src="/pfr-equipo-andrea-guille-pablo.jpg"
             alt={t.team.imgAlt}
+            width={1100}
+            height={824}
             loading="lazy"
-            className="aspect-[2896/2170] h-full w-full rounded-md object-cover"
+            className="aspect-[1100/824] h-full w-full rounded-md object-cover"
           />
         </motion.article>
 

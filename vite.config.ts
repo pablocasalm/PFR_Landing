@@ -98,7 +98,8 @@ function seoPages(): Plugin {
 
       this.emitFile({
         type: "asset",
-        fileName: "precios/index.html",
+        // precios.html y no precios/index.html: con la carpeta, Netlify redirige /precios a /precios/.
+        fileName: "precios.html",
         source: withMeta(withoutFaq, { title: es.meta.pricingTitle, description: es.meta.pricingDescription, path: "/precios" }),
       });
       // Netlify sirve 404.html con estado 404 para cualquier dirección que no exista.

@@ -7,7 +7,7 @@
   NODE_VERSION = "22"
 
 # Páginas de la landing (src/lib/route.ts). "/" y "/precios" tienen su propio HTML (index.html y
-# precios/index.html, ver vite.config.ts). "/confirmar" es el enlace de los emails de la lista
+# precios.html, ver vite.config.ts). "/confirmar" es el enlace de los emails de la lista
 # de espera: usa el HTML de la portada y la app pinta la página. Cualquier otra dirección que no
 # sea un archivo (robots.txt, sitemap.xml, llms.txt, imágenes…) recibe 404.html con estado 404:
 # antes la regla "/*" devolvía la portada con un 200 para todo y Google lo veía como copias.

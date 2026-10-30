@@ -1,5 +1,6 @@
 /** Frase de un usuario, con su nombre y un dato (p. ej. su nivel en Playtomic). */
-export type Testimonial = { text: string; name: string; detail: string };
+/** Testimonio: sus palabras (`text`, tal cual), nombre, país y un dato (nivel de Playtomic). */
+export type Testimonial = { text: string; name: string; country: string; detail: string };
 
 export type Translations = {
   nav: {
@@ -110,7 +111,7 @@ export type Translations = {
     quote: Testimonial;
   };
   /** Testimonios de beta testers (entre «El método» y «Quiénes somos»). La sección solo se
-   * enseña cuando hay 3: hasta entonces no aparece nada. Son sus palabras: no se retocan. */
+   * enseña con 3 o más: con menos no aparece nada. Son sus palabras: no se retocan. */
   testimonials: {
     eyebrow: string;
     items: Testimonial[];

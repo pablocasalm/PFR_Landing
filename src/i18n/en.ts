@@ -175,12 +175,17 @@ export const en: Translations = {
     ],
     coachNote: "Want to go further? With PFR Coach, we also analyze one of your matches every month. Only 5 spots.",
     cta: "Start your 7-day free trial",
-    quote: { text: "Guille really knows padel, and it shows. And the masterclasses with Andrea are relaxed: I've even laughed while learning.", name: "Marta", detail: "Playtomic level 2.74" },
+    quote: { text: "Guille really knows padel, and it shows. And the masterclasses with Andrea are relaxed: I've even laughed while learning.", name: "Marta", country: "Spain", detail: "Playtomic level 2.74" },
   },
   testimonials: {
     eyebrow: "Testimonials",
-    // Se enseñan cuando haya 3 (ahora 1: Marta, aprobado el 26/10).
-    items: [{ text: "I focused on defense, which is what I struggle with most. Watching videos on the same thing over and over can get tiring, but it works: now I hear Guille in my head during my matches and I'm applying it little by little.", name: "Marta", detail: "Playtomic level 2.74" }],
+    // Aprobados por Andrea (Marta el 26/10; Paco, Rolf y Pascal el 30/10): sus palabras, sin tocar.
+    items: [
+      { text: "I focused on defense, which is what I struggle with most. Watching videos on the same thing over and over can get tiring, but it works: now I hear Guille in my head during my matches and I'm applying it little by little.", name: "Marta", country: "Spain", detail: "Playtomic level 2.74" },
+      { text: "Watching PFR made me realize that the most basic things are exactly what we forget in the heat of a match. Guille keeps stressing hitting 2 or 3 balls in a row to the same player from the volley, and I was amazed at how much it helped, even after years of playing. We think we know it all, but listening to a pro like Guille shows you how lost we are tactically. If pros prepare by watching their own matches and their opponents', why wouldn't we?", name: "Paco", country: "Spain", detail: "Playtomic level 5" },
+      { text: "I used to think lobbing the return was the safe way to start the point. With PFR I saw that it's much better to do it only when the ball comes in comfortably. Now I lob the return much less, especially on big points, and I've noticed I give away far fewer points. I spend 15–20 minutes a day on my commute to work. Since I focus on one concept and watch videos on the same thing, it's much easier to recognize it on court afterward.", name: "Rolf", country: "Switzerland", detail: "Playtomic level 3.2" },
+      { text: "I watch a lot of padel content on YouTube, and PFR blew me away. The value Guille brings is huge, and being able to filter by the concepts you want to work on really helps you learn. Plus, I'm a UX designer, so I pay close attention to whether apps are easy to understand, and this one is really intuitive. And as a stats geek, I love the My Game section.", name: "Pascal", country: "Germany", detail: "Playtomic level 1.9" },
+    ],
   },
   content: {
     eyebrow: "Content",

@@ -175,12 +175,17 @@ export const es: Translations = {
     ],
     coachNote: "¿Quieres ir más lejos? Con PFR Coach, cada mes analizamos también un partido tuyo. Solo 5 plazas.",
     cta: "Empieza tu prueba gratis de 7 días",
-    quote: { text: "Guille sabe mucho de pádel y se nota. Y las masterclasses con Andrea son distendidas: hasta me he reído mientras aprendía.", name: "Marta", detail: "Nivel 2,74 en Playtomic" },
+    quote: { text: "Guille sabe mucho de pádel y se nota. Y las masterclasses con Andrea son distendidas: hasta me he reído mientras aprendía.", name: "Marta", country: "España", detail: "Nivel 2,74 en Playtomic" },
   },
   testimonials: {
     eyebrow: "Testimonios",
-    // Se enseñan cuando haya 3 (ahora 1: Marta, aprobado el 26/10).
-    items: [{ text: "Me centré en la defensa, que es lo que más me cuesta. A veces repetir vídeos sobre lo mismo cansa, pero funciona: ahora en mis partidos escucho a Guille en mi cabeza y lo voy aplicando poco a poco.", name: "Marta", detail: "Nivel 2,74 en Playtomic" }],
+    // Aprobados por Andrea (Marta el 26/10; Paco, Rolf y Pascal el 30/10): sus palabras, sin tocar.
+    items: [
+      { text: "Me centré en la defensa, que es lo que más me cuesta. A veces repetir vídeos sobre lo mismo cansa, pero funciona: ahora en mis partidos escucho a Guille en mi cabeza y lo voy aplicando poco a poco.", name: "Marta", country: "España", detail: "Nivel 2,74 en Playtomic" },
+      { text: "Viendo los vídeos de PFR me he dado cuenta de que lo más básico es justo lo que se nos olvida en la vorágine del partido. Guille insiste mucho en repetir 2 o 3 bolas al mismo jugador desde la volea, y he alucinado con lo que me ha servido, y eso que llevo años jugando. Creemos que lo sabemos todo, pero cuando escuchas a un profesional como Guille te das cuenta de lo perdidos que vamos a nivel táctico. Si los profesionales se preparan con vídeos de sus partidos y de sus rivales, ¿cómo no vamos a hacerlo nosotros?", name: "Paco", country: "España", detail: "Nivel 5 en Playtomic" },
+      { text: "Pensaba que restar de globo servía para asegurar el inicio del punto. Con PFR vi que es mucho más recomendable hacerlo solo cuando la bola viene cómoda. Ahora abuso mucho menos del resto de globo, sobre todo en los puntos importantes, y he notado muchísimo que regalo menos puntos. Le dedico 15-20 minutos al día en el trayecto al trabajo. Como me centro en un concepto y veo vídeos sobre lo mismo, luego me es mucho más fácil reconocerlo en pista.", name: "Rolf", country: "Suiza", detail: "Nivel 3,2 en Playtomic" },
+      { text: "Consumo mucho contenido de pádel en YouTube y he alucinado con PFR. El valor que aporta Guille es brutal, y poder filtrar por los conceptos que quieres trabajar ayuda mucho al aprendizaje. Además, soy diseñador UX y me fijo mucho en que las apps sean fáciles de entender: esta es muy intuitiva. Y como friki de las estadísticas, me encanta el apartado Mi Juego.", name: "Pascal", country: "Alemania", detail: "Nivel 1,9 en Playtomic" },
+    ],
   },
   content: {
     eyebrow: "Contenido",

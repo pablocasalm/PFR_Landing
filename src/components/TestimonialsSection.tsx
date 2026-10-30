@@ -4,7 +4,7 @@ import { fadeUp, staggerContainer } from "./Motion";
 import { TestimonialQuote } from "./TestimonialQuote";
 
 /** Mínimo de testimonios reales para enseñar la sección (tarjeta de Trello: «se publica cuando
- * estén los 3»). Con menos, no aparece nada: ni título ni hueco. */
+ * estén los 3»). Con menos, no aparece nada: ni título ni hueco. Ahora hay 4 (30/10). */
 const MIN_TESTIMONIALS = 3;
 
 export function TestimonialsSection() {
@@ -24,7 +24,8 @@ export function TestimonialsSection() {
     >
       <div className="mx-auto max-w-6xl">
         <p className="font-mono text-xs uppercase tracking-[0.26em] text-accent-cyan">{t.testimonials.eyebrow}</p>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        {/* 2×2 en escritorio: los textos son largos (tarjeta de Andrea); en móvil, una debajo de otra. */}
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
           {items.map((item, index) => (
             <motion.div key={index} variants={reduceMotion ? undefined : fadeUp(24)}>
               <TestimonialQuote item={item} className="h-full" />

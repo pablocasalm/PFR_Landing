@@ -19,17 +19,23 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 const LANG_KEY = "pfr_lang";
 
 function getInitialLang(): Language {
-  const stored = localStorage.getItem(LANG_KEY);
-  if (stored === "en" || stored === "es") return stored;
+  try {
+    const stored = localStorage.getItem(LANG_KEY);
+    if (stored === "en" || stored === "es") return stored;
+  } catch {
+    // Al publicar (prerender) no hay localStorage: español, el idioma por defecto.
+  }
   return "es";
 }
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
+/** `serverTexts`: textos de la base de datos en español, ya descargados al publicar (prerender),
+ * para que el HTML lleve los mismos textos que luego ve el visitante. */
+export function LanguageProvider({ children, serverTexts }: { children: ReactNode; serverTexts?: Record<string, string> | null }) {
   const [lang, setLang] = useState<Language>(getInitialLang);
   // Textos guardados en la base de datos, por idioma (ver remote.ts). Arranca con lo último que
   // se descargó en este navegador y se refresca en segundo plano al entrar y al cambiar de idioma.
   const [remote, setRemote] = useState<Partial<Record<Language, Record<string, string> | null>>>(() => ({
-    es: readCachedTexts("es"),
+    es: serverTexts ?? readCachedTexts("es"),
     en: readCachedTexts("en"),
   }));
 

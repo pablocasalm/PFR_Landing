@@ -113,7 +113,7 @@ export function Precios() {
           animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
           transition={reduceMotion ? undefined : { duration: 0.8, ease: "easeOut" }}
         >
-          <SectionTitle eyebrow={t.pricing.eyebrow} title={t.pricing.title} subtitle={t.pricing.subtitle} />
+          <SectionTitle as="h1" eyebrow={t.pricing.eyebrow} title={t.pricing.title} subtitle={t.pricing.subtitle} />
         </motion.div>
       </section>
 

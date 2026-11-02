@@ -66,9 +66,9 @@ function AppContent() {
   );
 }
 
-function App() {
+function App({ serverTexts }: { serverTexts?: Record<string, string> | null }) {
   return (
-    <LanguageProvider>
+    <LanguageProvider serverTexts={serverTexts}>
       <AppContent />
     </LanguageProvider>
   );

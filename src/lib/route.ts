@@ -11,8 +11,15 @@ export const ROUTE_PATHS: Record<Exclude<Route, "notFound">, string> = {
   confirm: "/confirmar",
 };
 
-export function currentRoute(pathname: string = window.location.pathname): Route {
-  const path = pathname.replace(/\/+$/, "");
+/** Dirección que se está pintando al publicar (prerender, ver scripts/prerender.mjs), donde no hay
+ * `window`. En el navegador no se usa. */
+let serverPathname = "/";
+export function setServerPathname(pathname: string) {
+  serverPathname = pathname;
+}
+
+export function currentRoute(pathname?: string): Route {
+  const path = (pathname ?? (typeof window === "undefined" ? serverPathname : window.location.pathname)).replace(/\/+$/, "");
   const found = (Object.keys(ROUTE_PATHS) as (keyof typeof ROUTE_PATHS)[]).find((r) => ROUTE_PATHS[r] === path);
   return found ?? "notFound";
 }

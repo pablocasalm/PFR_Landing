@@ -15,6 +15,8 @@
     "vite.config.ts",
     "tailwind.config.ts",
     "src/i18n/es.ts",
+    "src/lib/inlineLinks.ts",
+    "src/lib/media.ts",
     "src/i18n/types.ts",
     "node-shims.d.ts"
   ]

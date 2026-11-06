@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useLanguage } from "../i18n/LanguageContext";
 import { fadeUp, staggerContainer } from "./Motion";
 import { TestimonialQuote } from "./TestimonialQuote";
+import { TrialCta } from "./TrialCta";
 
 /** Mínimo de testimonios reales para enseñar la sección (tarjeta de Trello: «se publica cuando
  * estén los 3»). Con menos, no aparece nada: ni título ni hueco. Ahora hay 4 (30/10). */
@@ -32,6 +33,7 @@ export function TestimonialsSection() {
             </motion.div>
           ))}
         </div>
+        <TrialCta location="testimonials" className="mt-10" />
       </div>
     </motion.section>
   );

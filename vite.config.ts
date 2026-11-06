@@ -2,6 +2,8 @@ import { execSync } from "node:child_process";
 import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import { es } from "./src/i18n/es";
+import { stripLinks } from "./src/lib/inlineLinks";
+import { SAMPLE_CLIP, STREAM_HOST, TEASER, TEASER_SECONDS, streamThumbnail } from "./src/lib/media";
 
 /**
  * SEO de la landing (auditorías de HeyCatch del 26/10/2026), todo en el HTML que se publica para
@@ -9,7 +11,8 @@ import { es } from "./src/i18n/es";
  * - Cada página con su título, descripción, canonical y etiquetas para redes (portada, /precios
  *   y 404), sacados de los textos de es.ts (el idioma por defecto). Al cambiar de idioma, la web
  *   los actualiza en el navegador (LanguageContext).
- * - Organization (schema.org) en todas, y la FAQ (FAQPage) solo en la portada, que es donde está.
+ * - Organization (schema.org) en todas, y la FAQ (FAQPage) y los vídeos (VideoObject: teaser y
+ *   clip de muestra, para que Google pueda enseñarlos en sus resultados) solo en la portada.
  * - sitemap.xml con la fecha real del último cambio de cada página (git).
  * Los textos cambiados solo en la base de datos no llegan aquí.
  */
@@ -36,8 +39,31 @@ const FAQ = {
   mainEntity: es.faq.items.map((item) => ({
     "@type": "Question",
     name: item.q,
-    acceptedAnswer: { "@type": "Answer", text: item.a },
+    acceptedAnswer: { "@type": "Answer", text: stripLinks(item.a) },
   })),
+};
+
+/** Vídeos de la portada en Cloudflare Stream (lib/media.ts), en español. */
+const video = (uid: string, name: string, description: string, uploadDate: string, seconds?: number) => ({
+  "@type": "VideoObject",
+  name,
+  description,
+  inLanguage: "es",
+  thumbnailUrl: streamThumbnail(uid),
+  uploadDate,
+  contentUrl: `${STREAM_HOST}/${uid}/manifest/video.m3u8`,
+  embedUrl: `${STREAM_HOST}/${uid}/iframe`,
+  ...(seconds ? { duration: `PT${seconds}S` } : {}),
+});
+
+const VIDEOS = {
+  "@context": "https://schema.org",
+  "@graph": [
+    video(TEASER.es, es.problemInsight.teaser.name, es.problemInsight.teaser.description, "2026-11-06", TEASER_SECONDS),
+    ...(SAMPLE_CLIP.es
+      ? [video(SAMPLE_CLIP.es, es.languageSection.sampleClip.title, es.languageSection.sampleClip.insight, "2026-11-06")]
+      : []),
+  ],
 };
 
 // "<" escapado: un texto con "</script>" no puede cerrar la etiqueta antes de tiempo.
@@ -88,13 +114,13 @@ function seoPages(): Plugin {
     transformIndexHtml: (html) =>
       withMeta(html, { title: es.meta.title, description: es.meta.description, path: "/" }).replace(
         "</head>",
-        `    ${jsonLd(ORGANIZATION, "ld-organization")}\n    ${jsonLd(FAQ, "ld-faq")}\n  </head>`,
+        `    ${jsonLd(ORGANIZATION, "ld-organization")}\n    ${jsonLd(FAQ, "ld-faq")}\n    ${jsonLd(VIDEOS, "ld-videos")}\n  </head>`,
       ),
     generateBundle(_options, bundle) {
       const index = bundle["index.html"];
       if (!index || index.type !== "asset") return;
       const home = String(index.source);
-      const withoutFaq = home.replace(/\s*<script type="application\/ld\+json" id="ld-faq">.*?<\/script>/s, "");
+      const withoutFaq = home.replace(/\s*<script type="application\/ld\+json" id="ld-(faq|videos)">.*?<\/script>/gs, "");
 
       this.emitFile({
         type: "asset",

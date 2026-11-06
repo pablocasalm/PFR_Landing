@@ -2,10 +2,12 @@ import { motion, useReducedMotion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { fadeUp, staggerContainer } from "./Motion";
 import { useLanguage } from "../i18n/LanguageContext";
+import { StreamVideo } from "./StreamVideo";
+import { TEASER } from "../lib/media";
 
 export function ProblemInsightSection() {
   const reduceMotion = useReducedMotion();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   return (
     <motion.section
@@ -17,6 +19,9 @@ export function ProblemInsightSection() {
       viewport={{ once: true, amount: 0.2 }}
     >
       <div className="mx-auto max-w-6xl">
+        {/* Teaser (tarjeta #138): arranca solo al verse, sin sonido y en bucle, con un botón para
+            el sonido. Versión en el idioma de la web. */}
+        <StreamVideo uid={TEASER[lang]} variant="teaser" title={t.problemInsight.teaser.name} className="mx-auto mb-12 max-w-4xl" />
         <SectionTitle eyebrow={t.problemInsight.eyebrow} title={t.problemInsight.title} />
 
         <motion.div

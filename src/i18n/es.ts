@@ -36,12 +36,12 @@ export const es: Translations = {
     backHome: "Volver al inicio",
   },
   hero: {
+    question: "¿Has perdido contra una pareja que juega peor que tú?",
+    lead: "No te ganan con mejores golpes. Te ganan con mejores decisiones. Guille, exjugador del WPT, te enseña a tomarlas en vídeos de 1 a 3 minutos.",
     line1: "Deja de copiar golpes.",
     line2: "Empieza a copiar decisiones.",
-    subtitle: "¿En el entreno te sale y en el partido no? Muchas veces el fallo empieza antes del golpe. Aprende a leer el punto con situaciones reales de partidos profesionales, explicadas por un exjugador del World Padel Tour.",
     languagesNote: "Disponible en español e inglés.",
-    bullets: ["Para jugadores que compiten y quieren fallar menos", "7 días gratis. Cancela cuando quieras."],
-    seeExample: "Ver cómo funciona",
+    seeClip: "Ver un clip de ejemplo",
     mockupAlt: "Padel Film Room en el móvil: un clip, la sección Explorar y tu resumen de aprendizaje",
     trialCta: "Empieza tu prueba gratis de 7 días",
     trialNote: "Hoy 0 €. El primer cobro, a los 7 días. Cancela cuando quieras.",
@@ -50,6 +50,10 @@ export const es: Translations = {
   problemInsight: {
     eyebrow: "El problema",
     title: "En el entreno te sale. En el partido, no.",
+    teaser: {
+      name: "Padel Film Room: aprende a leer el pádel",
+      description: "Teaser de Padel Film Room: análisis táctico de pádel con situaciones reales de partidos profesionales, explicadas por un exjugador del World Padel Tour.",
+    },
     blocks: [
       {
         eyebrow: "Por qué pasa",
@@ -148,12 +152,19 @@ export const es: Translations = {
       { label: "Lectura", text: "Estás incómodo. No es momento de acelerar." },
       { label: "Decisión", text: "Baja la velocidad y juega una volea defensiva para mantener la red." },
     ],
-    note: "En PFR, cada situación así se explica con puntos reales de partidos profesionales.",
+    clipIntro: "Así es un clip de PFR:",
+    sampleClip: {
+      badge: "Clip",
+      title: "No hace falta ganar con la volea: mantenlos atrás",
+      insight: "En la red, tu objetivo es que el rival se quede atrás defendiendo, no que cada volea sea ganadora. Con bolas a velocidad media, variando dirección y sobre todo profundidad, lo mantienes atrás hasta que te deje un globo corto o una bola fácil. Si consigue subir, por ejemplo tras una chiquita, cambia de jugador y corta esa subida.",
+      tags: ["Mantener", "Presión en red"],
+      source: "Imágenes: canal oficial de la FIP en YouTube.",
+    },
   },
   team: {
     eyebrow: "Quiénes somos",
     title: "Somos Andrea, Guille y Pablo.",
-    imgAlt: "Equipo reunido trabajando sobre una mesa.",
+    photoAlt: "Pablo, Guille y Andrea, los tres hermanos de Padel Film Room, en una pista de pádel.",
     paragraphs: [
       "Somos tres hermanos que llevamos toda la vida vinculados al pádel.",
       "Los tres hemos competido y entrenado durante años. Andrea y Guille llegamos a competir en World Padel Tour.",
@@ -175,16 +186,17 @@ export const es: Translations = {
     ],
     coachNote: "¿Quieres ir más lejos? Con PFR Coach, cada mes analizamos también un partido tuyo. Solo 5 plazas.",
     cta: "Empieza tu prueba gratis de 7 días",
-    quote: { text: "Guille sabe mucho de pádel y se nota. Y las masterclasses con Andrea son distendidas: hasta me he reído mientras aprendía.", name: "Marta", country: "España", detail: "Nivel 2,74 en Playtomic" },
+    quote: { text: "Guille sabe mucho de pádel y se nota. Y las masterclasses con Andrea son distendidas: hasta me he reído mientras aprendía.", name: "Marta", country: "España", flag: "es", level: "2,74" },
   },
   testimonials: {
     eyebrow: "Testimonios",
+    levelLabel: "Nivel Playtomic",
     // Aprobados por Andrea (Marta el 26/10; Paco, Rolf y Pascal el 30/10): sus palabras, sin tocar.
     items: [
-      { text: "Me centré en la defensa, que es lo que más me cuesta. A veces repetir vídeos sobre lo mismo cansa, pero funciona: ahora en mis partidos escucho a Guille en mi cabeza y lo voy aplicando poco a poco.", name: "Marta", country: "España", detail: "Nivel 2,74 en Playtomic" },
-      { text: "Viendo los vídeos de PFR me he dado cuenta de que lo más básico es justo lo que se nos olvida en la vorágine del partido. Guille insiste mucho en repetir 2 o 3 bolas al mismo jugador desde la volea, y he alucinado con lo que me ha servido, y eso que llevo años jugando. Creemos que lo sabemos todo, pero cuando escuchas a un profesional como Guille te das cuenta de lo perdidos que vamos a nivel táctico. Si los profesionales se preparan con vídeos de sus partidos y de sus rivales, ¿cómo no vamos a hacerlo nosotros?", name: "Paco", country: "España", detail: "Nivel 5 en Playtomic" },
-      { text: "Pensaba que restar de globo servía para asegurar el inicio del punto. Con PFR vi que es mucho más recomendable hacerlo solo cuando la bola viene cómoda. Ahora abuso mucho menos del resto de globo, sobre todo en los puntos importantes, y he notado muchísimo que regalo menos puntos. Le dedico 15-20 minutos al día en el trayecto al trabajo. Como me centro en un concepto y veo vídeos sobre lo mismo, luego me es mucho más fácil reconocerlo en pista.", name: "Rolf", country: "Suiza", detail: "Nivel 3,2 en Playtomic" },
-      { text: "Consumo mucho contenido de pádel en YouTube y he alucinado con PFR. El valor que aporta Guille es brutal, y poder filtrar por los conceptos que quieres trabajar ayuda mucho al aprendizaje. Además, soy diseñador UX y me fijo mucho en que las apps sean fáciles de entender: esta es muy intuitiva. Y como friki de las estadísticas, me encanta el apartado Mi Juego.", name: "Pascal", country: "Alemania", detail: "Nivel 1,9 en Playtomic" },
+      { text: "Me centré en la defensa, que es lo que más me cuesta. A veces repetir vídeos sobre lo mismo cansa, pero funciona: ahora en mis partidos escucho a Guille en mi cabeza y lo voy aplicando poco a poco.", name: "Marta", country: "España", flag: "es", level: "2,74" },
+      { text: "Viendo los vídeos de PFR me he dado cuenta de que lo más básico es justo lo que se nos olvida en la vorágine del partido. Guille insiste mucho en repetir 2 o 3 bolas al mismo jugador desde la volea, y he alucinado con lo que me ha servido, y eso que llevo años jugando. Creemos que lo sabemos todo, pero cuando escuchas a un profesional como Guille te das cuenta de lo perdidos que vamos a nivel táctico. Si los profesionales se preparan con vídeos de sus partidos y de sus rivales, ¿cómo no vamos a hacerlo nosotros?", name: "Paco", country: "España", flag: "es", level: "5" },
+      { text: "Pensaba que restar de globo servía para asegurar el inicio del punto. Con PFR vi que es mucho más recomendable hacerlo solo cuando la bola viene cómoda. Ahora abuso mucho menos del resto de globo, sobre todo en los puntos importantes, y he notado muchísimo que regalo menos puntos. Le dedico 15-20 minutos al día en el trayecto al trabajo. Como me centro en un concepto y veo vídeos sobre lo mismo, luego me es mucho más fácil reconocerlo en pista.", name: "Rolf", country: "Suiza", flag: "ch", level: "3,2" },
+      { text: "Consumo mucho contenido de pádel en YouTube y he alucinado con PFR. El valor que aporta Guille es brutal, y poder filtrar por los conceptos que quieres trabajar ayuda mucho al aprendizaje. Además, soy diseñador UX y me fijo mucho en que las apps sean fáciles de entender: esta es muy intuitiva. Y como friki de las estadísticas, me encanta el apartado Mi Juego.", name: "Pascal", country: "Alemania", flag: "de", level: "1,9" },
     ],
   },
   content: {
@@ -244,7 +256,7 @@ export const es: Translations = {
       },
       {
         q: "¿Cuánto cuesta?",
-        a: "Hay tres planes mensuales, sin permanencia: Essential, Club y Coach. Essential y Club empiezan con 7 días gratis. Los primeros 50 miembros tienen precio fundador y lo mantienen mientras sigan suscritos. Mira el precio de tu zona en Precios. Club cuesta al mes menos que una clase de pádel.",
+        a: "Hay tres planes mensuales, sin permanencia: Essential, Club y Coach. Essential y Club empiezan con 7 días gratis. Los primeros 50 miembros tienen precio fundador y lo mantienen mientras sigan suscritos. Club cuesta al mes menos que una clase de pádel. Mira tu precio [aquí](/precios).",
       },
     ],
   },
@@ -273,8 +285,6 @@ export const es: Translations = {
       "Archivo con todas las masterclasses anteriores",
       "Cada mes, Guille analiza un partido tuyo (vídeo de hasta 20 min)",
     ],
-    ctaBandTitle: "Empieza a entender el pádel de otra forma.",
-    ctaBandButton: "Empieza tu prueba gratis de 7 días",
     startTrial: "Empieza 7 días gratis",
     subscribeCoach: "Lo quiero",
     full: "Completo",

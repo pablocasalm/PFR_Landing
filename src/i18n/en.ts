@@ -36,12 +36,12 @@ export const en: Translations = {
     backHome: "Back to home",
   },
   hero: {
+    question: "Ever lost to a pair that plays worse than you?",
+    lead: "They don't beat you with better shots. They beat you with better decisions. Guille, former WPT player, shows you how to make them in 1–3 minute videos.",
     line1: "Stop copying shots.",
     line2: "Start copying decisions.",
-    subtitle: "Works in practice but not in the match? The mistake often starts before the shot. Learn to read the point through real pro match situations, explained by a former World Padel Tour player.",
     languagesNote: "Available in English and Spanish.",
-    bullets: ["For players who compete and want to make fewer mistakes", "7 days free. Cancel anytime."],
-    seeExample: "See how it works",
+    seeClip: "Watch a sample clip",
     mockupAlt: "Padel Film Room on mobile: a clip, the Explore section, and your learning summary",
     trialCta: "Start your 7-day free trial",
     trialNote: "€0 today. First charge after 7 days. Cancel anytime.",
@@ -50,6 +50,10 @@ export const en: Translations = {
   problemInsight: {
     eyebrow: "The problem",
     title: "It works in practice. Not in the match.",
+    teaser: {
+      name: "Padel Film Room: learn to read padel",
+      description: "Padel Film Room teaser: padel tactics analysis with real pro match situations, explained by a former World Padel Tour player.",
+    },
     blocks: [
       {
         eyebrow: "Why it happens",
@@ -148,12 +152,19 @@ export const en: Translations = {
       { label: "Reading", text: "You're uncomfortable. It's not the time to speed up." },
       { label: "Decision", text: "Slow down and play a defensive volley to hold the net." },
     ],
-    note: "In PFR, every situation like this is explained with real points from pro matches.",
+    clipIntro: "This is what a PFR clip looks like:",
+    sampleClip: {
+      badge: "Clip",
+      title: "You don't need to win it with the volley: keep them back",
+      insight: "At the net, your goal is to keep the opponents back defending, not to make every volley a winner. With medium-pace balls, varying direction and above all depth, you keep them pinned back until they give you a short lob or an easy ball. If they manage to move up, for example after a chiquita, switch players and cut off that move forward.",
+      tags: ["Holding position", "Net pressure"],
+      source: "Footage: official FIP YouTube channel.",
+    },
   },
   team: {
     eyebrow: "Who we are",
     title: "We're Andrea, Guille and Pablo.",
-    imgAlt: "Team gathered working around a table.",
+    photoAlt: "Pablo, Guille and Andrea, the three siblings behind Padel Film Room, on a padel court.",
     paragraphs: [
       "We're three siblings who've been connected to padel our whole lives.",
       "The three of us have competed and trained for years. Andrea and Guille went on to compete on the World Padel Tour.",
@@ -175,16 +186,17 @@ export const en: Translations = {
     ],
     coachNote: "Want to go further? With PFR Coach, we also analyze one of your matches every month. Only 5 spots.",
     cta: "Start your 7-day free trial",
-    quote: { text: "Guille really knows padel, and it shows. And the masterclasses with Andrea are relaxed: I've even laughed while learning.", name: "Marta", country: "Spain", detail: "Playtomic level 2.74" },
+    quote: { text: "Guille really knows padel, and it shows. And the masterclasses with Andrea are relaxed: I've even laughed while learning.", name: "Marta", country: "Spain", flag: "es", level: "2.74" },
   },
   testimonials: {
     eyebrow: "Testimonials",
+    levelLabel: "Playtomic level",
     // Aprobados por Andrea (Marta el 26/10; Paco, Rolf y Pascal el 30/10): sus palabras, sin tocar.
     items: [
-      { text: "I focused on defense, which is what I struggle with most. Watching videos on the same thing over and over can get tiring, but it works: now I hear Guille in my head during my matches and I'm applying it little by little.", name: "Marta", country: "Spain", detail: "Playtomic level 2.74" },
-      { text: "Watching PFR made me realize that the most basic things are exactly what we forget in the heat of a match. Guille keeps stressing hitting 2 or 3 balls in a row to the same player from the volley, and I was amazed at how much it helped, even after years of playing. We think we know it all, but listening to a pro like Guille shows you how lost we are tactically. If pros prepare by watching their own matches and their opponents', why wouldn't we?", name: "Paco", country: "Spain", detail: "Playtomic level 5" },
-      { text: "I used to think lobbing the return was the safe way to start the point. With PFR I saw that it's much better to do it only when the ball comes in comfortably. Now I lob the return much less, especially on big points, and I've noticed I give away far fewer points. I spend 15–20 minutes a day on my commute to work. Since I focus on one concept and watch videos on the same thing, it's much easier to recognize it on court afterward.", name: "Rolf", country: "Switzerland", detail: "Playtomic level 3.2" },
-      { text: "I watch a lot of padel content on YouTube, and PFR blew me away. The value Guille brings is huge, and being able to filter by the concepts you want to work on really helps you learn. Plus, I'm a UX designer, so I pay close attention to whether apps are easy to understand, and this one is really intuitive. And as a stats geek, I love the My Game section.", name: "Pascal", country: "Germany", detail: "Playtomic level 1.9" },
+      { text: "I focused on defense, which is what I struggle with most. Watching videos on the same thing over and over can get tiring, but it works: now I hear Guille in my head during my matches and I'm applying it little by little.", name: "Marta", country: "Spain", flag: "es", level: "2.74" },
+      { text: "Watching PFR made me realize that the most basic things are exactly what we forget in the heat of a match. Guille keeps stressing hitting 2 or 3 balls in a row to the same player from the volley, and I was amazed at how much it helped, even after years of playing. We think we know it all, but listening to a pro like Guille shows you how lost we are tactically. If pros prepare by watching their own matches and their opponents', why wouldn't we?", name: "Paco", country: "Spain", flag: "es", level: "5" },
+      { text: "I used to think lobbing the return was the safe way to start the point. With PFR I saw that it's much better to do it only when the ball comes in comfortably. Now I lob the return much less, especially on big points, and I've noticed I give away far fewer points. I spend 15–20 minutes a day on my commute to work. Since I focus on one concept and watch videos on the same thing, it's much easier to recognize it on court afterward.", name: "Rolf", country: "Switzerland", flag: "ch", level: "3.2" },
+      { text: "I watch a lot of padel content on YouTube, and PFR blew me away. The value Guille brings is huge, and being able to filter by the concepts you want to work on really helps you learn. Plus, I'm a UX designer, so I pay close attention to whether apps are easy to understand, and this one is really intuitive. And as a stats geek, I love the My Game section.", name: "Pascal", country: "Germany", flag: "de", level: "1.9" },
     ],
   },
   content: {
@@ -244,7 +256,7 @@ export const en: Translations = {
       },
       {
         q: "How much does it cost?",
-        a: "There are three monthly plans, with no commitment: Essential, Club and Coach. Essential and Club start with 7 days free. Our first 50 members get the founding price and keep it as long as they stay subscribed. See the price for your region on Pricing. Club costs less per month than a single padel lesson.",
+        a: "There are three monthly plans, with no commitment: Essential, Club and Coach. Essential and Club start with 7 days free. Our first 50 members get the founding price and keep it as long as they stay subscribed. Club costs less per month than a single padel lesson. See your price [here](/precios).",
       },
     ],
   },
@@ -273,8 +285,6 @@ export const en: Translations = {
       "Archive with every past masterclass",
       "Every month, Guille analyzes one of your matches (video up to 20 min)",
     ],
-    ctaBandTitle: "Start understanding padel differently.",
-    ctaBandButton: "Start your 7-day free trial",
     startTrial: "Start 7 days free",
     subscribeCoach: "I'm in",
     full: "Full",

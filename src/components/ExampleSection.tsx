@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { fadeUp, staggerContainer } from "./Motion";
 import { useLanguage } from "../i18n/LanguageContext";
+import { TrialCta } from "./TrialCta";
 
 export function ExampleSection() {
   const reduceMotion = useReducedMotion();
@@ -41,6 +42,7 @@ export function ExampleSection() {
             </motion.div>
           ))}
         </motion.div>
+        <TrialCta location="method" className="mt-10" />
       </div>
     </motion.section>
   );

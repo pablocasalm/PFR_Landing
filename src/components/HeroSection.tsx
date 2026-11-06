@@ -32,7 +32,7 @@ export function HeroSection() {
   const handleExampleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     trackEvent("hero_example_click", { location: "hero" });
-    const target = document.querySelector<HTMLElement>("#ejemplo");
+    const target = document.querySelector<HTMLElement>("#clip-de-muestra");
     if (target) {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
@@ -67,37 +67,27 @@ export function HeroSection() {
           ))}
         </motion.p>
 
+        {/* Titular: una pregunta (tarjeta #138), más pequeño que la antigua firma para que en el
+            móvil el botón de la prueba se vea sin hacer scroll (375×812 y 375×667). */}
         <motion.h1
-          className="mx-auto max-w-4xl font-display text-5xl uppercase leading-[1.05] tracking-tight text-text sm:text-6xl md:text-7xl lg:text-8xl"
+          className="mx-auto max-w-4xl font-display text-[2rem] uppercase leading-[1.05] tracking-tight text-text min-[400px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
           variants={reduceMotion ? undefined : titleVariant}
         >
-          <span className="hero-gradient-text hero-gradient-cyan block">{t.hero.line1}</span>
-          <span className="hero-gradient-text hero-gradient-lime block">{t.hero.line2}</span>
+          <span className="hero-gradient-text hero-gradient-cyan block">{t.hero.question}</span>
         </motion.h1>
 
         <motion.p
-          className="mx-auto mt-6 max-w-2xl text-lg text-muted md:text-xl"
+          className="mx-auto mt-5 max-w-2xl text-base text-muted sm:mt-6 sm:text-lg md:text-xl"
           variants={reduceMotion ? undefined : itemVariant}
         >
-          {t.hero.subtitle}
+          {t.hero.lead}
         </motion.p>
 
         <motion.p className="mx-auto mt-3 text-sm text-muted" variants={reduceMotion ? undefined : itemVariant}>
           {t.hero.languagesNote}
         </motion.p>
 
-        <motion.ul
-          className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted"
-          variants={reduceMotion ? undefined : itemVariant}
-        >
-          {t.hero.bullets.map((bullet, index) => (
-            <li key={index} className="font-medium">
-              {bullet}
-            </li>
-          ))}
-        </motion.ul>
-
-        <motion.div className="mx-auto mt-8 max-w-2xl" variants={reduceMotion ? undefined : itemVariant}>
+        <motion.div className="mx-auto mt-6 max-w-2xl sm:mt-8" variants={reduceMotion ? undefined : itemVariant}>
           {isOpenSignup() ? (
             <WaitlistForm compact source="hero" />
           ) : (
@@ -116,11 +106,11 @@ export function HeroSection() {
 
         <motion.p className="mt-5 text-sm text-muted" variants={reduceMotion ? undefined : itemVariant}>
           <a
-            href="#ejemplo"
+            href="#clip-de-muestra"
             onClick={handleExampleClick}
             className="focus-ring cursor-pointer rounded px-1 text-accent-cyan underline decoration-accent-cyan underline-offset-4 transition-opacity hover:opacity-80"
           >
-            {t.hero.seeExample}
+            {t.hero.seeClip}
           </a>
         </motion.p>
 

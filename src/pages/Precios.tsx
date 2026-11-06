@@ -101,26 +101,32 @@ export function Precios() {
   return (
     <>
       {/* Cabecera con el mismo glow radial que el Hero */}
-      <section className="relative overflow-hidden px-4 pb-4 pt-20 sm:px-6 lg:pt-24">
+      {/* En escritorio la página cabe en una pantalla sin scroll (pedido el 30/10): cabecera compacta,
+          titular en una línea y tarjetas algo más apretadas. En móvil se apilan y se hace scroll. */}
+      <section className="relative overflow-hidden px-4 pb-4 pt-20 sm:px-6 lg:pb-5 lg:pt-[76px]">
         <div
           className="pointer-events-none absolute left-1/2 top-24 h-[380px] w-[380px] -translate-x-1/2 rounded-full blur-3xl"
           style={{ background: "rgba(40, 240, 224, 0.14)" }}
           aria-hidden
         />
         <motion.div
-          className="relative mx-auto max-w-3xl"
+          className="relative mx-auto max-w-5xl"
           initial={reduceMotion ? undefined : { opacity: 0, y: 30 }}
           animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
           transition={reduceMotion ? undefined : { duration: 0.8, ease: "easeOut" }}
         >
-          <SectionTitle as="h1" eyebrow={t.pricing.eyebrow} title={t.pricing.title} subtitle={t.pricing.subtitle} />
+          <header className="mx-auto max-w-5xl text-center">
+            <p className="font-mono text-xs uppercase tracking-[0.26em] text-accent-cyan">{t.pricing.eyebrow}</p>
+            <h1 className="mt-4 font-display text-3xl uppercase leading-[0.98] text-text sm:text-5xl lg:mt-3 lg:text-4xl">{t.pricing.title}</h1>
+            <p className="mt-4 text-base text-muted sm:text-lg lg:mt-3 lg:text-base">{t.pricing.subtitle}</p>
+          </header>
         </motion.div>
       </section>
 
       {/* 3 planes en tarjetas: cada una lleva a crear la cuenta con ese plan */}
-      <section id="planes" className="scroll-mt-24 px-4 pb-8 sm:px-6">
+      <section id="planes" className="scroll-mt-24 px-4 pb-8 sm:px-6 lg:pb-6">
         <motion.div
-          className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-3"
+          className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-3 lg:gap-5 xl:max-w-7xl"
           initial={reduceMotion ? undefined : "hidden"}
           whileInView={reduceMotion ? undefined : "visible"}
           viewport={{ once: true, amount: 0.2 }}
@@ -130,7 +136,7 @@ export function Precios() {
             <motion.div
               key={plan.key}
               variants={reduceMotion ? undefined : fadeUp(20)}
-              className={`glass-panel relative flex flex-col rounded-lg border p-6 sm:p-8 ${
+              className={`glass-panel relative flex flex-col rounded-lg border p-6 sm:p-8 lg:px-7 lg:py-6 ${
                 plan.accent ? "border-accent-cyan/50 bg-accent-cyan/[0.04]" : "border-border/80"
               }`}
             >
@@ -146,7 +152,7 @@ export function Precios() {
                 const price = monthlyPrice(plan.key);
                 const regular = price?.regularAmount && price.regularAmount > price.displayAmount ? price.regularAmount : null;
                 return (
-                  <p className="mt-4 flex flex-wrap items-baseline gap-x-2 font-display text-4xl leading-none text-text">
+                  <p className="mt-4 flex flex-wrap items-baseline gap-x-2 font-display text-4xl leading-none text-text lg:mt-3">
                     {regular != null && price && (
                       <del className="text-2xl text-muted decoration-2" aria-label={t.pricing.regularPrice.replace("{price}", currencyFormat(regular, price.currency))}>
                         {currencyFormat(regular, price.currency)}
@@ -163,11 +169,14 @@ export function Precios() {
                 <p className="mt-2 text-xs font-semibold text-accent-lime">{plan.key === "coach" ? coachText : founderText}</p>
               )}
 
-              <ul className="mt-5 flex-1 space-y-2.5 text-sm">
+              <ul className="mt-5 flex-1 space-y-2.5 text-sm lg:mt-4 lg:space-y-1 lg:text-[13px] lg:leading-snug">
                 {t.pricing.featureRows.map((label, i) => {
                   const included = FEATURE_TIERS[i]?.includes(plan.key);
                   return (
-                    <li key={label} className={`flex items-start gap-2.5 ${included ? "text-text/90" : "text-muted/50"}`}>
+                    // Con las tarjetas apiladas (móvil), solo lo que incluye cada plan: con las filas
+                    // del guion había que hacer mucho scroll hasta Club (tarjeta #138). En escritorio,
+                    // las tres columnas comparan fila a fila y se ven todas.
+                    <li key={label} className={`items-start gap-2.5 ${included ? "flex text-text/90" : "hidden text-muted/50 lg:flex"}`}>
                       <span className={included ? "mt-0.5 text-accent-lime" : "mt-0.5 text-muted/40"}>
                         {included ? <CheckIcon /> : <DashIcon />}
                       </span>
@@ -178,14 +187,14 @@ export function Precios() {
               </ul>
 
               {plan.key === "coach" && backend?.coachFull ? (
-                <span className="mt-6 flex w-full cursor-not-allowed items-center justify-center rounded-full border border-border bg-surface-2 py-3 text-sm font-semibold text-muted">
+                <span className="mt-6 flex w-full cursor-not-allowed items-center justify-center rounded-full border border-border bg-surface-2 py-3 lg:mt-5 lg:py-2.5 text-sm font-semibold text-muted">
                   {t.pricing.full}
                 </span>
               ) : (
                 <a
                   href={registerUrl(lang, plan.key === "starter" ? "Essential" : plan.key === "club" ? "Club" : "Coach")}
                   onClick={() => trackEvent("pricing_plan_click", { plan: plan.key })}
-                  className={`focus-ring mt-6 flex w-full items-center justify-center rounded-full py-3 text-sm font-semibold transition hover:brightness-105 ${
+                  className={`focus-ring mt-6 flex w-full items-center justify-center rounded-full py-3 text-sm lg:mt-5 lg:py-2.5 font-semibold transition hover:brightness-105 ${
                     plan.accent ? "bg-accent-cyan text-bg shadow-glow" : "border border-border bg-surface-2 text-text hover:border-accent-cyan/60"
                   }`}
                 >
@@ -196,32 +205,9 @@ export function Precios() {
             </motion.div>
           ))}
         </motion.div>
-        <p className="mx-auto mt-6 max-w-6xl text-center text-xs text-muted">{t.pricing.securePayment}</p>
+        <p className="mx-auto mt-6 max-w-6xl text-center text-xs text-muted lg:mt-4">{t.pricing.securePayment}</p>
       </section>
 
-      {/* Barra de CTA final, mismo patrón que FinalCtaSection — independiente de qué plan se elija */}
-      <motion.section
-        className="px-4 py-16 sm:px-6 lg:py-20"
-        initial={reduceMotion ? undefined : { opacity: 0, y: 40 }}
-        whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-        transition={reduceMotion ? undefined : { duration: 0.8, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <div className="glass-panel mx-auto flex max-w-4xl flex-col items-center gap-6 rounded-3xl p-8 text-center sm:flex-row sm:justify-between sm:text-left">
-          <h2 className="font-display text-2xl uppercase leading-[0.98] text-text sm:text-3xl">{t.pricing.ctaBandTitle}</h2>
-          <a
-            href="#planes"
-            onClick={(event) => {
-              event.preventDefault();
-              trackEvent("pricing_cta_click", { destination: "plans" });
-              document.getElementById("planes")?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
-            }}
-            className="focus-ring shrink-0 rounded-full bg-accent-cyan px-6 py-3.5 text-center font-semibold text-bg shadow-glow transition hover:brightness-105"
-          >
-            {t.pricing.ctaBandButton}
-          </a>
-        </div>
-      </motion.section>
     </>
   );
 }

@@ -1,6 +1,7 @@
 /** Frase de un usuario, con su nombre y un dato (p. ej. su nivel en Playtomic). */
-/** Testimonio: sus palabras (`text`, tal cual), nombre, país y un dato (nivel de Playtomic). */
-export type Testimonial = { text: string; name: string; country: string; detail: string };
+/** Testimonio: sus palabras (`text`, tal cual), nombre, país (para lectores de pantalla; se ve la
+ * bandera), bandera (código: es, ch, de…) y nivel de Playtomic (solo la cifra: «2,74»). */
+export type Testimonial = { text: string; name: string; country: string; flag: string; level: string };
 
 export type Translations = {
   nav: {
@@ -43,13 +44,19 @@ export type Translations = {
     backHome: string;
   };
   hero: {
+    /** Titular (H1) desde el 06/11/2026 (tarjeta #138): la frustración más votada en las encuestas. */
+    question: string;
+    /** Subtítulo bajo el titular. Clave nueva el 06/11/2026: la anterior ("subtitle") se queda sin
+     * usar en la base de datos, así el texto nuevo sale a la vez que el código. */
+    lead: string;
+    /** La firma «Deja de copiar golpes. / Empieza a copiar decisiones.»: era el titular; desde el
+     * 06/11/2026 va en su propio bloque al final de la portada (SignatureSection). */
     line1: string;
     line2: string;
-    subtitle: string;
     /** Línea pequeña bajo el subtítulo: idiomas en que está disponible. */
     languagesNote: string;
-    bullets: string[];
-    seeExample: string;
+    /** Enlace que baja hasta el clip de muestra (antes "seeExample", a «El método»). */
+    seeClip: string;
     mockupAlt: string;
     /** Botón que sustituye al formulario de email tras la beta: lleva a /precios. También en la sección final. */
     trialCta: string;
@@ -61,6 +68,9 @@ export type Translations = {
   problemInsight: {
     eyebrow: string;
     title: string;
+    /** Teaser de 18 s al principio de la sección: nombre (title del reproductor y del VideoObject)
+     * y descripción (VideoObject). */
+    teaser: { name: string; description: string };
     blocks: { eyebrow: string; title: string; paragraphs: string[] }[];
   };
   whatIs: {
@@ -87,13 +97,17 @@ export type Translations = {
     eyebrow: string;
     title: string;
     practiceCards: { label: string; text: string }[];
-    /** Línea pequeña al final de la sección. */
-    note: string;
+    /** Frase que presenta el clip de muestra (antes "note", sin clip debajo). */
+    clipIntro: string;
+    /** Clip de muestra 013_02, como se ve en la app. `source`: de dónde son las imágenes. */
+    sampleClip: { badge: string; title: string; insight: string; tags: string[]; source: string };
   };
   team: {
     eyebrow: string;
     title: string;
-    imgAlt: string;
+    /** Texto alternativo de la foto de los tres hermanos. Clave nueva el 06/11/2026 con la foto
+     * nueva: la anterior ("imgAlt") tenía en la base de datos un texto de otra foto. */
+    photoAlt: string;
     paragraphs: string[];
     /** Enlaces bajo el texto (tarjeta «SEO técnico», punto 7). */
     instagram: string;
@@ -114,6 +128,8 @@ export type Translations = {
    * enseña con 3 o más: con menos no aparece nada. Son sus palabras: no se retocan. */
   testimonials: {
     eyebrow: string;
+    /** Etiqueta encima de la cifra del nivel, en cada tarjeta. */
+    levelLabel: string;
     items: Testimonial[];
   };
   content: {
@@ -142,8 +158,6 @@ export type Translations = {
     taglines: { starter: string; club: string; coach: string };
     /** 7 filas, mismo orden que FEATURE_TIERS en Precios.tsx (qué planes incluyen cada una). */
     featureRows: string[];
-    ctaBandTitle: string;
-    ctaBandButton: string;
     /** Botón de Essential y Club: crear cuenta y empezar la prueba de 7 días en Stripe. */
     startTrial: string;
     /** Botón de Coach (sin prueba). */

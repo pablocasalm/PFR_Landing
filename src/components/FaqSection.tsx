@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
+import { splitLinks } from "../lib/inlineLinks";
 import { useLanguage } from "../i18n/LanguageContext";
 
 export function FaqSection() {
@@ -46,7 +47,17 @@ export function FaqSection() {
                       transition={{ duration: 0.3, ease: "easeOut" }}
                       className="overflow-hidden"
                     >
-                      <p className="px-5 pb-4 text-sm leading-relaxed text-muted sm:text-base">{item.a}</p>
+                      <p className="px-5 pb-4 text-sm leading-relaxed text-muted sm:text-base">
+                        {splitLinks(item.a).map((part, i) =>
+                          part.href ? (
+                            <a key={i} href={part.href} className="focus-ring font-semibold text-accent-cyan underline-offset-4 hover:underline">
+                              {part.text}
+                            </a>
+                          ) : (
+                            part.text
+                          ),
+                        )}
+                      </p>
                     </motion.div>
                   ) : null}
                 </AnimatePresence>

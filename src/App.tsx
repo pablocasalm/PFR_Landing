@@ -11,6 +11,7 @@ import { TestimonialsSection } from "./components/TestimonialsSection";
 import { ClubSection } from "./components/ClubSection";
 import { FaqSection } from "./components/FaqSection";
 import { FinalCtaSection } from "./components/FinalCtaSection";
+import { SignatureSection } from "./components/SignatureSection";
 import { Footer } from "./components/Footer";
 import { Precios } from "./pages/Precios";
 import { Confirmar } from "./pages/Confirmar";
@@ -47,16 +48,19 @@ function AppContent() {
           <NotFound />
         ) : (
           <>
+            {/* Orden del documento de Andrea (06/11/2026, tarjeta #138): testimonios justo después
+                del clip de muestra y la firma al final, antes de «Precio fundador». */}
             <HeroSection />
             <ProblemInsightSection />
             <WhatIsSection />
             <LanguageSection />
+            <TestimonialsSection />
             <LearnInsideSection />
             <ExampleSection />
-            <TestimonialsSection />
             <TeamSection />
             <ClubSection />
             <FaqSection />
+            <SignatureSection />
             <FinalCtaSection />
           </>
         )}

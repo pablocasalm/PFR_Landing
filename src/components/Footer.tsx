@@ -1,19 +1,10 @@
 import { useLanguage } from "../i18n/LanguageContext";
 import { legalUrl, type LegalDoc } from "../lib/legal";
 import { INSTAGRAM_PFR } from "../lib/social";
+import { InstagramIcon } from "./InstagramIcon";
 
 // Zona táctil de 44 px de alto en todos los enlaces del pie (en móvil costaba tocarlos).
 const linkClass = "focus-ring inline-flex min-h-11 items-center underline-offset-4 transition hover:text-text hover:underline";
-
-function InstagramIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5" aria-hidden>
-      <rect x="3" y="3" width="18" height="18" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
 
 export function Footer() {
   const { t, lang } = useLanguage();

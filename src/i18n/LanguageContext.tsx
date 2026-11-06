@@ -49,6 +49,15 @@ export function LanguageProvider({ children, serverTexts }: { children: ReactNod
     };
   }, [lang]);
 
+  // El otro idioma se descarga una vez en segundo plano, para que al cambiar sin recargar salgan
+  // ya los textos actuales y no los de la última visita en ese idioma.
+  useEffect(() => {
+    const other: Language = getInitialLang() === "es" ? "en" : "es";
+    fetchRemoteTexts(other).then((dict) => {
+      if (dict) setRemote((prev) => ({ ...prev, [other]: dict }));
+    });
+  }, []);
+
   // Durante el alta abierta (openSignup.ts), sus textos van por encima de todo lo demás.
   const t = useMemo(() => {
     const base = applyRemote(translations[lang], remote[lang] ?? null);

@@ -12,7 +12,12 @@ import type { Language, Translations } from "./types";
 
 const API_BASE = import.meta.env.VITE_API_URL ?? "https://azureapi.padelfilmroom.com";
 const PREFIX = "landing";
-const cacheKey = (lang: Language) => `pfr_landing_texts_${lang}`;
+// v2 (06/11/2026): las copias de antes (pfr_landing_texts_es/en) se ignoran. Quien solo usaba un
+// idioma tenía guardado el otro desde la época de la lista de espera, y al cambiar sin recargar
+// veía esos textos hasta que respondía la API (reporte de Andrea, tarjeta #138).
+const cacheKey = (lang: Language) => `pfr_landing_texts_v2_${lang}`;
+// Una copia más vieja que esto no se usa: mejor los textos del código que unos muy antiguos.
+const CACHE_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 
 type Dict = Record<string, string>;
 
@@ -55,7 +60,9 @@ export const applyRemote = (base: Translations, dict: Dict | null): Translations
 export function readCachedTexts(lang: Language): Dict | null {
   try {
     const raw = localStorage.getItem(cacheKey(lang));
-    return raw ? (JSON.parse(raw) as Dict) : null;
+    if (!raw) return null;
+    const cached = JSON.parse(raw) as { savedAt: number; texts: Dict };
+    return Date.now() - cached.savedAt < CACHE_MAX_AGE_MS ? cached.texts : null;
   } catch {
     return null;
   }
@@ -71,7 +78,7 @@ export async function fetchRemoteTexts(lang: Language): Promise<Dict | null> {
     // Solo las claves de la landing (un backend sin el filtro por área devuelve también las de la app).
     const dict = Object.fromEntries(Object.entries(all).filter(([key]) => key.startsWith(`${PREFIX}.`)));
     try {
-      localStorage.setItem(cacheKey(lang), JSON.stringify(dict));
+      localStorage.setItem(cacheKey(lang), JSON.stringify({ savedAt: Date.now(), texts: dict }));
     } catch {
       /* modo privado: sin caché, no pasa nada */
     }

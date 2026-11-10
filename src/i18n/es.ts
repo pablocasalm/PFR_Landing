@@ -42,7 +42,6 @@ export const es: Translations = {
     line2: "Empieza a copiar decisiones.",
     languagesNote: "Disponible en español e inglés.",
     seeClip: "Ver un clip de ejemplo",
-    mockupAlt: "Padel Film Room en el móvil: un clip, la sección Explorar y tu resumen de aprendizaje",
     trialCta: "Empieza tu prueba gratis de 7 días",
     trialNote: "Hoy 0 €. El primer cobro, a los 7 días. Cancela cuando quieras.",
     catalogStrip: "Biblioteca de 150+ clips tácticos · Contenido nuevo cada semana",

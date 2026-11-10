@@ -57,7 +57,6 @@ export type Translations = {
     languagesNote: string;
     /** Enlace que baja hasta el clip de muestra (antes "seeExample", a «El método»). */
     seeClip: string;
-    mockupAlt: string;
     /** Botón que sustituye al formulario de email tras la beta: lleva a /precios. También en la sección final. */
     trialCta: string;
     /** Línea bajo el botón principal: qué se paga hoy y cuándo (tarjeta «SEO técnico», punto 4). */

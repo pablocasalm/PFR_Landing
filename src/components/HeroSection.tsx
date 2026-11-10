@@ -113,17 +113,8 @@ export function HeroSection() {
             {t.hero.seeClip}
           </a>
         </motion.p>
-
-        <motion.div className="mx-auto mt-12 max-w-4xl" variants={reduceMotion ? undefined : itemVariant}>
-          <img
-            src="/hero-mockup-tres-moviles.webp"
-            alt={t.hero.mockupAlt}
-            width={1200}
-            height={630}
-            className="w-full select-none"
-            draggable={false}
-          />
-        </motion.div>
+        {/* Sin la imagen de los tres móviles desde el 10/11/2026: el teaser y el clip de muestra
+            ya enseñan cómo es PFR. */}
       </motion.div>
     </section>
   );

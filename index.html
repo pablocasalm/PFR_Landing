@@ -5,6 +5,21 @@
     <!-- Lawwwing: aviso y gestión de cookies. Va lo más arriba posible para que pueda bloquear
          lo que no sea esencial antes de que se cargue. -->
     <script src="https://cdn.lawwwing.com/widgets/current/59503c62-66f2-4419-be4c-1cfeeefbfdb8/cookie-widget.min.js" type="text/javascript" data-lwid="59503c62-66f2-4419-be4c-1cfeeefbfdb8"></script>
+    <!-- Google Tag Manager (GA4), 10/11/2026. Justo después de Lawwwing: con el modo de
+         consentimiento de Google activado en su panel, Lawwwing deja puesto «sin consentimiento»
+         antes de que cargue GTM, y GA4 solo guarda cookies cuando la persona acepta las de
+         análisis. Al estar en este index.html, va en todas las páginas (portada, /precios y 404
+         se generan a partir de él). Los eventos de la web (trackEvent: clics en «Empieza tu
+         prueba», elegir plan…) ya llegan a GTM por el mismo dataLayer. -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5DW3MHW6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      // El aviso de arranque del snippet estándar de GTM: sin él no se disparan los
+      // activadores de «Todas las páginas» / «Inicialización».
+      dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Título, descripción, canonical y etiquetas para redes de la portada. Al publicar,
          vite.config.ts los rellena con los textos de es.ts y genera también precios/index.html

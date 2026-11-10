@@ -17,11 +17,14 @@ import { Precios } from "./pages/Precios";
 import { Confirmar } from "./pages/Confirmar";
 import { NotFound } from "./pages/NotFound";
 import { currentRoute } from "./lib/route";
+import { useSectionViews } from "./lib/sections";
 import { LanguageProvider, useLanguage } from "./i18n/LanguageContext";
 
 function AppContent() {
   const { t } = useLanguage();
   const route = currentRoute();
+  // Analítica: hasta qué sección de la portada llega cada visita (en el resto de páginas no hay).
+  useSectionViews();
 
   useEffect(() => {
     if ("scrollRestoration" in window.history) {

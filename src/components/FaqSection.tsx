@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { trackEvent } from "../lib/analytics";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { splitLinks } from "../lib/inlineLinks";
@@ -27,7 +28,11 @@ export function FaqSection() {
               <article key={index} className="glass-panel overflow-hidden rounded-2xl">
                 <button
                   type="button"
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  onClick={() => {
+                    // Analítica: qué preguntas abren (no al cerrarlas).
+                    if (!isOpen) trackEvent("faq_open", { question: item.q });
+                    setOpenIndex(isOpen ? null : index);
+                  }}
                   className="focus-ring flex w-full items-center justify-between px-5 py-4 text-left text-base font-semibold text-text"
                   aria-expanded={isOpen}
                 >

@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { streamManifest, streamThumbnail } from "../lib/media";
+import { trackEvent } from "../lib/analytics";
+
+// Analítica del clip de muestra: qué parte del clip se llega a ver (una vez cada tramo).
+const PROGRESS_STEPS = [25, 50, 75, 100];
 
 /**
  * Reproductor de los vídeos de la portada (Cloudflare Stream, ver lib/media.ts) con el aspecto
@@ -171,10 +175,19 @@ export function StreamVideo({ uid, title, variant, className = "" }: { uid: stri
     }, 2500);
   };
 
+  // Analítica (GA4 vía GTM): una vez por visita cada cosa.
+  const tracked = useRef(new Set<string>());
+  const trackOnce = (key: string, event: string, payload?: Record<string, string | number>) => {
+    if (tracked.current.has(key)) return;
+    tracked.current.add(key);
+    trackEvent(event, payload);
+  };
+
   const togglePlay = async () => {
     const video = videoRef.current;
     if (!video) return;
     if (video.paused) {
+      if (variant === "clip") trackOnce("play", "sample_clip_play");
       await attach();
       setStarted(true);
       video.play().catch(() => {});
@@ -189,6 +202,7 @@ export function StreamVideo({ uid, title, variant, className = "" }: { uid: stri
     if (!video) return;
     video.muted = !video.muted;
     setMuted(video.muted);
+    if (variant === "teaser" && !video.muted) trackOnce("unmute", "teaser_unmute");
     showControls();
   };
 
@@ -257,7 +271,16 @@ export function StreamVideo({ uid, title, variant, className = "" }: { uid: stri
           setPlaying(false);
           setControlsVisible(true);
         }}
-        onTimeUpdate={(e) => setCurrent(e.currentTarget.currentTime)}
+        onTimeUpdate={(e) => {
+          const v = e.currentTarget;
+          setCurrent(v.currentTime);
+          if (variant === "clip" && v.duration) {
+            const pct = (v.currentTime / v.duration) * 100;
+            // 100 %: a dos segundos del final cuenta como visto entero.
+            for (const step of PROGRESS_STEPS)
+              if (pct >= step || (step === 100 && v.duration - v.currentTime <= 2)) trackOnce(`p${step}`, "sample_clip_progress", { percent: step });
+          }
+        }}
         onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
         onDurationChange={(e) => setDuration(e.currentTarget.duration)}
       />

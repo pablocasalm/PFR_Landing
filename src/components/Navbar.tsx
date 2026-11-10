@@ -7,6 +7,7 @@ import type { Language } from "../i18n/types";
 import { isOpenSignup } from "../i18n/openSignup";
 import { loginUrl } from "../lib/appLinks";
 import { currentRoute } from "../lib/route";
+import { SECTION_NAMES } from "../lib/sections";
 
 const langOptions: { code: Language; display: string; ariaLabel: string }[] = [
   { code: "es", display: "ES", ariaLabel: "Español" },
@@ -21,7 +22,11 @@ function LangSwitcher() {
         <button
           key={code}
           type="button"
-          onClick={() => setLanguage(code)}
+          onClick={() => {
+            // Analítica: cuántos cambian de idioma (solo si cambia de verdad).
+            if (code !== lang) trackEvent("language_change", { language: code });
+            setLanguage(code);
+          }}
           aria-label={ariaLabel}
           aria-pressed={lang === code}
           className="relative flex h-7 w-8 items-center justify-center rounded-full font-mono text-xs font-semibold uppercase tracking-wide"
@@ -96,6 +101,8 @@ export function Navbar() {
 
   const handleSectionClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
     setIsMenuOpen(false);
+    // Analítica: qué pulsan en el menú (las secciones, con el mismo nombre que section_view).
+    trackEvent("nav_click", { section: href.startsWith("#") ? SECTION_NAMES[href.slice(1)] ?? href.slice(1) : href });
     if (!href.startsWith("#")) {
       return;
     }

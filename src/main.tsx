@@ -11,9 +11,12 @@ import "@fontsource/space-mono/400.css";
 import "@fontsource/space-mono/700.css";
 import "./index.css";
 import { keepAttributionOnInternalLinks } from "./lib/attribution";
+import { captureDiscountCode } from "./lib/appLinks";
 import { setupMetaPixel } from "./lib/metaPixel";
 
 keepAttributionOnInternalLinks();
+// Enlace con código de descuento (`?codigo=`): se guarda para pasarlo a la app al elegir plan.
+captureDiscountCode();
 setupMetaPixel();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

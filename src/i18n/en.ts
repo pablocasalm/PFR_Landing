@@ -294,6 +294,7 @@ export const en: Translations = {
     coachLeftFounder: "Founding price · {count} of {total} spots left",
     coachLeft: "{count} of {total} spots left",
     regularPrice: "Regular price: {price}",
+    discountLabel: "{pct}% off",
     securePayment: "Secure payment with Stripe.",
   },
   finalCta: {

@@ -151,6 +151,8 @@ export function Precios() {
               {(() => {
                 const price = monthlyPrice(plan.key);
                 const regular = price?.regularAmount && price.regularAmount > price.displayAmount ? price.regularAmount : null;
+                // Etiqueta del descuento (tarjeta #139): sale de los dos precios de Stripe, redondeada.
+                const pct = regular != null && price ? Math.round((100 * (regular - price.displayAmount)) / regular) : 0;
                 return (
                   <p className="mt-4 flex flex-wrap items-baseline gap-x-2 font-display text-4xl leading-none text-text lg:mt-3">
                     {regular != null && price && (
@@ -162,6 +164,14 @@ export function Precios() {
                       {price ? currencyFormat(price.displayAmount, price.currency) : loadFailed ? "—" : "…"}
                       <span className="ml-1 align-middle text-sm font-normal text-muted">{t.pricing.monthlySuffix}</span>
                     </span>
+                    {pct > 0 && (
+                      <span
+                        className="self-center rounded-full bg-accent-lime px-2.5 py-1 font-sans text-xs font-bold leading-none text-bg"
+                        aria-label={t.pricing.discountLabel.replace("{pct}", String(pct))}
+                      >
+                        -{pct}%
+                      </span>
+                    )}
                   </p>
                 );
               })()}

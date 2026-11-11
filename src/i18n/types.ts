@@ -176,6 +176,8 @@ export type Translations = {
     coachLeft: string;
     /** Para lectores de pantalla, junto al precio tachado. {price} = precio normal. */
     regularPrice: string;
+    /** Etiqueta del descuento junto al precio fundador: "{pct}" = 36. */
+    discountLabel: string;
     /** Bajo los planes: con quién se paga. */
     securePayment: string;
   };

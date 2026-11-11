@@ -294,6 +294,7 @@ export const es: Translations = {
     coachLeftFounder: "Precio fundador · quedan {count} de {total} plazas",
     coachLeft: "Quedan {count} de {total} plazas",
     regularPrice: "Precio normal: {price}",
+    discountLabel: "{pct}% de descuento",
     securePayment: "Pago seguro con Stripe.",
   },
   finalCta: {

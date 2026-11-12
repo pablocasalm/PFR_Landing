@@ -20,6 +20,13 @@ const LANG_KEY = "pfr_lang";
 
 function getInitialLang(): Language {
   try {
+    // ?lang=en / ?lang=es en la dirección (enlaces que se envían a alguien): manda sobre lo
+    // guardado, y se guarda para el resto de la visita.
+    const fromUrl = new URLSearchParams(window.location.search).get("lang");
+    if (fromUrl === "en" || fromUrl === "es") {
+      localStorage.setItem(LANG_KEY, fromUrl);
+      return fromUrl;
+    }
     const stored = localStorage.getItem(LANG_KEY);
     if (stored === "en" || stored === "es") return stored;
   } catch {
